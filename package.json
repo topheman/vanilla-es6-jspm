@@ -1,0 +1,16 @@
+{
+  "name": "angular-es6-jspm",
+  "version": "0.0.1",
+  "description": "A simple app to try angular 1.x using ES6 / jspm",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "angular",
+    "ES6",
+    "jspm"
+  ],
+  "author": "Christophe Rosset",
+  "license": "MIT"
+}

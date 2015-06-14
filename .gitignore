@@ -1,0 +1,14 @@
+# General
+
+.DS_Store
+
+# dependency directories
+
+npm-debug.log
+node_modules
+jspm_packages
+
+#ide
+
+nbproject
+.idea
