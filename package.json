@@ -27,6 +27,8 @@
     "browser-sync": "^2.7.10",
     "connect-modrewrite": "^0.8.1",
     "gulp": "^3.9.0",
-    "gulp-load-plugins": "^1.0.0-rc.1"
+    "gulp-jshint": "^1.11.0",
+    "gulp-load-plugins": "^1.0.0-rc.1",
+    "jshint-stylish": "^2.0.0"
   }
 }
