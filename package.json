@@ -17,6 +17,10 @@
   "jspm": {
     "directories": {},
     "configFile": "jspm.config.js",
+    "dependencies": {
+      "bootstrap": "npm:bootstrap-sass@^3.3.4",
+      "jquery": "github:components/jquery@^2.1.4"
+    },
     "devDependencies": {
       "babel": "npm:babel-core@^5.1.13",
       "babel-runtime": "npm:babel-runtime@^5.1.13",
@@ -27,8 +31,15 @@
     "browser-sync": "^2.7.10",
     "connect-modrewrite": "^0.8.1",
     "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^2.3.1",
+    "gulp-changed": "^1.2.1",
+    "gulp-concat": "^2.5.2",
+    "gulp-filter": "^2.0.2",
     "gulp-jshint": "^1.11.0",
     "gulp-load-plugins": "^1.0.0-rc.1",
+    "gulp-sass": "^2.0.1",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-util": "^3.0.5",
     "jshint-stylish": "^2.0.0"
   }
 }

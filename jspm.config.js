@@ -17,7 +17,9 @@ System.config({
   "map": {
     "babel": "npm:babel-core@5.5.8",
     "babel-runtime": "npm:babel-runtime@5.5.8",
+    "bootstrap": "npm:bootstrap-sass@3.3.4",
     "core-js": "npm:core-js@0.9.17",
+    "jquery": "github:components/jquery@2.1.4",
     "github:jspm/nodelibs-process@0.1.1": {
       "process": "npm:process@0.10.1"
     },

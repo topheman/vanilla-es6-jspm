@@ -17,6 +17,27 @@ var browserSync = require('browser-sync');
 var $ = require('gulp-load-plugins')();
 
 //=============================================
+//   !!!FEEL FREE TO EDIT THESE VARIABLES!!!
+//=============================================
+
+var PRODUCTION_URL       = 'http://your-production-url.com';//@todo check
+var DEVELOPMENT_URL      = 'http://127.0.0.1:9000';
+var PRODUCTION_CDN_URL   = 'http://topheman.github.io/angular-es6-jspm/dist/';//@todo check
+
+//=============================================
+//            DECLARE VARIABLES
+//=============================================
+
+var log = $.util.log;
+var argv = $.util.env;
+var ENV = !!argv.env ? argv.env : 'dev';
+var COLORS = $.util.colors;
+//bellow used for e2e testing
+var BROWSERS = !!argv.browsers ? argv.browsers : 'PhantomJS';
+var CDN_BASE = !!argv.cdn ? PRODUCTION_CDN_URL : DEVELOPMENT_URL;
+var APPLICATION_BASE_URL = ENV ? PRODUCTION_URL : DEVELOPMENT_URL;
+
+//=============================================
 //            UTILS FUNCTIONS
 //=============================================
 
@@ -127,10 +148,21 @@ gulp.task('htmlhint', function () {
 
 /**
  * Compile SASS files into the main.css.
- * @todo
  */
 gulp.task('sass', function () {
-  process.stdout.write('TODO sass\n');
+  // if it's set to `true` the gulp.watch will keep gulp from stopping
+  // every time we mess up sass files
+  var errLogToConsole = ENV === 'dev' || ENV === 'test';
+  return gulp.src(paths.app.styles)
+    .pipe($.changed(paths.tmp.styles, {extension: '.scss'}))
+    .pipe($.sourcemaps.init())
+    .pipe($.sass({style: 'compressed', errLogToConsole: errLogToConsole}))
+    .pipe($.autoprefixer('last 2 version'))
+    .pipe($.concat('main.css'))
+    .pipe($.sourcemaps.write('../maps'))
+    .pipe(gulp.dest(paths.tmp.styles))
+    .pipe($.filter('**/*.css')) // Filtering stream to only css files
+    .pipe(browserSync.reload({stream: true}));
 });
 
 /**
