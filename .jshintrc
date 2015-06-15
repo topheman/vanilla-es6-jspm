@@ -11,7 +11,7 @@
   "latedef": "nofunc",
   "newcap": true,
   "noarg": true,
-  "quotmark": "single",
+  "quotmark": false,
   "undef": true,
   "unused": true,
   "strict": true,
@@ -19,6 +19,7 @@
   "smarttabs": true,
   "jquery": false,
   "globals": {
+    "System": false,
     "ApplicationConfiguration": false,
     "angular": false,
     "after": false,
