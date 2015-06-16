@@ -1,10 +1,13 @@
 import bootstrap from 'bootstrap';
 import $ from 'jquery';
 
+import main from './main';
+
 export default class Bootstrap {
-  static hello(){
-    console.log('Hello world from main.js');
+  static init(){
+    console.log('Bootstrap.init !!!');
+    main.init();
   }
 }
 
-Bootstrap.hello();
+Bootstrap.init();
