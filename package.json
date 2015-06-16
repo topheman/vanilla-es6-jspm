@@ -19,6 +19,7 @@
     "configFile": "jspm.config.js",
     "dependencies": {
       "bootstrap": "npm:bootstrap-sass@^3.3.4",
+      "css": "github:systemjs/plugin-css@^0.1.12",
       "jquery": "github:components/jquery@^2.1.4",
       "text": "github:systemjs/plugin-text@^0.0.2"
     },

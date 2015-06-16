@@ -15,4 +15,15 @@ export default class Component {
       throw new Error('Invalid param, must be an HTMLElement or a string of the id of one');
     }
   }
+  init(){
+    return this;
+  }
+  show(){
+    this.domNode.style.display = "block";
+    return this;
+  }
+  hide(){
+    this.domNode.style.display = "none";
+    return this;
+  }
 }

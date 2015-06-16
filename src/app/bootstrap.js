@@ -1,5 +1,5 @@
-import bootstrap from 'bootstrap';
-import $ from 'jquery';
+//import bootstrap from 'bootstrap';
+//import $ from 'jquery';
 
 import main from './main';
 
