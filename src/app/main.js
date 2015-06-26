@@ -1,4 +1,4 @@
-import Geolocation from './components/Geolocation/Geolocation';
+import Geolocation from './components/Geolocation/Geolocation.js';
 
 export default class main {
   static init(){

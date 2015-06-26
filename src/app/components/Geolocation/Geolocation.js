@@ -1,9 +1,9 @@
-import Component from '../Component/Component';
-import Spinner from '../Spinner/Spinner';
+import Component from '../Component/Component.js';
+import Spinner from '../Spinner/Spinner.js';
 
 import template from './Geolocation.html!text';
 
-import geoip from '../../services/geolocation/geolocation';
+import geoip from '../../services/geolocation/geolocation.js';
 
 export default class Geolocation extends Component {
   constructor(domNode) {

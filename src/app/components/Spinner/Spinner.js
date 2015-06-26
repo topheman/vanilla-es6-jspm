@@ -1,4 +1,4 @@
-import Component from '../Component/Component';
+import Component from '../Component/Component.js';
 
 import template from './Spinner.html!text';
 
