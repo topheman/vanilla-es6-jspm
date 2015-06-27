@@ -11,6 +11,7 @@ Summary
 	* [Roadmap](#roadmap)
 		* [Releases](https://github.com/topheman/angular-es6-jspm/releases)
 * [Instructions](#instructions)
+* [Resources](#resources)
 
 #Presentation
 
@@ -45,7 +46,7 @@ The endgoal is to have a fully functionnal workflow for angular 1.x, using ES6+ 
 * jshint
 * Angular written ES6 style
 	* ngInject
-	* use ES7 decorators ? (not so sure about that)[^1]
+	* use ES7 decorators ? (not so sure about that) [¹](#footnotes)
 * ...
 
 ##Roadmap
@@ -91,7 +92,8 @@ At the moment of the writing, the default version of jspm is v0.16.x. A major up
 *Section to come*
 
 -----------
-*Resources*
+
+###Resources
 
 Among all the posts/videos I read, here are a few ones that I recommend :
 
@@ -103,6 +105,6 @@ Among all the posts/videos I read, here are a few ones that I recommend :
 * [topheman/react-es6](https://github.com/topheman/react-es6)
 * [topheman/react-es6-isomorphic](https://github.com/topheman/react-es6-isomorphic)
 
----
+###Footnotes
 
-[^1]There are decorators in Angular 2, but since they changed a lot of concepts, it might be misleading for a team-members (more over, I've seen multiple people implementing them, not one uses them the same way). I may change of advice in time ...
+1. There are decorators in Angular 2, but since they changed a lot of concepts, it might be misleading for a team-members (more over, I've seen multiple people implementing them, not one uses them the same way). I may change of advice in time ...
