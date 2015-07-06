@@ -49,6 +49,7 @@
     "gulp-sass": "^2.0.1",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-util": "^3.0.5",
-    "jshint-stylish": "^2.0.0"
+    "jshint-stylish": "^2.0.0",
+    "systemjs-builder": "^0.12.2"
   }
 }

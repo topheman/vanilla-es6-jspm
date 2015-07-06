@@ -85,7 +85,11 @@ At the moment of the writing, the default version of jspm is v0.16.x. A major up
 
 ##Build
 
-*Section to come*
+1. `jspm bundle-sfx app/bootstrap ./.tmp/scripts/app.bootstrap.build.js`
+2. In `src/index.html` uncomment the `build` part / comment the `build remove` part
+3. `gulp serve`
+
+This is only to test the Self Executing build of jspm (still needs to copy over the other assets)
 
 ##Deployment
 
