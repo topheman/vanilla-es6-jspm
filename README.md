@@ -89,7 +89,13 @@ At the moment of the writing, the default version of jspm is v0.16.x. A major up
 2. In `src/index.html` uncomment the `build` part / comment the `build remove` part
 3. `gulp serve`
 
-This is only to test the Self Executing build of jspm (still needs to copy over the other assets)
+This is only to test the Self Executing build of jspm (still needs to copy over the other assets).
+
+Todo : gulp tasks to :
+
+* make the sfx-bundle
+* clean the build folder before build routine starts
+* copy assets to build folder (generated css from sass, images, fonts ...)
 
 ##Deployment
 
