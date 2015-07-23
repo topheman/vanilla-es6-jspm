@@ -117,6 +117,17 @@ var paths = {
     basePath: '.tmp/',
     styles: '.tmp/styles/',
     scripts: '.tmp/scripts/'
+  },
+  build: {
+    basePath: 'build/',
+    dist: {
+      basePath: 'build/dist/',
+      fonts: 'build/dist/fonts',
+      images: 'build/dist/images/',
+      styles: 'build/dist/styles/',
+      scripts: 'build/dist/scripts/'
+    },
+    docs: 'build/docs/'
   }
 };
 
