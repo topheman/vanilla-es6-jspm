@@ -17,14 +17,14 @@ Summary
 
 ##Introduction
 
-For the last two years, we've been hearing a lot about ES6. For the last few months, more and more people have started to embrace it, with the help of tools like [Babel](https://babeljs.io/).
+For the last two years, we've been hearing a lot about **ES6**. For the last few months, more and more people have started to embrace it, with the help of tools like [Babel](https://babeljs.io/).
 
 Now, it's just here and we should use it.
 
 New tools come to help us at this task. One of them is [jspm](http://jspm.io/) (a package manager for the SystemJS universal loader).
 
 * No more bower, no more browserify or webpack
-* But you can use any type of module (ES6, AMD, CommonJS ...)
+* You can use any type of module (ES6, AMD, CommonJS ...)
 * You can install those modules from npm, github, bower (almost anywhere in fact)
 * You still have plugins that will let you require css, html or whatever ...
 
@@ -63,17 +63,8 @@ See the [Releases section](https://github.com/topheman/angular-es6-jspm/releases
 
 * node/npm
 * gulp
-* jspm
+* jspm (latest : `0.16.0-beta.3`) - `npm install -g jspm@beta`
 * sass
-
-At the moment of the writing, the default version of jspm is v0.16.x. A major update has been done for the v0.17.0, so to be working with the versions to be, I've upgraded jspm :
-
-* upgrade jspm to the current latest 0.18.2 - major upgrade was [v0.17.0](https://github.com/systemjs/systemjs/releases/tag/0.17.0)
-* upgrade [jspm-cli to the latest beta](https://github.com/jspm/jspm-cli/releases/tag/0.16.0-beta) (so that it would be in sync) :
-	* `npm install -g jspm@beta`
-	* `jspm init`
-	* `jspm install`
-	* note : I restarted with a blank config (it became much thiner)
 
 ##Install
 
@@ -85,17 +76,19 @@ At the moment of the writing, the default version of jspm is v0.16.x. A major up
 
 ##Build
 
-1. `jspm bundle-sfx app/bootstrap ./.tmp/scripts/app.bootstrap.build.js`
-2. In `src/index.html` uncomment the `build` part / comment the `build remove` part
-3. `gulp serve`
+###To build the whole site
 
-This is only to test the Self Executing build of jspm (still needs to copy over the other assets).
+Simple `gulp build` : a version ready for distribution will be available in `build/dist` :
 
-Todo : gulp tasks to :
+* the ES6 files are transpiled to ES5, concateneted in a single js file and a link to this file is added in the `index.html`. (minification and other optimisations aren't yet available)
+* the sass files are compiled to css (not yet minified)
+* assets such as images are copied to the distribution folder
 
-* make the sfx-bundle
-* clean the build folder before build routine starts
-* copy assets to build folder (generated css from sass, images, fonts ...)
+*NB: There is still work to do on the build part : such as env based builds, minifications, make sure all assets are available ...*
+
+###To build only the js part with the jspm cli
+
+`jspm bundle-sfx app/bootstrap ./.tmp/scripts/app.bootstrap.build.js`
 
 ##Deployment
 
@@ -114,6 +107,25 @@ Among all the posts/videos I read, here are a few ones that I recommend :
 
 * [topheman/react-es6](https://github.com/topheman/react-es6)
 * [topheman/react-es6-isomorphic](https://github.com/topheman/react-es6-isomorphic)
+
+-----------
+
+###Reminder
+
+This part is only to keep track of some infos that may not be relevant anymore since jspm evolves fast, but might help me or other people in the long run.
+
+####About jspm
+
+A major update has been done for the v0.17.0, so to be working with the versions to be, I've upgraded jspm :
+
+* upgrade jspm to the current latest 0.18.2 - major upgrade was [v0.17.0](https://github.com/systemjs/systemjs/releases/tag/0.17.0)
+* upgrade [jspm-cli to the latest beta](https://github.com/jspm/jspm-cli/releases/tag/0.16.0-beta) (so that it would be in sync) :
+	* `npm install -g jspm@beta`
+	* `jspm init`
+	* `jspm install`
+	* note : I restarted with a blank config (it became much thiner)
+
+-----------
 
 ###Footnotes
 

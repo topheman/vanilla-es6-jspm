@@ -6,8 +6,10 @@
  * Load required dependencies.
  */
 var pkg = require('./package.json');
+var del = require('del');
 var gulp = require('gulp');
 var modRewrite = require('connect-modrewrite');
+var runSequence = require('run-sequence');
 var browserSync = require('browser-sync');
 
 /**
@@ -20,9 +22,9 @@ var $ = require('gulp-load-plugins')();
 //   !!!FEEL FREE TO EDIT THESE VARIABLES!!!
 //=============================================
 
-var PRODUCTION_URL       = 'http://your-production-url.com';//@todo check
-var DEVELOPMENT_URL      = 'http://127.0.0.1:9000';
-var PRODUCTION_CDN_URL   = 'http://topheman.github.io/angular-es6-jspm/dist/';//@todo check
+var PRODUCTION_URL = 'http://your-production-url.com';//@todo check
+var DEVELOPMENT_URL = 'http://127.0.0.1:9000';
+var PRODUCTION_CDN_URL = 'http://topheman.github.io/angular-es6-jspm/dist/';//@todo check
 
 //=============================================
 //            DECLARE VARIABLES
@@ -100,7 +102,10 @@ var paths = {
       'jspm_packages/**/*.{eot,svg,ttf,woff}'
     ],
     styles: 'src/styles/**/*.scss',
-    images: 'src/images/**/*.{png,gif,jpg,jpeg}',
+    assets: {
+      images: 'src/assets/images/**/*.{png,gif,jpg,jpeg}',
+      fonts: ['src/assets/fonts/**/*.{eot,svg,ttf,woff}', 'jspm_packages/**/*.{eot,svg,ttf,woff}']
+    },
     scripts: [
       'src/app/**/*.js',
       '!src/app/**/*.spec.js'
@@ -117,12 +122,33 @@ var paths = {
     basePath: '.tmp/',
     styles: '.tmp/styles/',
     scripts: '.tmp/scripts/'
+  },
+  build: {
+    basePath: 'build/',
+    dist: {
+      basePath: 'build/dist/',
+      fonts: 'build/dist/assets/fonts',
+      images: 'build/dist/assets/images/',
+      styles: 'build/dist/styles/',
+      scripts: 'build/dist/scripts/'
+    },
+    docs: 'build/docs/'
   }
 };
 
 //=============================================
 //               SUB TASKS
 //=============================================
+
+/**
+ * The 'clean' task delete 'build' and '.tmp' directories.
+ */
+gulp.task('clean', function (cb) {
+  var files = [].concat(paths.build.basePath, paths.tmp.basePath);
+  log('Cleaning: ' + COLORS.blue(files));
+
+  return del(files, cb);
+});
 
 /**
  * The 'jshint' task defines the rules of our hinter as well as which files
@@ -166,12 +192,34 @@ gulp.task('sass', function () {
 });
 
 /**
+ * Create JS production bundle.
+ */
+gulp.task('bundle', ['jshint'], function (cb) {
+  var Builder = require('systemjs-builder');
+  var builder = new Builder();
+  var inputPath = 'src/app/bootstrap';
+  var outputFile = paths.tmp.scripts + 'app.bootstrap.build.js';
+  var outputOptions = {sourceMaps: true, config: {sourceRoot: paths.tmp.scripts}};
+
+  builder.loadConfig('./jspm.config.js')
+    .then(function () {
+      builder.buildSFX(inputPath, outputFile, outputOptions)
+        .then(function () {
+          return cb();
+        })
+        .catch(function (ex) {
+          cb(new Error(ex));
+        });
+    });
+});
+
+/**
  * The 'watch' task set up the checks to see if any of the files listed below
  * change, and then to execute the listed tasks when they do.
  */
 gulp.task('watch', function () {
   // Watch images and fonts files
-  gulp.watch([paths.app.images, paths.app.fonts], [browserSync.reload]);
+  gulp.watch([paths.app.assets.images, paths.app.assets.fonts], [browserSync.reload]);
 
   // Watch css files
   gulp.watch(paths.app.styles, ['sass']);
@@ -181,6 +229,30 @@ gulp.task('watch', function () {
 
   // Watch html files
   gulp.watch([paths.app.html, paths.app.templates], ['htmlhint', browserSync.reload]);
+});
+
+/**
+ * The 'images' task minifies and copies images to `build/dist` directory.
+ */
+gulp.task('images', function () {
+  return gulp.src(paths.app.assets.images)
+    .pipe($.cache($.imagemin({
+      progressive: true,
+      interlaced: true
+    })))
+    .pipe(gulp.dest(paths.build.dist.images))
+    .pipe($.size({title: 'images'}));
+});
+
+//@todo complete (uglify / env based / ngAnnotate ...) + jsdoc
+gulp.task('compile', ['htmlhint', 'sass', 'bundle'], function () {
+  return gulp.src(paths.app.html)
+    .pipe($.inject(gulp.src(paths.tmp.scripts + 'app.bootstrap.build.js', {read: false})), {
+      starttag: '<!-- inject:js -->'
+    })
+    .pipe($.usemin({}))
+    .pipe(gulp.dest(paths.build.dist.basePath))
+    .pipe($.size({title: 'compile', showFiles: true}));
 });
 
 //=============================================
@@ -198,3 +270,20 @@ gulp.task('serve', ['sass', 'watch'], function () {
   startBrowserSync(['.tmp', 'src', 'jspm_packages', './']);
 });
 gulp.task('default', ['serve']);
+
+//---------------------------------------------
+//               BUILD TASKS
+//---------------------------------------------
+
+/**
+ * The 'build' task gets app ready for deployment by processing files
+ * and put them into directory ready for production.
+ */
+//@todo manage environment / root files like .ico .htaccess ... / fonts ?
+gulp.task('build', function (cb) {
+  runSequence(
+    ['clean'],
+    ['compile','images'],
+    cb
+  );
+});

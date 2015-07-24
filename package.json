@@ -1,6 +1,6 @@
 {
   "name": "angular-es6-jspm",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A simple app to try angular 1.x using ES6 / jspm",
   "main": "index.js",
   "scripts": {
@@ -39,17 +39,24 @@
   "devDependencies": {
     "browser-sync": "^2.7.10",
     "connect-modrewrite": "^0.8.1",
+    "del": "^1.2.0",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^2.3.1",
+    "gulp-cache": "^0.2.10",
     "gulp-changed": "^1.2.1",
     "gulp-concat": "^2.5.2",
     "gulp-filter": "^2.0.2",
+    "gulp-imagemin": "^2.3.0",
+    "gulp-inject": "^1.5.0",
     "gulp-jshint": "^1.11.0",
     "gulp-load-plugins": "^1.0.0-rc.1",
     "gulp-sass": "^2.0.1",
+    "gulp-size": "^1.2.3",
     "gulp-sourcemaps": "^1.5.2",
+    "gulp-usemin": "^0.3.11",
     "gulp-util": "^3.0.5",
     "jshint-stylish": "^2.0.0",
+    "run-sequence": "^1.1.2",
     "systemjs-builder": "^0.12.2"
   }
 }
