@@ -1,6 +1,6 @@
 {
   "name": "angular-es6-jspm",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A simple app to try angular 1.x using ES6 / jspm",
   "main": "index.js",
   "scripts": {
