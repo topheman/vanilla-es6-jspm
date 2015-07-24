@@ -219,6 +219,19 @@ gulp.task('watch', function () {
   gulp.watch([paths.app.html, paths.app.templates], ['htmlhint', browserSync.reload]);
 });
 
+/**
+ * The 'images' task minifies and copies images to `build/dist` directory.
+ */
+gulp.task('images', function () {
+  return gulp.src(paths.app.assets.images)
+    .pipe($.cache($.imagemin({
+      progressive: true,
+      interlaced: true
+    })))
+    .pipe(gulp.dest(paths.build.dist.images))
+    .pipe($.size({title: 'images'}));
+});
+
 //=============================================
 //                MAIN TASKS
 //=============================================
