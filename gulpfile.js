@@ -142,9 +142,14 @@ var paths = {
 
 /**
  * The 'clean' task delete 'build' and '.tmp' directories.
+ * But keeps build/dist/.git (if you git init this folder to push to production via git)
  */
 gulp.task('clean', function (cb) {
-  var files = [].concat(paths.build.basePath, paths.tmp.basePath);
+  var files = [
+    paths.build.dist.basePath+'*',
+    '!'+paths.build.dist.basePath+'.git*',
+    paths.tmp.basePath
+  ];
   log('Cleaning: ' + COLORS.blue(files));
 
   return del(files, cb);

@@ -92,7 +92,26 @@ Simple `gulp build` : a version ready for distribution will be available in `bui
 
 ##Deployment
 
-*Section to come*
+###On github pages
+
+You can host your project on github pages like this ([source](https://help.github.com/articles/creating-project-pages-manually/)), pushing to the github pages the `dist` folder where the project is built.
+
+```shell
+$ gulp build
+$ cd build/dist
+$ git init
+$ git remote add origin https://github.com/username/angular-es6-jspm
+$ git fetch origin
+$ git checkout --orphan gh-pages
+$ gulp build
+$ git add .
+$ git commit -m "first push to production"
+$ git push -u origin gh-pages
+```
+
+Wait a couple of minutes and go to your [own github pages](http://topheman.github.io/angular-es6-jspm/) ...
+
+Next time, you'll only have to do the last 4 steps ...
 
 -----------
 
