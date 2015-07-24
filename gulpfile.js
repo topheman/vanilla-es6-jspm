@@ -20,9 +20,9 @@ var $ = require('gulp-load-plugins')();
 //   !!!FEEL FREE TO EDIT THESE VARIABLES!!!
 //=============================================
 
-var PRODUCTION_URL       = 'http://your-production-url.com';//@todo check
-var DEVELOPMENT_URL      = 'http://127.0.0.1:9000';
-var PRODUCTION_CDN_URL   = 'http://topheman.github.io/angular-es6-jspm/dist/';//@todo check
+var PRODUCTION_URL = 'http://your-production-url.com';//@todo check
+var DEVELOPMENT_URL = 'http://127.0.0.1:9000';
+var PRODUCTION_CDN_URL = 'http://topheman.github.io/angular-es6-jspm/dist/';//@todo check
 
 //=============================================
 //            DECLARE VARIABLES
@@ -102,7 +102,7 @@ var paths = {
     styles: 'src/styles/**/*.scss',
     assets: {
       images: 'src/assets/images/**/*.{png,gif,jpg,jpeg}',
-      fonts: ['src/assets/fonts/**/*.{eot,svg,ttf,woff}','jspm_packages/**/*.{eot,svg,ttf,woff}']
+      fonts: ['src/assets/fonts/**/*.{eot,svg,ttf,woff}', 'jspm_packages/**/*.{eot,svg,ttf,woff}']
     },
     scripts: [
       'src/app/**/*.js',
@@ -187,15 +187,15 @@ gulp.task('bundle', ['jshint'], function (cb) {
   var builder = new Builder();
   var inputPath = 'src/app/bootstrap';
   var outputFile = paths.tmp.scripts + 'app.bootstrap.build.js';
-  var outputOptions = {sourceMaps: true, config: {sourceRoot: paths.tmp.scripts } };
+  var outputOptions = {sourceMaps: true, config: {sourceRoot: paths.tmp.scripts}};
 
   builder.loadConfig('./jspm.config.js')
-    .then(function() {
+    .then(function () {
       builder.buildSFX(inputPath, outputFile, outputOptions)
-        .then(function() {
+        .then(function () {
           return cb();
         })
-        .catch(function(ex) {
+        .catch(function (ex) {
           cb(new Error(ex));
         });
     });
