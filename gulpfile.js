@@ -232,6 +232,14 @@ gulp.task('images', function () {
     .pipe($.size({title: 'images'}));
 });
 
+gulp.task('compile', ['htmlhint', 'sass', 'bundle'], function () {
+  return gulp.src(paths.app.html)
+    .pipe($.inject(gulp.src(paths.tmp.scripts + 'app.bootstrap.build.js', {read: false})),{
+      starttag: '<!-- inject:js -->'
+    })
+    .pipe(gulp.dest(paths.build.dist.basePath));
+});
+
 //=============================================
 //                MAIN TASKS
 //=============================================

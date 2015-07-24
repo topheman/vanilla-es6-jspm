@@ -46,6 +46,7 @@
     "gulp-concat": "^2.5.2",
     "gulp-filter": "^2.0.2",
     "gulp-imagemin": "^2.3.0",
+    "gulp-inject": "^1.5.0",
     "gulp-jshint": "^1.11.0",
     "gulp-load-plugins": "^1.0.0-rc.1",
     "gulp-sass": "^2.0.1",
