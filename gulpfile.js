@@ -100,7 +100,10 @@ var paths = {
       'jspm_packages/**/*.{eot,svg,ttf,woff}'
     ],
     styles: 'src/styles/**/*.scss',
-    images: 'src/images/**/*.{png,gif,jpg,jpeg}',
+    assets: {
+      images: 'src/assets/images/**/*.{png,gif,jpg,jpeg}',
+      fonts: ['src/assets/fonts/**/*.{eot,svg,ttf,woff}','jspm_packages/**/*.{eot,svg,ttf,woff}']
+    },
     scripts: [
       'src/app/**/*.js',
       '!src/app/**/*.spec.js'
@@ -122,8 +125,8 @@ var paths = {
     basePath: 'build/',
     dist: {
       basePath: 'build/dist/',
-      fonts: 'build/dist/fonts',
-      images: 'build/dist/images/',
+      fonts: 'build/dist/assets/fonts',
+      images: 'build/dist/assets/images/',
       styles: 'build/dist/styles/',
       scripts: 'build/dist/scripts/'
     },
@@ -204,7 +207,7 @@ gulp.task('bundle', ['jshint'], function (cb) {
  */
 gulp.task('watch', function () {
   // Watch images and fonts files
-  gulp.watch([paths.app.images, paths.app.fonts], [browserSync.reload]);
+  gulp.watch([paths.app.assets.images, paths.app.assets.fonts], [browserSync.reload]);
 
   // Watch css files
   gulp.watch(paths.app.styles, ['sass']);
