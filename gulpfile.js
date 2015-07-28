@@ -62,21 +62,6 @@ function startBrowserSync(baseDir, files, browser) {
 //=============================================
 
 /**
- * The 'clean' task delete 'build' and '.tmp' directories.
- * But keeps build/dist/.git (if you git init this folder to push to production via git)
- */
-gulp.task('clean', function (cb) {
-  var files = [
-    paths.build.dist.basePath+'*',
-    '!'+paths.build.dist.basePath+'.git*',
-    paths.tmp.basePath
-  ];
-  log('Cleaning: ' + COLORS.blue(files));
-
-  return del(files, cb);
-});
-
-/**
  * The 'jshint' task defines the rules of our hinter as well as which files
  * we should check. It helps to detect errors and potential problems in our
  * JavaScript code.
@@ -138,17 +123,6 @@ gulp.task('watch', function () {
   gulp.watch([paths.app.html, paths.app.templates], ['htmlhint', browserSync.reload]);
 });
 
-//@todo complete (uglify / env based / ngAnnotate ...) + jsdoc
-gulp.task('compile', ['htmlhint', 'sass', 'bundle'], function () {
-  return gulp.src(paths.app.html)
-    .pipe($.inject(gulp.src(paths.tmp.scripts + 'app.bootstrap.build.js', {read: false})), {
-      starttag: '<!-- inject:js -->'
-    })
-    .pipe($.usemin({}))
-    .pipe(gulp.dest(paths.build.dist.basePath))
-    .pipe($.size({title: 'compile', showFiles: true}));
-});
-
 //=============================================
 //                MAIN TASKS
 //=============================================
@@ -164,20 +138,3 @@ gulp.task('serve', ['sass', 'watch'], function () {
   startBrowserSync(['.tmp', 'src', 'jspm_packages', './']);
 });
 gulp.task('default', ['serve']);
-
-//---------------------------------------------
-//               BUILD TASKS
-//---------------------------------------------
-
-/**
- * The 'build' task gets app ready for deployment by processing files
- * and put them into directory ready for production.
- */
-//@todo manage environment / root files like .ico .htaccess ... / fonts ?
-gulp.task('build', function (cb) {
-  runSequence(
-    ['clean'],
-    ['compile','images'],
-    cb
-  );
-});
