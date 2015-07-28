@@ -5,6 +5,9 @@
 //use babel transpiler for ES6 files in node without needing --harmony nor a gulpfile.babel.js
 require('babel/register');
 
+// require all tasks
+require('require-dir')('./gulp/tasks', { recurse: true });
+
 /**
  * Load required dependencies.
  */
@@ -152,19 +155,6 @@ gulp.task('watch', function () {
 
   // Watch html files
   gulp.watch([paths.app.html, paths.app.templates], ['htmlhint', browserSync.reload]);
-});
-
-/**
- * The 'images' task minifies and copies images to `build/dist` directory.
- */
-gulp.task('images', function () {
-  return gulp.src(paths.app.assets.images)
-    .pipe($.cache($.imagemin({
-      progressive: true,
-      interlaced: true
-    })))
-    .pipe(gulp.dest(paths.build.dist.images))
-    .pipe($.size({title: 'images'}));
 });
 
 //@todo complete (uglify / env based / ngAnnotate ...) + jsdoc
