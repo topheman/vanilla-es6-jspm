@@ -23,14 +23,6 @@ var paths = require('./gulp/paths');
 var $ = require('gulp-load-plugins')();
 
 //=============================================
-//   !!!FEEL FREE TO EDIT THESE VARIABLES!!!
-//=============================================
-
-var PRODUCTION_URL = 'http://your-production-url.com';//@todo check
-var DEVELOPMENT_URL = 'http://127.0.0.1:9000';
-var PRODUCTION_CDN_URL = 'http://topheman.github.io/angular-es6-jspm/dist/';//@todo check
-
-//=============================================
 //            DECLARE VARIABLES
 //=============================================
 
@@ -38,28 +30,10 @@ var log = $.util.log;
 var argv = $.util.env;
 var ENV = !!argv.env ? argv.env : 'dev';
 var COLORS = $.util.colors;
-//bellow used for e2e testing
-var BROWSERS = !!argv.browsers ? argv.browsers : 'PhantomJS';
-var CDN_BASE = !!argv.cdn ? PRODUCTION_CDN_URL : DEVELOPMENT_URL;
-var APPLICATION_BASE_URL = ENV ? PRODUCTION_URL : DEVELOPMENT_URL;
 
 //=============================================
 //            UTILS FUNCTIONS
 //=============================================
-
-/*var proxyTarget = 'http://localhost:9000/';
- var proxyApiPrefix = 'api';
- var proxy = httpProxy.createProxyServer({
- target: proxyTarget
- });
-
- var proxyMiddleware = function(req, res, next) {
- if (req.url.indexOf(proxyApiPrefix) !== -1) {
- proxy.web(req, res);
- } else {
- next();
- }
- };*/
 
 function startBrowserSync(baseDir, files, browser) {
   browser = browser === undefined ? 'default' : browser;
