@@ -35,29 +35,6 @@ var ENV = !!argv.env ? argv.env : 'dev';
 var COLORS = $.util.colors;
 
 //=============================================
-//            UTILS FUNCTIONS
-//=============================================
-
-function startBrowserSync(baseDir, files, browser) {
-  browser = browser === undefined ? 'default' : browser;
-  files = files === undefined ? 'default' : files;
-
-  browserSync({
-    files: files,
-    port: 9000,
-    notify: false,
-    server: {
-      baseDir: baseDir,
-      middleware: [
-        //proxyMiddleware,
-        modRewrite(['!\\.\\w+$ /index.html [L]']) // require for HTML5 mode
-      ]
-    },
-    browser: browser
-  });
-}
-
-//=============================================
 //               SUB TASKS
 //=============================================
 
@@ -97,10 +74,5 @@ gulp.task('watch', function () {
 //              DEVELOPMENT TASKS
 //---------------------------------------------
 
-/**
- * The 'serve' task serve the dev environment.
- */
-gulp.task('serve', ['sass', 'watch'], function () {
-  startBrowserSync(['.tmp', 'src', 'jspm_packages', './']);
-});
+
 gulp.task('default', ['serve']);
