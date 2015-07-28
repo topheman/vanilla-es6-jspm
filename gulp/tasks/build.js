@@ -25,8 +25,8 @@ const COLORS = util.colors;
  * The 'clean' task delete 'build' and '.tmp' directories.
  * But keeps build/dist/.git (if you git init this folder to push to production via git)
  */
-gulp.task('clean', function (cb) {
-  var files = [
+gulp.task('clean', (cb) => {
+  const files = [
     paths.build.dist.basePath+'*',
     '!'+paths.build.dist.basePath+'.git*',
     paths.tmp.basePath
@@ -37,7 +37,7 @@ gulp.task('clean', function (cb) {
 });
 
 //@todo complete (uglify / env based / ngAnnotate ...) + jsdoc
-gulp.task('compile', ['htmlhint', 'sass', 'bundle'], function () {
+gulp.task('compile', ['htmlhint', 'sass', 'bundle'], () => {
   return gulp.src(paths.app.html)
     .pipe(inject(gulp.src(paths.tmp.scripts + 'app.bootstrap.build.js', {read: false})), {
       starttag: '<!-- inject:js -->'
@@ -52,7 +52,7 @@ gulp.task('compile', ['htmlhint', 'sass', 'bundle'], function () {
  * and put them into directory ready for production.
  */
 //@todo manage environment / root files like .ico .htaccess ... / fonts ?
-gulp.task('build', function (cb) {
+gulp.task('build', (cb) => {
   runSequence(
     ['clean'],
     ['compile','images'],

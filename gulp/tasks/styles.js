@@ -18,10 +18,10 @@ const ENV = !!argv.env ? argv.env : 'dev';
 /**
  * Compile SASS files into the main.css.
  */
-gulp.task('sass', function () {
+gulp.task('sass', () => {
   // if it's set to `true` the gulp.watch will keep gulp from stopping
   // every time we mess up sass files
-  var errLogToConsole = ENV === 'dev' || ENV === 'test';
+  const errLogToConsole = ENV === 'dev' || ENV === 'test';
   return gulp.src(paths.app.styles)
     .pipe(changed(paths.tmp.styles, {extension: '.scss'}))
     .pipe(sourcemaps.init())

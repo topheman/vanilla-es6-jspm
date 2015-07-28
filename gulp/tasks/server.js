@@ -44,6 +44,6 @@ function startBrowserSync(baseDir, files, browser) {
 /**
  * The 'serve' task serve the dev environment.
  */
-gulp.task('serve', ['sass', 'watch'], function () {
+gulp.task('serve', ['sass', 'watch'], () => {
   startBrowserSync(['.tmp', 'src', 'jspm_packages', './']);
 });

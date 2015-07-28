@@ -11,7 +11,7 @@ import paths from '../paths';
  * we should check. It helps to detect errors and potential problems in our
  * JavaScript code.
  */
-gulp.task('jshint', function () {
+gulp.task('jshint', () => {
   return gulp.src(paths.app.scripts.concat(paths.gulpfile))
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('jshint-stylish'))
@@ -21,20 +21,20 @@ gulp.task('jshint', function () {
 /**
  * Create JS production bundle.
  */
-gulp.task('bundle', ['jshint'], function (cb) {
-  var Builder = require('systemjs-builder');
-  var builder = new Builder();
-  var inputPath = 'src/app/bootstrap';
-  var outputFile = paths.tmp.scripts + 'app.bootstrap.build.js';
-  var outputOptions = {sourceMaps: true, config: {sourceRoot: paths.tmp.scripts}};
+gulp.task('bundle', ['jshint'], (cb) => {
+  const Builder = require('systemjs-builder');
+  const builder = new Builder();
+  const inputPath = 'src/app/bootstrap';
+  const outputFile = paths.tmp.scripts + 'app.bootstrap.build.js';
+  const outputOptions = {sourceMaps: true, config: {sourceRoot: paths.tmp.scripts}};
 
   builder.loadConfig('./jspm.config.js')
-    .then(function () {
+    .then( () => {
       builder.buildSFX(inputPath, outputFile, outputOptions)
-        .then(function () {
+        .then( () => {
           return cb();
         })
-        .catch(function (ex) {
+        .catch( (ex) => {
           cb(new Error(ex));
         });
     });

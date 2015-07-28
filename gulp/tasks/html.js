@@ -8,6 +8,6 @@ import gulp from 'gulp';
  * HTML code.
  * @todo
  */
-gulp.task('htmlhint', function () {
+gulp.task('htmlhint', () => {
   process.stdout.write('TODO htmlhint\n');
 });
