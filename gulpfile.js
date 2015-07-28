@@ -99,25 +99,6 @@ gulp.task('htmlhint', function () {
 });
 
 /**
- * Compile SASS files into the main.css.
- */
-gulp.task('sass', function () {
-  // if it's set to `true` the gulp.watch will keep gulp from stopping
-  // every time we mess up sass files
-  var errLogToConsole = ENV === 'dev' || ENV === 'test';
-  return gulp.src(paths.app.styles)
-    .pipe($.changed(paths.tmp.styles, {extension: '.scss'}))
-    .pipe($.sourcemaps.init())
-    .pipe($.sass({style: 'compressed', errLogToConsole: errLogToConsole}))
-    .pipe($.autoprefixer('last 2 version'))
-    .pipe($.concat('main.css'))
-    .pipe($.sourcemaps.write('../maps'))
-    .pipe(gulp.dest(paths.tmp.styles))
-    .pipe($.filter('**/*.css')) // Filtering stream to only css files
-    .pipe(browserSync.reload({stream: true}));
-});
-
-/**
  * Create JS production bundle.
  */
 gulp.task('bundle', ['jshint'], function (cb) {
