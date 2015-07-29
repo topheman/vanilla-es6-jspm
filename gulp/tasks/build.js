@@ -6,6 +6,7 @@ import util from 'gulp-util';
 import uglify from 'gulp-uglify';
 import bytediff from 'gulp-bytediff';
 import size from 'gulp-size';
+import minifyCss from 'gulp-minify-css';
 import usemin from 'gulp-usemin';
 import inject from 'gulp-inject';
 import runSequence from 'run-sequence';
@@ -66,6 +67,11 @@ gulp.task('compile', ['htmlhint', 'sass', 'bundle'], () => {
       starttag: '<!-- inject:js -->'
     })
     .pipe(usemin({
+      css:[
+        bytediff.start(),
+        minifyCss({keepSpecialComments: 0}),
+        bytediff.stop(bytediffFormatter)
+      ],
       js:[
         bytediff.start(),
         uglify(),
