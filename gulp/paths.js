@@ -17,15 +17,12 @@ const paths = {
    */
   app: {
     basePath: 'src/',
+    styles: 'src/styles/**/*.scss',
     fonts: [
       'src/fonts/**/*.{eot,svg,ttf,woff}',
       'jspm_packages/**/*.{eot,svg,ttf,woff}'
     ],
-    styles: 'src/styles/**/*.scss',
-    assets: {
-      images: 'src/assets/images/**/*.{png,gif,jpg,jpeg}',
-      fonts: ['src/assets/fonts/**/*.{eot,svg,ttf,woff}', 'jspm_packages/**/*.{eot,svg,ttf,woff}']
-    },
+    images: 'src/images/**/*.{png,gif,jpg,jpeg}',
     scripts: [
       'src/app/**/*.js',
       '!src/app/**/*.spec.js'
@@ -47,8 +44,8 @@ const paths = {
     basePath: 'build/',
     dist: {
       basePath: 'build/dist/',
-      fonts: 'build/dist/assets/fonts',
-      images: 'build/dist/assets/images/',
+      fonts: 'build/dist/fonts/',
+      images: 'build/dist/images/',
       styles: 'build/dist/styles/',
       scripts: 'build/dist/scripts/'
     },

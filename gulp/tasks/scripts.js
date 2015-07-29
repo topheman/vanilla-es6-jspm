@@ -3,6 +3,7 @@
 import util from 'gulp-util';
 import gulp from 'gulp';
 import jshint from 'gulp-jshint';
+import cache from 'gulp-cache';
 
 import paths from '../paths';
 
@@ -38,4 +39,14 @@ gulp.task('bundle', ['jshint'], (cb) => {
           cb(new Error(ex));
         });
     });
+});
+
+
+/**
+ * gulp-cache is used in some tasks to save time
+ * Though, when developing/debugging the gulp part, the cache can mess with the streams
+ * This will clear it.
+ */
+gulp.task('cache-clean', (done) => {
+  return cache.clearAll(done);
 });

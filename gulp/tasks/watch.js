@@ -11,7 +11,7 @@ import paths from '../paths';
  */
 gulp.task('watch', () => {
   // Watch images and fonts files
-  gulp.watch([paths.app.assets.images, paths.app.assets.fonts], [browserSync.reload]);
+  gulp.watch([paths.app.images, paths.app.fonts], [browserSync.reload]);
 
   // Watch css files
   gulp.watch(paths.app.styles, ['sass']);

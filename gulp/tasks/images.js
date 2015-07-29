@@ -11,7 +11,7 @@ import paths from '../paths';
  * The 'images' task minifies and copies images to `build/dist` directory.
  */
 gulp.task('images', () => {
-  return gulp.src(paths.app.assets.images)
+  return gulp.src(paths.app.images)
     .pipe(cache(imagemin({
       progressive: true,
       interlaced: true
