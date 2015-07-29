@@ -8,13 +8,6 @@ import browserSync from 'browser-sync';
 import path from '../paths';
 
 //=============================================
-//            UTILS FUNCTIONS
-//=============================================
-
-const LOG = util.log;
-const COLORS = util.colors;
-
-//=============================================
 //            PROXY CONFIGURATION
 //=============================================
 

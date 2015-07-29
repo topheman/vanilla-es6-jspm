@@ -10,10 +10,8 @@ import concat from 'gulp-concat';
 import filter from 'gulp-filter';
 import browserSync from 'browser-sync';
 
+import {ENV} from '../utils';
 import paths from '../paths';
-
-const argv = util.env;
-const ENV = !!argv.env ? argv.env : 'dev';
 
 /**
  * Compile SASS files into the main.css.
@@ -21,7 +19,7 @@ const ENV = !!argv.env ? argv.env : 'dev';
 gulp.task('sass', () => {
   // if it's set to `true` the gulp.watch will keep gulp from stopping
   // every time we mess up sass files
-  const errLogToConsole = ENV === 'dev' || ENV === 'test';
+  const errLogToConsole = ENV === 'DEV' || ENV === 'TEST';
   return gulp.src(paths.app.styles)
     .pipe(changed(paths.tmp.styles, {extension: '.scss'}))
     .pipe(sourcemaps.init())

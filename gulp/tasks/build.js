@@ -8,18 +8,8 @@ import usemin from 'gulp-usemin';
 import inject from 'gulp-inject';
 import runSequence from 'run-sequence';
 
+import {LOG, COLORS} from '../utils';
 import paths from '../paths';
-
-//=============================================
-//            UTILS FUNCTIONS
-//=============================================
-
-const LOG = util.log;
-const COLORS = util.colors;
-
-//=============================================
-//                  TASKS
-//=============================================
 
 /**
  * The 'clean' task delete 'build' and '.tmp' directories.
