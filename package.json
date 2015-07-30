@@ -28,6 +28,7 @@
       "bootstrap": "npm:bootstrap-sass@^3.3.5",
       "clean-css": "npm:clean-css@^3.3.4",
       "css": "github:systemjs/plugin-css@^0.1.13",
+      "fetch-polyfill": "npm:fetch-polyfill@^0.8.1",
       "text": "github:systemjs/plugin-text@^0.0.2"
     },
     "devDependencies": {
