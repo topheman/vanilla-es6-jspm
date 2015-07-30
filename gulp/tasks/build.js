@@ -8,11 +8,13 @@ import bytediff from 'gulp-bytediff';
 import size from 'gulp-size';
 import minifyCss from 'gulp-minify-css';
 import rev from 'gulp-rev';
+import header from 'gulp-header';
 import usemin from 'gulp-usemin';
 import inject from 'gulp-inject';
 import runSequence from 'run-sequence';
 
 import {LOG, COLORS} from '../utils';
+import {BANNER} from '../const';
 import paths from '../paths';
 
 //=============================================
@@ -72,13 +74,15 @@ gulp.task('compile', ['htmlhint', 'sass', 'bundle'], () => {
         bytediff.start(),
         minifyCss({keepSpecialComments: 0}),
         bytediff.stop(bytediffFormatter),
-        rev()
+        rev(),
+        header(BANNER)
       ],
       js:[
         bytediff.start(),
         uglify(),
         bytediff.stop(bytediffFormatter),
-        rev()
+        rev(),
+        header(BANNER)
       ]
     }))
     .pipe(gulp.dest(paths.build.dist.basePath))
