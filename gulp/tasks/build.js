@@ -7,6 +7,7 @@ import uglify from 'gulp-uglify';
 import bytediff from 'gulp-bytediff';
 import size from 'gulp-size';
 import minifyCss from 'gulp-minify-css';
+import minifyHtml from 'gulp-minify-html';
 import rev from 'gulp-rev';
 import header from 'gulp-header';
 import usemin from 'gulp-usemin';
@@ -83,6 +84,11 @@ gulp.task('compile', ['htmlhint', 'sass', 'bundle'], () => {
         bytediff.stop(bytediffFormatter),
         rev(),
         header(BANNER)
+      ],
+      html:[
+        bytediff.start(),
+        minifyHtml({empty:true}),
+        bytediff.stop(bytediffFormatter)
       ]
     }))
     .pipe(gulp.dest(paths.build.dist.basePath))
