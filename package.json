@@ -4,7 +4,7 @@
   "description": "A simple app to try angular 1.x using ES6 / jspm (no angular involved yet)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "./node_modules/karma/bin/karma start",
     "postinstall": "jspm install"
   },
   "repository": {
