@@ -16,7 +16,10 @@ module.exports = function (config) {
         'node_modules/phantomjs-polyfill/bind-polyfill.js',//necessary for PhantomJS (doesn't have Function.bind)
         'src/**/*.spec.js'
       ],
-      serveFiles: ['src/app/**/*.js','src/app/**/*.html']
+      serveFiles: [
+        'src/app/**/*.js',
+        'src/app/**/*.html'
+      ]
     },
 
     proxies: {
@@ -34,7 +37,7 @@ module.exports = function (config) {
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_DEBUG,
+    logLevel: config.LOG_INFO,
 
     browsers: ['PhantomJS'],
 
