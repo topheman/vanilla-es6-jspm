@@ -18,7 +18,8 @@ module.exports = function (config) {
       ],
       serveFiles: [
         'src/app/**/*.js',
-        'src/app/**/*.html'
+        'src/app/**/*.html',
+        'src/app/**/*.css'
       ]
     },
 
