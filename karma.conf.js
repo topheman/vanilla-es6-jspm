@@ -4,7 +4,7 @@ module.exports = function (config) {
 
     //basePath: '',//don't override basePath, use proxies
 
-    frameworks: ['jspm','mocha', 'chai'],
+    frameworks: ['jspm','jasmine'],
 
     // list of files / patterns to load in the browser
     files: [
@@ -25,7 +25,7 @@ module.exports = function (config) {
       '/node_modules/phantomjs-polyfill/': '/base/node_modules/phantomjs-polyfill/'
     },
 
-    reporters: ['mocha'],
+    reporters: ['spec'],
 
     port: 9876,
     colors: true,
@@ -39,14 +39,13 @@ module.exports = function (config) {
     browsers: ['PhantomJS'],
 
     plugins: [
-      'karma-mocha',
-      'karma-chai',
       'karma-jspm',
       'karma-chrome-launcher',
       'karma-firefox-launcher',
       'karma-safari-launcher',
       'karma-phantomjs-launcher',
-      'karma-mocha-reporter'
+      'karma-jasmine',
+      'karma-spec-reporter'
     ]
 
   });

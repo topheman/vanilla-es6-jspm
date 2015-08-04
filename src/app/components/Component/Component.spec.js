@@ -13,17 +13,17 @@ describe('components/Component/Component.js', function () {
   });
 
   it('.init method should be defined', ()=>{
-    expect(component.init).to.not.be.an('undefined');
+    expect(component.init).not.toBe(undefined);
   });
   it('.init() should return this', () => {
-    expect(component.init()).to.be.an.instanceOf(Component);
+    expect(component.init() instanceof Component).toBe(true);
   });
   it('.show() should display block', () => {
     component.show();
-    expect(component.domNode.style.display).to.be.equal('block');
+    expect(component.domNode.style.display).toEqual('block');
   });
   it('.hide() should display none', () => {
     component.hide();
-    expect(component.domNode.style.display).to.be.equal('none');
+    expect(component.domNode.style.display).toEqual('none');
   });
 });
