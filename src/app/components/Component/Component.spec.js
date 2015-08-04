@@ -7,12 +7,14 @@ import Component from './Component.js';
 describe('ES6 Component', function () {
 
   let component;
+  let htmlElement;
 
   beforeEach(()=>{
-    component = new Component();
+    htmlElement = document.createElement('div');
+    component = new Component(htmlElement);
   });
 
   it('should return Do Something when calling doSomething', ()=>{
-    expect(component.init).toEqual('Do Something');
+    expect(component.init).to.not.be.an('undefined');
   });
 });

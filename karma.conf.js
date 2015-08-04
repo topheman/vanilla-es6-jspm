@@ -2,8 +2,7 @@ module.exports = function (config) {
   'use strict';
   config.set({
 
-    //basePath: '../'+__dirname,
-    basePath: 'base',
+    //basePath: '',//don't override basePath, use proxies
 
     frameworks: ['jspm','mocha', 'chai'],
 
@@ -14,12 +13,13 @@ module.exports = function (config) {
     jspm: {
       config: 'jspm.config.js',
       loadFiles: ['src/**/*.spec.js'],
-      serveFiles: ['src/app/**/*.{js,html,css,json}']
+      serveFiles: ['src/app/**/*.js','src/app/**/*.html']
     },
 
     proxies: {
-      '/base/src/': '/src/',
-      '/base/jspm_packages/': '/jspm_packages/'
+      '/src/': '/base/src/',
+      '/jspm_packages/': '/base/jspm_packages/',
+      '/chai.js': '/base/node_modules/chai/chai.js'
     },
 
     reporters: ['progress'],
