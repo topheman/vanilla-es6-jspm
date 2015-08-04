@@ -2,7 +2,7 @@
 
 import Component from './Component.js';
 
-describe('ES6 Component', function () {
+describe('components/Component/Component.js', function () {
 
   let component;
   let htmlElement;
@@ -15,7 +15,15 @@ describe('ES6 Component', function () {
   it('.init method should be defined', ()=>{
     expect(component.init).to.not.be.an('undefined');
   });
-  it('should fail', () => {
-    expect(true).to.be.false;
+  it('.init() should return this', () => {
+    expect(component.init()).to.be.an.instanceOf(Component);
+  });
+  it('.show() should display block', () => {
+    component.show();
+    expect(component.domNode.style.display).to.be.equal('block');
+  });
+  it('.hide() should display none', () => {
+    component.hide();
+    expect(component.domNode.style.display).to.be.equal('none');
   });
 });
