@@ -6,7 +6,7 @@
   "scripts": {
     "test": "./node_modules/gulp/bin/gulp.js jshint && ./node_modules/gulp/bin/gulp.js htmlhint && ./node_modules/karma/bin/karma start --single-run --browsers PhantomJS",
     "test-unit": "./node_modules/karma/bin/karma start",
-    "postinstall": "./node_modules/jspm/jspm.js install"
+    "postinstall": "jspm install"
   },
   "repository": {
     "type": "git",
@@ -68,7 +68,6 @@
     "gulp-util": "^3.0.5",
     "jasmine-core": "^2.3.4",
     "jshint-stylish": "^2.0.0",
-    "jspm": "^0.16.0-beta.3",
     "karma": "^0.13.3",
     "karma-chrome-launcher": "^0.2.0",
     "karma-firefox-launcher": "^0.1.6",
