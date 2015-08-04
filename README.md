@@ -1,6 +1,8 @@
 angular-es6-jspm
 ================
 
+[![Build Status](https://travis-ci.org/topheman/angular-es6-jspm.svg)](https://travis-ci.org/topheman/angular-es6-jspm)
+
 **ES6** is here and you can't avoid it. We have great tools to make it work, one of them is **jspm**.
 
 jspm is a great tool but all-in-one yeoman generators or seed projects (with build/sass/livereload/sourcemaps/unit-tests ...) are still lacking, so I decided to make my own angular/ES6/jspm stack, **starting with vanillaJS**. [more infos on the Wiki](https://github.com/topheman/angular-es6-jspm/wiki)
@@ -14,8 +16,6 @@ jspm is a great tool but all-in-one yeoman generators or seed projects (with bui
 * jspm (latest : `0.16.0-beta.3`) - `npm install -g jspm@beta`
 * sass - [installation](http://sass-lang.com/install)
 
-The npm tasks such as `npm test` rely on local gulp and jspm clients, so they won't have to be installed in global on VMs environments such as Travis to avoid the need to `sudo`.
-
 ##Install
 
 `npm install` (it will automatically trigger the `jspm install` at `postinstall`)
@@ -28,14 +28,10 @@ The npm tasks such as `npm test` rely on local gulp and jspm clients, so they wo
 
 `gulp build` : builds a production ready version of the site in `build/dist`
 
-*To build only the js part with the jspm cli (only kept for future reference)*
-
-`jspm bundle-sfx app/bootstrap ./.tmp/scripts/app.bootstrap.build.js`
-
 ##Test
 
 * `npm run test-unit`: runs the unit tests through `karma`
-* `npm test`: runs all the tests
+* `npm test`: runs all the tests 
 
 ##Deployment
 
