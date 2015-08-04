@@ -12,28 +12,31 @@ module.exports = function (config) {
 
     jspm: {
       config: 'jspm.config.js',
-      loadFiles: ['src/**/*.spec.js'],
+      loadFiles: [
+        'node_modules/phantomjs-polyfill/bind-polyfill.js',//necessary for PhantomJS (doesn't have Function.bind)
+        'src/**/*.spec.js'
+      ],
       serveFiles: ['src/app/**/*.js','src/app/**/*.html']
     },
 
     proxies: {
       '/src/': '/base/src/',
       '/jspm_packages/': '/base/jspm_packages/',
-      '/chai.js': '/base/node_modules/chai/chai.js'
+      '/node_modules/phantomjs-polyfill/': '/base/node_modules/phantomjs-polyfill/'
     },
 
-    reporters: ['progress'],
+    reporters: ['mocha'],
 
     port: 9876,
     colors: true,
     autoWatch: false,
-    singleRun: false,
+    singleRun: true,
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
     logLevel: config.LOG_DEBUG,
 
-    browsers: ['Chrome'],
+    browsers: ['PhantomJS'],
 
     plugins: [
       'karma-mocha',
@@ -42,7 +45,8 @@ module.exports = function (config) {
       'karma-chrome-launcher',
       'karma-firefox-launcher',
       'karma-safari-launcher',
-      'karma-phantomjs-launcher'
+      'karma-phantomjs-launcher',
+      'karma-mocha-reporter'
     ]
 
   });

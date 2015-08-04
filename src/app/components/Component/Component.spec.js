@@ -1,7 +1,5 @@
 'use strict';
 
-import {expect} from 'chai';
-
 import Component from './Component.js';
 
 describe('ES6 Component', function () {
@@ -14,7 +12,10 @@ describe('ES6 Component', function () {
     component = new Component(htmlElement);
   });
 
-  it('should return Do Something when calling doSomething', ()=>{
+  it('.init method should be defined', ()=>{
     expect(component.init).to.not.be.an('undefined');
+  });
+  it('should fail', () => {
+    expect(true).to.be.false;
   });
 });

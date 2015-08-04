@@ -72,11 +72,13 @@
     "karma-firefox-launcher": "^0.1.6",
     "karma-jspm": "^2.0.1-beta.1",
     "karma-mocha": "^0.2.0",
+    "karma-mocha-reporter": "^1.0.4",
     "karma-phantomjs-launcher": "^0.2.0",
     "karma-safari-launcher": "^0.1.1",
     "mocha": "^2.2.5",
     "moment": "^2.10.6",
     "phantomjs": "^1.9.17",
+    "phantomjs-polyfill": "0.0.1",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.1.2",
     "systemjs-builder": "^0.12.2"
