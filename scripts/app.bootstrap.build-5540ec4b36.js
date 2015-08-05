@@ -1,7 +1,7 @@
 /**
- * angular-es6-jspm
+ * vanilla-es6-jspm
  *
- * A simple app to try angular 1.x using ES6 / jspm (no angular involved yet)
+ * Seed project for ES6 / jspm based apps with full production workflow
  *
  * @version v0.4.0 - 05/08/2015
  * @author Christophe Rosset
