@@ -5,7 +5,9 @@ vanilla-es6-jspm
 
 **ES6** is here and you can't avoid it. We have great tools to make it work, one of them is **jspm**.
 
-jspm is a great tool but all-in-one yeoman generators or seed projects (with build/sass/livereload/sourcemaps/unit-tests ...) are still lacking, so I decided to make my own angular/ES6/jspm stack, **starting with vanillaJS**. [more infos on the Wiki](https://github.com/topheman/vanilla-es6-jspm/wiki)
+jspm is a great tool but all-in-one yeoman generators or seed projects (with build/sass/livereload/sourcemaps/unit-tests ...) are still lacking, so I decided to make my own angular/ES6/jspm stack.
+
+This project is the first step, in **pure vanillaJS**. [more infos on the Wiki](https://github.com/topheman/vanilla-es6-jspm/wiki)
 
 #Instructions
 
