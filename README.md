@@ -1,11 +1,11 @@
-angular-es6-jspm
+vanilla-es6-jspm
 ================
 
-[![Build Status](https://travis-ci.org/topheman/angular-es6-jspm.svg)](https://travis-ci.org/topheman/angular-es6-jspm)
+[![Build Status](https://travis-ci.org/topheman/vanilla-es6-jspm.svg)](https://travis-ci.org/topheman/vanilla-es6-jspm)
 
 **ES6** is here and you can't avoid it. We have great tools to make it work, one of them is **jspm**.
 
-jspm is a great tool but all-in-one yeoman generators or seed projects (with build/sass/livereload/sourcemaps/unit-tests ...) are still lacking, so I decided to make my own angular/ES6/jspm stack, **starting with vanillaJS**. [more infos on the Wiki](https://github.com/topheman/angular-es6-jspm/wiki)
+jspm is a great tool but all-in-one yeoman generators or seed projects (with build/sass/livereload/sourcemaps/unit-tests ...) are still lacking, so I decided to make my own angular/ES6/jspm stack, **starting with vanillaJS**. [more infos on the Wiki](https://github.com/topheman/vanilla-es6-jspm/wiki)
 
 #Instructions
 
@@ -43,7 +43,7 @@ You can host your project on github pages like this ([source](https://help.githu
 $ gulp build
 $ cd build/dist
 $ git init
-$ git remote add origin https://github.com/username/angular-es6-jspm
+$ git remote add origin https://github.com/username/vanilla-es6-jspm
 $ git fetch origin
 $ git checkout --orphan gh-pages
 $ gulp build
@@ -56,4 +56,4 @@ Next time, you'll only have to do the last 4 steps ...
 
 #Resources
 
-[See Wiki](https://github.com/topheman/angular-es6-jspm/wiki/Resources)
+[See Wiki](https://github.com/topheman/vanilla-es6-jspm/wiki/Resources)

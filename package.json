@@ -1,7 +1,7 @@
 {
-  "name": "angular-es6-jspm",
+  "name": "vanilla-es6-jspm",
   "version": "0.4.0",
-  "description": "A simple app to try angular 1.x using ES6 / jspm (no angular involved yet)",
+  "description": "Seed project for ES6 / jspm based apps with full production workflow",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/gulp/bin/gulp.js jshint && ./node_modules/gulp/bin/gulp.js htmlhint && ./node_modules/karma/bin/karma start --single-run --browsers PhantomJS",
@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/topheman/angular-es6-jspm.git"
+    "url": "https://github.com/topheman/vanilla-es6-jspm.git"
   },
   "bugs": {
-    "url": "https://github.com/topheman/angular-es6-jspm/issues"
+    "url": "https://github.com/topheman/vanilla-es6-jspm/issues"
   },
   "keywords": [
-    "angular",
     "ES6",
-    "jspm"
+    "jspm",
+    "gulp"
   ],
   "author": "Christophe Rosset",
   "license": "MIT",
