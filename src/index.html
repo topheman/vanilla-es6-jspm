@@ -7,9 +7,9 @@
   <!-- build:css(.tmp) styles/main.min.css -->
   <link rel="stylesheet" href="styles/main.css"/>
   <!-- endbuild -->
-
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 </head>
-<body>
+<body class="index-page">
 <div class="container">
 
   <header>
@@ -31,25 +31,29 @@
   </header>
 
   <div class="jumbotron">
-    <img src="images/javascript.png" class="pull-right" />
-    <h1>Welcome</h1>
-    <p>For the moment, <strong>no angular involve</strong>, pure vanilla ES6 JS in order to challenge :</p>
-    <ul>
-      <li>jspm/es6 integration</li>
-      <li>using gulp for automation for such things as :</li>
+    <div class="container">
+      <img src="images/javascript.png" class="pull-right" />
+      <h1>Welcome</h1>
+      <p>For the moment, <strong>no angular involved</strong>, pure <strong>vanilla ES6 JS</strong> in order to challenge&nbsp;:</p>
       <ul>
-        <li>watch / livereload</li>
-        <li>sass</li>
-        <li>jshint</li>
-        <li>build</li>
+        <li>jspm/ES6 integration</li>
+        <li>gulp tasks (written in ES6) for :</li>
+        <ul>
+          <li>watch / livereload</li>
+          <li>sass</li>
+          <li>jshint</li>
+          <li>build</li>
+        </ul>
+        <li>unit tests (written in ES6) with karma</li>
       </ul>
-    </ul>
+      <p><a href="https://github.com/topheman/angular-es6-jspm/wiki" title="About angular-es6-jspm on github">Learn more on github ...</a></p>
+    </div>
   </div>
 
   <div id="geolocation"></div>
 
   <footer class="footer">
-    <p>
+    <p class="text-center">
       ©2015 <a href="http://labs.topheman.com/">labs.topheman.com</a> - Christophe Rosset
     </p>
   </footer>

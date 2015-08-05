@@ -1,0 +1,76 @@
+/** github logo from my other sites**/
+/** networks header */
+.site-networks{
+  position:absolute;
+  right:20px;
+  top:10px;
+  margin:0;
+  padding:0;
+}
+ul.site-networks{
+  list-style: none;
+  text-align: center;
+  padding:0px 0px 10px 0px;
+}
+ul.site-networks li{
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left:15px;
+}
+ul.site-networks li a{
+  display: block;
+  width:32px;
+  height:32px;
+  text-decoration: none;
+  padding-top:0px;
+  -webkit-transition : all 0.5s;
+  -moz-transition : all 0.5s;
+  -ms-transition : all 0.5s;
+  -o-transition : all 0.5s;
+  transition : all 0.5s;
+}
+ul.site-networks li a span.icon{
+  position: absolute;
+  display: block;
+  width:32px;
+  height: 32px;
+  -webkit-transition : all 0.5s;
+  -moz-transition : all 0.5s;
+  -ms-transition : all 0.5s;
+  -o-transition : all 0.5s;
+  transition : all 0.5s;
+}
+ul.site-networks li a span.desc{
+  display: none;
+}
+ul.site-networks li a:hover{
+
+}
+ul.site-networks li a:hover span.icon{
+  left:0px;
+  -webkit-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+  transform: rotate(360deg);
+}
+/** since logos are included with the css in base64, we don't bother about pixel ratio media query (everybody gets the retina version)*/
+ul.site-networks li.twitter a span.icon{
+  background-image: url(../images/twitter-retina.png);
+  background-size: 32px 32px;
+}
+ul.site-networks li.github a span.icon{
+  background-image: url(../images/github-retina.png);
+  background-size: 32px 32px;
+}
+@media only screen
+and (max-width: $grid-float-breakpoint)
+{
+  ul.site-networks{
+    right:15px;
+  }
+  ul.site-networks li{
+    margin-left:0px;
+  }
+}
