@@ -20,7 +20,7 @@ This project is the first step, in **pure vanillaJS**. [more infos on the Wiki](
 
 ##Install
 
-`npm install` (it will automatically trigger the `jspm install` at `postinstall`)
+* `npm install` (it will automatically trigger the `jspm install` at `postinstall`)
 
 ##Launch
 
@@ -28,7 +28,7 @@ This project is the first step, in **pure vanillaJS**. [more infos on the Wiki](
 
 ##Build
 
-`gulp build` : builds a production ready version of the site in `build/dist`
+* `gulp build` : builds a production ready version of the site in `build/dist`
 
 ##Test
 
@@ -55,6 +55,10 @@ $ git push -u origin gh-pages
 ```
 
 Next time, you'll only have to do the last 4 steps ...
+
+#FAQ
+
+[See Wiki](https://github.com/topheman/vanilla-es6-jspm/wiki/FAQ)
 
 #Resources
 
