@@ -6,6 +6,6 @@
 require('babel/register');
 
 // require all tasks
-require('require-dir')('./gulp/tasks', { recurse: true });
+require('require-dir')('./gulp/tasks', {recurse: true});
 
 require('gulp').task('default', ['serve']);

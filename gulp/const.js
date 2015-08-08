@@ -19,4 +19,9 @@ export const BANNER = util.template(
   ' * @author <%= (pkg.author && pkg.author.name) ? pkg.author.name : pkg.author %>\n' +
   ' * @copyright <%= year %>(c) <%= (pkg.author && pkg.author.name) ? pkg.author.name : pkg.author %>\n' +
   ' * @license <%= pkg.license %>\n' +
-  ' */\n', {file: '', pkg: pkg, today: moment(new Date()).format('DD/MM/YYYY'), year: new Date().toISOString().substr(0, 4)});
+  ' */\n', {
+    file: '',
+    pkg: pkg,
+    today: moment(new Date()).format('DD/MM/YYYY'),
+    year: new Date().toISOString().substr(0, 4)
+  });

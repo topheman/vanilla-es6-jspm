@@ -7,12 +7,12 @@ describe('components/Component/Component.js', function () {
   let component;
   let htmlElement;
 
-  beforeEach(()=>{
+  beforeEach(()=> {
     htmlElement = document.createElement('div');
     component = new Component(htmlElement);
   });
 
-  it('.init method should be defined', ()=>{
+  it('.init method should be defined', ()=> {
     expect(component.init).not.toBe(undefined);
   });
   it('.init() should return this', () => {

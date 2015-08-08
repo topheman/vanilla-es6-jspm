@@ -4,11 +4,10 @@ module.exports = function (config) {
 
     //basePath: '',//don't override basePath, use proxies
 
-    frameworks: ['jspm','jasmine'],
+    frameworks: ['jspm', 'jasmine'],
 
     // list of files / patterns to load in the browser
-    files: [
-    ],
+    files: [],
 
     jspm: {
       config: 'jspm.config.js',

@@ -30,12 +30,12 @@ gulp.task('bundle', ['jshint'], (cb) => {
   const outputOptions = {sourceMaps: true, config: {sourceRoot: paths.tmp.scripts}};
 
   builder.loadConfig('./jspm.config.js')
-    .then( () => {
+    .then(() => {
       builder.buildSFX(inputPath, outputFile, outputOptions)
-        .then( () => {
+        .then(() => {
           return cb();
         })
-        .catch( (ex) => {
+        .catch((ex) => {
           cb(new Error(ex));
         });
     });

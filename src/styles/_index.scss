@@ -1,9 +1,7 @@
-@media only screen
-and (max-width: $grid-float-breakpoint)
-{
+@media only screen and (max-width: $grid-float-breakpoint) {
   .index-page .jumbotron img.pull-right {
-    width:25%;
-    margin-top: $grid-gutter-width/2;//pading between columns divided by half
+    width: 25%;
+    margin-top: $grid-gutter-width/2; //pading between columns divided by half
     //display: block;
     //float: none !important;
     //margin: 0 auto;
@@ -12,9 +10,10 @@ and (max-width: $grid-float-breakpoint)
     padding-left: 20px;
   }
 }
+
 .index-page .jumbotron {
   @media screen and (max-width: $grid-float-breakpoint) {
-    padding-top:    ($jumbotron-padding * 0);
+    padding-top: ($jumbotron-padding * 0);
     padding-bottom: ($jumbotron-padding * 0);
 
     h1,

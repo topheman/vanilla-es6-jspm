@@ -1,28 +1,31 @@
 export default class Component {
-  constructor(domNode, template){
-    if(typeof domNode === 'string'){
+  constructor(domNode, template) {
+    if (typeof domNode === 'string') {
       let nodeId = domNode;
       domNode = document.getElementById(domNode);
-      if(domNode === null){
+      if (domNode === null) {
         throw new Error(`No element found under #${nodeId}`);
       }
     }
-    if(domNode instanceof HTMLElement){
+    if (domNode instanceof HTMLElement) {
       this.domNode = domNode;
       this.domNode.innerHTML = template;
     }
-    else{
+    else {
       throw new Error('Invalid param, must be an HTMLElement or a string of the id of one');
     }
   }
-  init(){
+
+  init() {
     return this;
   }
-  show(){
+
+  show() {
     this.domNode.style.display = "block";
     return this;
   }
-  hide(){
+
+  hide() {
     this.domNode.style.display = "none";
     return this;
   }

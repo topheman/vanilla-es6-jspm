@@ -28,7 +28,7 @@ import paths from '../paths';
  * @param  {Number} precision Precision of the decimal
  * @return {String}           Formatted percentage
  */
-function formatPercent(num, precision){
+function formatPercent(num, precision) {
   return (num * 100).toFixed(precision);
 }
 
@@ -55,8 +55,8 @@ function bytediffFormatter(data) {
  */
 gulp.task('clean', (cb) => {
   const files = [
-    paths.build.dist.basePath+'*',
-    '!'+paths.build.dist.basePath+'.git*',
+    paths.build.dist.basePath + '*',
+    '!' + paths.build.dist.basePath + '.git*',
     paths.tmp.basePath
   ];
   LOG('Cleaning: ' + COLORS.blue(files));
@@ -71,23 +71,23 @@ gulp.task('compile', ['htmlhint', 'sass', 'bundle'], () => {
       starttag: '<!-- inject:js -->'
     })
     .pipe(usemin({
-      css:[
+      css: [
         bytediff.start(),
         minifyCss({keepSpecialComments: 0}),
         bytediff.stop(bytediffFormatter),
         rev(),
         header(BANNER)
       ],
-      js:[
+      js: [
         bytediff.start(),
         uglify(),
         bytediff.stop(bytediffFormatter),
         rev(),
         header(BANNER)
       ],
-      html:[
+      html: [
         bytediff.start(),
-        minifyHtml({empty:true}),
+        minifyHtml({empty: true}),
         bytediff.stop(bytediffFormatter)
       ]
     }))
@@ -103,7 +103,7 @@ gulp.task('compile', ['htmlhint', 'sass', 'bundle'], () => {
 gulp.task('build', (cb) => {
   runSequence(
     ['clean'],
-    ['compile','images'],
+    ['compile', 'images'],
     cb
   );
 });

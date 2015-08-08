@@ -1,17 +1,15 @@
 @import "_networks-headers";
 
-header{
+header {
   margin-bottom: 15px;
 }
 
-header h1{
+header h1 {
   margin-top: 5px;
 }
 
-@media only screen
-and (max-width: $grid-float-breakpoint)
-{
-  header h1{
+@media only screen and (max-width: $grid-float-breakpoint) {
+  header h1 {
     margin-top: 10px;
     font-size: 26px;
   }

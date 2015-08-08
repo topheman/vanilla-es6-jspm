@@ -6,7 +6,7 @@ import 'fetch-polyfill';
 import main from './main.js';
 
 export default class Bootstrap {
-  static init(){
+  static init() {
     console.log('Bootstrap.init !!!');
     main.init();
   }

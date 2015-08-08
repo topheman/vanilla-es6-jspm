@@ -23,14 +23,15 @@ describe('components/Spinner/Spinner.js', function () {
   </div>
   <div id="circularG_8" class="circularG">
   </div>
-</div>`;
+</div>
+`;
 
-  beforeEach(()=>{
+  beforeEach(()=> {
     htmlElement = document.createElement('div');
     spinner = new Spinner(htmlElement);
   });
 
-  it('.init method should be defined', ()=>{
+  it('.init method should be defined', ()=> {
     expect(spinner.init).not.toBe(undefined);
   });
   it('.init() should return this', () => {
