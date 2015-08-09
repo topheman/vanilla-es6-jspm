@@ -64,7 +64,24 @@ gulp.task('clean', (cb) => {
   return del(files, cb);
 });
 
-//@todo complete (uglify / env based / ngAnnotate ...) + jsdoc
+/**
+ * Copies assets at the root of `src` to the `build/dist` folder, such as :
+ * - favicon files
+ * - 404.html file
+ */
+gulp.task('extras', () => {
+  return gulp.src([paths.app.basePath + '*.{ico,png,txt}', paths.app.basePath + '404.html'])
+    .pipe(gulp.dest(paths.build.dist.basePath));
+});
+
+/**
+ * The 'compile' task compile all js, css and html files.
+ *
+ * 1. it inject bundle into `index.html`
+ * 2. css      - minify, add revision number, add banner header
+ *    js       - minify, add revision number, add banner header
+ *    html     - minify
+ */
 gulp.task('compile', ['htmlhint', 'sass', 'bundle'], () => {
   return gulp.src(paths.app.html)
     .pipe(inject(gulp.src(paths.tmp.scripts + 'app.bootstrap.build.js', {read: false})), {
@@ -103,7 +120,7 @@ gulp.task('compile', ['htmlhint', 'sass', 'bundle'], () => {
 gulp.task('build', (cb) => {
   runSequence(
     ['clean'],
-    ['compile', 'images'],
+    ['compile', 'extras', 'images'],
     cb
   );
 });
