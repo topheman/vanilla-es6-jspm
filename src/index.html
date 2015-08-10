@@ -70,6 +70,8 @@
 <!-- build:remove -->
 <script src="jspm_packages/system.js"></script>
 <script src="jspm.config.js"></script>
+<!-- don't remove the tag bellow, it's changed on gulp serve task by browserSync, injecting jspm configuration overrides -->
+<!-- inject-browser-sync -->
 <script>
   System.import('app/bootstrap.js').catch(console.error.bind(console)); // make sure any errors are print to console
 </script>
