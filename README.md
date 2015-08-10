@@ -25,6 +25,7 @@ This project is the first step, in **pure vanillaJS**. [more infos on the Wiki](
 ##Launch
 
 * `gulp serve` : will launch a dev server
+* `gulp serve:prod` : will launch the `build/dist` version of the site (need to `gulp build` before)
 
 ##Build
 
