@@ -41,24 +41,28 @@ function startBrowserSync(env, baseDir, files, browser) {
   /**
    * Replace the tag <!-- inject-browser-sync --> with some specific js code
    * injecting what we need (env var, jspm.config override ...)
+   *
+   * Only used on dev and test
    */
-  var injectBrowserSync = [];
-  injectBrowserSync.push('window.env = "' + env + '";');
-  injectBrowserSync.push('console.log("Launch in ' + env + ' mode");');
-  switch (env) {
-    case 'test':
-      injectBrowserSync.push('console.warn("Overriding jspm.config.js");');//@todo inject the jspm.config override
-      break;
-  }
-  injectBrowserSync = '<script id="inject-browser-sync">' + injectBrowserSync.join('') + '</script>';
-  config.rewriteRules = [
-    {
-      match: /<!-- inject-browser-sync -->/g,
-      fn: function (match) {
-        return injectBrowserSync;
-      }
+  if(env.toLowerCase() !== 'prod') {
+    var injectBrowserSync = [];
+    injectBrowserSync.push('window.env = "' + env + '";');
+    injectBrowserSync.push('console.log("Launch in ' + env + ' mode");');
+    switch (env) {
+      case 'test':
+        injectBrowserSync.push('console.warn("Overriding jspm.config.js");');//@todo inject the jspm.config override
+        break;
     }
-  ];
+    injectBrowserSync = '<script id="inject-browser-sync">' + injectBrowserSync.join('') + '</script>';
+    config.rewriteRules = [
+      {
+        match: /<!-- inject-browser-sync -->/g,
+        fn: function (match) {
+          return injectBrowserSync;
+        }
+      }
+    ];
+  }
 
   browserSync(config);
 }
@@ -72,4 +76,11 @@ function startBrowserSync(env, baseDir, files, browser) {
  */
 gulp.task('serve', ['sass', 'watch'], () => {
   startBrowserSync('dev', ['.tmp', 'src', 'jspm_packages', './']);
+});
+
+/**
+ * The 'serve' task serve the prod environment (you need to build before)
+ */
+gulp.task('serve:prod', () => {
+  startBrowserSync('prod', ['./build/dist']);
 });
