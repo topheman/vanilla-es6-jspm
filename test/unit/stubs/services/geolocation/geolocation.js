@@ -1,17 +1,12 @@
-console.log('mock loaded');
+console.log('[STUB]', 'LOADED', 'geolocation');
 
 import mock from './geolocation.json!text';
 
 export default function () {
   "use strict";
-  function resolveServicesGeolocation() {
-    return JSON.parse(mock);
-  }
-
-  function rejectServicesGeolocation() {
-    return new Error();
-  }
-
-  console.log('mock called');
-  return new Promise(resolveServicesGeolocation, rejectServicesGeolocation);
+  return new Promise(function (resolve, reject) {
+    var result = JSON.parse(mock);
+    console.log('[STUB]', 'CALL', 'geolocation', result);
+    resolve(result);
+  });
 }

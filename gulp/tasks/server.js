@@ -34,7 +34,16 @@ function startBrowserSync(env, baseDir, files, browser) {
       baseDir: baseDir,
       middleware: [
         //proxyMiddleware,
-        modRewrite(['!\\.\\w+$ /index.html [L]']) // require for HTML5 mode
+        modRewrite(['!\\.\\w+$ /index.html [L]']), // require for HTML5 mode
+        function(req, res, next){
+          //don't cache the entry point (since there are some inline <script> tags injected that can be different according to the env you launch it)
+          if(req.url.indexOf('/index.html') > -1){
+            res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+            res.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+            res.setHeader("Expires", "0"); // Proxies.
+          }
+          next();
+        }
       ]
     },
     browser: browser
@@ -89,7 +98,7 @@ gulp.task('serve', ['sass', 'watch'], () => {
  *
  * @todo this task is not complete yet : System.paths is not correctly overriden
  */
-gulp.task('serve:test', () => {
+gulp.task('serve:test', ['sass', 'watch'], () => {
   startBrowserSync('test', ['.tmp', 'src', 'jspm_packages', './']);
 });
 
