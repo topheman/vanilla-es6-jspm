@@ -8,7 +8,6 @@ System.config({
     ]
   },
   "paths": {
-    "app/*": "src/app/*",
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*"
   }

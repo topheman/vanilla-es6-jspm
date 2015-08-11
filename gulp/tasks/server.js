@@ -5,6 +5,8 @@ import util from 'gulp-util';
 import modRewrite  from 'connect-modrewrite';
 import browserSync from 'browser-sync';
 
+import jspmOverride from '../../test/unit/jspm.override.json';
+
 import path from '../paths';
 
 //=============================================
@@ -44,13 +46,15 @@ function startBrowserSync(env, baseDir, files, browser) {
    *
    * Only used on dev and test
    */
-  if(env.toLowerCase() !== 'prod') {
+  if (env.toLowerCase() !== 'prod') {
     var injectBrowserSync = [];
     injectBrowserSync.push('window.env = "' + env + '";');
     injectBrowserSync.push('console.log("Launch in ' + env + ' mode");');
     switch (env) {
       case 'test':
-        injectBrowserSync.push('console.warn("Overriding jspm.config.js");');//@todo inject the jspm.config override
+        injectBrowserSync.push('console.warn("Overriding jspm.config.js");');
+        injectBrowserSync.push('System.config(' + JSON.stringify(jspmOverride) + ');');
+        injectBrowserSync.push('console.log("Using following System.paths",System.paths);');
         break;
     }
     injectBrowserSync = '<script id="inject-browser-sync">' + injectBrowserSync.join('') + '</script>';
@@ -76,6 +80,17 @@ function startBrowserSync(env, baseDir, files, browser) {
  */
 gulp.task('serve', ['sass', 'watch'], () => {
   startBrowserSync('dev', ['.tmp', 'src', 'jspm_packages', './']);
+});
+
+/**
+ * The 'serve' task adding the overrides to the jspm configuration for mocks and stubs
+ *
+ * This is for dev purpose of the tests. Launch the tests with `npm test` or `npm test-unit`
+ *
+ * @todo this task is not complete yet : System.paths is not correctly overriden
+ */
+gulp.task('serve:test', () => {
+  startBrowserSync('test', ['.tmp', 'src', 'jspm_packages', './']);
 });
 
 /**
