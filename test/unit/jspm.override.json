@@ -1,5 +1,5 @@
 {
   "paths": {
-    "services/geolocation/geolocation.js": "test/unit/stubs/services/geolocation/geolocation.js"
+    "services/geolocation/geolocation.js": "test/unit/stubs/app/services/geolocation/geolocation.js"
   }
 }
