@@ -1,3 +1,5 @@
+var jspmOverride = require('./test/unit/jspm.override.json');
+
 module.exports = function (config) {
   'use strict';
   config.set({
@@ -19,8 +21,10 @@ module.exports = function (config) {
       serveFiles: [
         'src/app/**/*.js',
         'src/app/**/*.html',
-        'src/app/**/*.css'
-      ]
+        'src/app/**/*.css',
+        'test/unit/stubs/**/*'
+      ],
+      paths: jspmOverride.paths
     },
 
     proxies: {
