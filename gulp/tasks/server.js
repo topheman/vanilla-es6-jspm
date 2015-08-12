@@ -5,7 +5,7 @@ import util from 'gulp-util';
 import modRewrite  from 'connect-modrewrite';
 import browserSync from 'browser-sync';
 
-import jspmOverride from '../../test/unit/jspm.override.json';
+import jspmOverride from '../../test/jspm.override.json';
 
 import path from '../paths';
 

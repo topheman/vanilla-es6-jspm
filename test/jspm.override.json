@@ -1,0 +1,5 @@
+{
+  "paths": {
+    "services/geolocation/geolocation.js": "test/stubs/app/services/geolocation/geolocation.js"
+  }
+}
