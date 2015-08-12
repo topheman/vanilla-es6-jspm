@@ -1,6 +1,6 @@
 'use strict';
 
-import Spinner from './Spinner.js';
+import Spinner from 'components/Spinner/Spinner.js';
 
 describe('components/Spinner/Spinner.js', function () {
 

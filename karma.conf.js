@@ -9,11 +9,12 @@ module.exports = function (config) {
     // list of files / patterns to load in the browser
     files: [],
 
+    //@todo import more than just "paths" from jspmOverride ?
     jspm: {
       config: 'jspm.config.js',
       loadFiles: [
         'node_modules/phantomjs-polyfill/bind-polyfill.js',//necessary for PhantomJS (doesn't have Function.bind)
-        'src/**/*.spec.js'
+        'test/unit/spec/**/*.js'
       ],
       serveFiles: [
         'src/app/**/*.js',
@@ -24,6 +25,7 @@ module.exports = function (config) {
 
     proxies: {
       '/src/': '/base/src/',
+      '/test/': '/base/test/',
       '/jspm_packages/': '/base/jspm_packages/',
       '/node_modules/phantomjs-polyfill/': '/base/node_modules/phantomjs-polyfill/'
     },

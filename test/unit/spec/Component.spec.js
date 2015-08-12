@@ -1,6 +1,6 @@
 'use strict';
 
-import Component from './Component.js';
+import Component from 'components/Component/Component.js';
 
 describe('components/Component/Component.js', function () {
 
