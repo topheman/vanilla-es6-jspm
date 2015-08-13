@@ -12,13 +12,13 @@ import paths from '../paths';
  * @param {String} env "dev"|"test"
  * @returns {*}
  */
-function generateJshintTask(env) {
+function generateJshintTask(env = 'dev') {
   var src;
   switch (env.toLowerCase()) {
     case 'test':
       src = [].concat(paths.app.scripts, paths.gulpfile, paths.test.stubs.scripts, paths.test.unit.spec);
       break;
-    default: //(dev)
+    default:
       src = [].concat(paths.app.scripts, paths.gulpfile);
       break;
   }
@@ -36,12 +36,13 @@ function generateJshintTask(env) {
  * It can be launched in test env (which will also hint all test related tasks)
  * Those tasks are splitted for performance
  */
-gulp.task('jshint', () => {
+gulp.task('jshint:dev', () => {
   return generateJshintTask('dev');
 });
 gulp.task('jshint:test', () => {
   return generateJshintTask('test');
 });
+gulp.task('jshint', ['jshint:dev']);
 
 /**
  * Create JS production bundle.

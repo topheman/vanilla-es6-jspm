@@ -34,9 +34,10 @@ function generateHtmlhintTask(env) {
  *
  * @return {Stream}
  */
-gulp.task('htmlhint', () => {
+gulp.task('htmlhint:dev', () => {
   return generateHtmlhintTask('dev');
 });
 gulp.task('htmlhint:test', () => {
   return generateHtmlhintTask('test');
 });
+gulp.task('htmlhint', ['htmlhint:dev']);

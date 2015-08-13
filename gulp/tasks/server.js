@@ -87,9 +87,10 @@ function startBrowserSync(env, baseDir, files, browser) {
 /**
  * The 'serve' task serve the dev environment.
  */
-gulp.task('serve', ['sass', 'watch'], () => {
+gulp.task('serve:dev', ['sass', 'watch:dev'], () => {
   startBrowserSync('dev', ['.tmp', 'src', 'jspm_packages', './']);
 });
+gulp.task('serve', ['serve:dev']);
 
 /**
  * The 'serve' task adding the overrides to the jspm configuration for mocks and stubs
@@ -98,7 +99,7 @@ gulp.task('serve', ['sass', 'watch'], () => {
  *
  * @todo this task is not complete yet : System.paths is not correctly overriden
  */
-gulp.task('serve:test', ['sass', 'watch'], () => {
+gulp.task('serve:test', ['sass', 'watch:test'], () => {
   startBrowserSync('test', ['.tmp', 'src', 'jspm_packages', './']);
 });
 
