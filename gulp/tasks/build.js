@@ -84,9 +84,9 @@ gulp.task('extras', () => {
  */
 gulp.task('compile', ['htmlhint', 'sass', 'bundle'], () => {
   return gulp.src(paths.app.html)
-    .pipe(inject(gulp.src(paths.tmp.scripts + 'app.bootstrap.build.js', {read: false})), {
+    .pipe(inject(gulp.src(paths.tmp.scripts + 'app.bootstrap.build.js', {read: false}), {
       starttag: '<!-- inject:js -->'
-    })
+    }))
     .pipe(usemin({
       css: [
         bytediff.start(),
