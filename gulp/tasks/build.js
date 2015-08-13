@@ -87,6 +87,13 @@ gulp.task('compile', ['htmlhint', 'sass', 'bundle'], () => {
     .pipe(inject(gulp.src(paths.tmp.scripts + 'app.bootstrap.build.js', {read: false}), {
       starttag: '<!-- inject:js -->'
     }))
+    .pipe(inject(gulp.src(paths.app.basePath + 'analytics.snippet.html'), {
+      starttag: '<!-- inject:analytics -->',
+      transform: (filePath, file) => {
+        // return file contents as string
+        return file.contents.toString('utf8');
+      }
+    }))
     .pipe(usemin({
       css: [
         bytediff.start(),
