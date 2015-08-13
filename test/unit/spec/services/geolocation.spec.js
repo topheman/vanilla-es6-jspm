@@ -5,7 +5,7 @@ import geolocation from 'services/geolocation/geolocation.js';
 
 describe('services/geolocation/geolocation.js (stub version)', function () {
 
-  let result;
+  let result = null;
 
   beforeEach((done) => {
     geolocation().then(function (res) {
@@ -14,8 +14,12 @@ describe('services/geolocation/geolocation.js (stub version)', function () {
     });
   });
 
+  afterEach(() => {
+    result = null;
+  });
+
   it('should make an async call', function (done) {
-    expect(result).not.toBe(undefined);
+    expect(result).not.toBe(null);
     done();
   });
 
