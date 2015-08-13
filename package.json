@@ -4,7 +4,7 @@
   "description": "Seed project for ES6 / jspm based apps with full production workflow",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/gulp/bin/gulp.js jshint && ./node_modules/gulp/bin/gulp.js htmlhint && ./node_modules/karma/bin/karma start --single-run --browsers PhantomJS",
+    "test": "./node_modules/gulp/bin/gulp.js jshint:test && ./node_modules/gulp/bin/gulp.js htmlhint:test && ./node_modules/karma/bin/karma start --single-run --browsers PhantomJS",
     "test-unit": "./node_modules/karma/bin/karma start",
     "postinstall": "jspm install"
   },
@@ -76,6 +76,7 @@
     "karma-phantomjs-launcher": "^0.2.0",
     "karma-safari-launcher": "^0.1.1",
     "karma-spec-reporter": "0.0.20",
+    "lodash": "^3.10.1",
     "moment": "^2.10.6",
     "phantomjs": "^1.9.17",
     "phantomjs-polyfill": "0.0.1",

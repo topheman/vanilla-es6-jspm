@@ -3,7 +3,7 @@ import Spinner from '../Spinner/Spinner.js';
 
 import template from './Geolocation.html!text';
 
-import geoip from '../../services/geolocation/geolocation.js';
+import geoip from 'services/geolocation/geolocation.js';
 
 export default class Geolocation extends Component {
   constructor(domNode) {
@@ -28,6 +28,7 @@ export default class Geolocation extends Component {
           <li>Time zone: ${result.time_zone}</li>
           <li>Region: ${result.region_name}</li>
           <li>Latitude : ${result.latitude} / Longitude: ${result.longitude}</li>
+          <li>Timeout : ${result.timeout}ms</li>
         `;
           this.spinner.hide();
           geolocationInfosBloc.style.display = "block";

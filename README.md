@@ -26,6 +26,7 @@ This project is the first step, in **pure vanillaJS**. [more infos on the Wiki](
 
 * `gulp serve` : will launch a dev server
 * `gulp serve:prod` : will launch the `build/dist` version of the site (need to `gulp build` before)
+* `gulp serve:test` : will launch a dev server with the same configuration of karma (stubs mocking some of the classes) - usefull to debug / create unit tests
 
 ##Build
 

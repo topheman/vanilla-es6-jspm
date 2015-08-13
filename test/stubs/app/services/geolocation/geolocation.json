@@ -1,0 +1,13 @@
+{
+  "ip": "127.0.0.1",
+  "country_code": "FR",
+  "country_name": "France",
+  "region_code": "",
+  "region_name": "",
+  "city": "Hello World !!!",
+  "zip_code": "",
+  "time_zone": "Europe/Paris",
+  "latitude": 48.86,
+  "longitude": 2.35,
+  "metro_code": 0
+}
