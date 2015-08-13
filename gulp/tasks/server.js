@@ -58,12 +58,12 @@ function startBrowserSync(env, baseDir, files, browser) {
   if (env.toLowerCase() !== 'prod') {
     var injectBrowserSync = [];
     injectBrowserSync.push('window.env = "' + env + '";');
-    injectBrowserSync.push('console.log("Launch in ' + env + ' mode");');
+    injectBrowserSync.push('console.info("Launched in ' + env + ' mode");');
     switch (env) {
       case 'test':
         injectBrowserSync.push('console.warn("Overriding jspm.config.js");');
         injectBrowserSync.push('System.config(' + JSON.stringify(jspmOverride) + ');');
-        injectBrowserSync.push('console.log("Using following System.paths",System.paths);');
+        injectBrowserSync.push('console.info("Using following System.paths",System.paths);');
         break;
     }
     injectBrowserSync = '<script id="inject-browser-sync">' + injectBrowserSync.join('') + '</script>';
