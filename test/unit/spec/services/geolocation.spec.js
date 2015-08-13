@@ -17,7 +17,7 @@ describe('services/geolocation/geolocation.js (stub version)', function () {
   it('should make an async call', function (done) {
     expect(result).not.toBe(undefined);
     done();
-  })
+  });
 
   // those values are from `/test/unit/stubs/app/services/geolocation/geolocation.json`
   it('object result values should be correct', function (done) {
@@ -36,6 +36,6 @@ describe('services/geolocation/geolocation.js (stub version)', function () {
       "timeout": 0
     }));
     done();
-  })
+  });
 
 });

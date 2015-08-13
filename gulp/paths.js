@@ -23,10 +23,7 @@ const paths = {
       'jspm_packages/**/*.{eot,svg,ttf,woff}'
     ],
     images: 'src/images/**/*.{png,gif,jpg,jpeg}',
-    scripts: [
-      'src/app/**/*.js',
-      '!src/app/**/*.spec.js'
-    ],
+    scripts: ['src/app/**/*.js'],
     html: 'src/index.html',
     templates: 'src/app/**/*.html'
   },
@@ -50,6 +47,20 @@ const paths = {
       scripts: 'build/dist/scripts/'
     },
     docs: 'build/docs/'
+  },
+  test: {
+    basePath: 'test/',
+    config: {
+      karma: 'karma.conf.js',
+      jspmOverride: 'test/jspm.override.json'
+    },
+    unit: {
+      spec: 'test/unit/spec/**/*.js',
+      fixtures: 'test/unit/fixtures/**/*.html'
+    },
+    stubs: {
+      scripts: 'test/stubs/**/*.js'
+    }
   }
 };
 
