@@ -1,5 +1,23 @@
+var argv = require('minimist')(process.argv.slice(2));
 var jspmOverride = require('./test/jspm.override.json');
 var _ = require('lodash');
+var colors = require('colors');
+var clientCaptureConsole = true;
+
+if (typeof(argv.captureConsole) !== 'undefined') {
+  if (argv.captureConsole != 'true' && argv.captureConsole != 'false') {
+    console.error('[ERROR][Invalid Argument] Flag --captureConsole only accepts true or false'.red);
+    console.error('[ERROR][Invalid Argument] Exiting'.red);
+    process.exit(9);// "Invalid Argument" - see exit code list : https://github.com/joyent/node/blob/master/doc/api/process.markdown#exit-code
+  }
+  else{
+    clientCaptureConsole = argv.captureConsole === 'false' ? false : true;
+  }
+}
+if(clientCaptureConsole == false) {
+  console.log('[INFO] console.*() statements are removed to have a clearer report.'.yellow);
+  console.log('[INFO] If you want to access them, launch npm run test-unit'.yellow);
+}
 
 /**
  * karma-jspm passes this config to jspm via karma
@@ -58,6 +76,10 @@ module.exports = function (config) {
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
     logLevel: config.LOG_INFO,
+
+    client: {
+      captureConsole: clientCaptureConsole
+    },
 
     browsers: ['PhantomJS'],
 
