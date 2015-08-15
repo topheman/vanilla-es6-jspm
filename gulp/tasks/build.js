@@ -10,12 +10,13 @@ import minifyCss from 'gulp-minify-css';
 import minifyHtml from 'gulp-minify-html';
 import rev from 'gulp-rev';
 import header from 'gulp-header';
+import footer from 'gulp-footer';
 import usemin from 'gulp-usemin';
 import inject from 'gulp-inject';
 import runSequence from 'run-sequence';
 
 import {LOG, COLORS} from '../utils';
-import {BANNER} from '../const';
+import {BANNER, BANNER_HTML} from '../const';
 import paths from '../paths';
 
 //=============================================
@@ -112,6 +113,7 @@ gulp.task('compile', ['htmlhint', 'sass', 'bundle'], () => {
       html: [
         bytediff.start(),
         minifyHtml({empty: true}),
+        footer(BANNER_HTML),
         bytediff.stop(bytediffFormatter)
       ]
     }))
