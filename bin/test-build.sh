@@ -28,10 +28,11 @@ echo "###### TEST gulp build"
 # If build/dist is under git, stash modification - fail if can't stash
 if [ -d $(dirname $0)/../build/dist/.git ]
 then
+  BUILD_DIST_IS_GIT=1
   echo "[INFO] build/dist is under git management, preparing stashing modifications"
   cd $(dirname $0)/../build/dist
   echo "[INFO] $(pwd)"
-  cmd="git stash save"
+  cmd="git stash save -u"
   echo "[RUN] $cmd"
   eval $cmd
   if [ $? -gt 0 ]
@@ -53,7 +54,7 @@ eval $cmd
 GULP_CLEAN_EXIT_CODE=$?
 echo "[DEBUG] gulp clean exit code : $GULP_CLEAN_EXIT_CODE";
 
-if [ $GULP_CLEAN_EXIT_CODE -gt 0 ] && [ $BUILD_DIST_IS_GIT -eq 1 ]
+if [ $GULP_CLEAN_EXIT_CODE -gt 0 ] && [ $BUILD_DIST_IS_GIT -gt 0 ]
 then
   echo "[WARN] Couldn't clean the build/dist repo before git unstash"
   echo "[WARN] Run the following commands manually to get back your repo in build/dist"
@@ -64,7 +65,7 @@ then
 fi
 
 # If build/dist is under git, reset --hard HEAD then retrieve the stash, fail if can't
-if [ $BUILD_DIST_IS_GIT -eq 1 ]
+if [ $BUILD_DIST_IS_GIT -gt 0 ]
 then
   echo "[INFO] build/dist is under git management, retrieving stash"
 
