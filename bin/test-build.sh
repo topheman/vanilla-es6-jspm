@@ -10,7 +10,7 @@
 # always stop on errors
 # set -e
 
-if [ $TRAVIS -eq "true" ]
+if [ "$TRAVIS" == "true" ]
 then
   GULP_PATH="./node_modules/gulp/bin/gulp.js"
 else
