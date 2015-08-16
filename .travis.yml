@@ -8,3 +8,7 @@ env:
 before_install:
 - npm install -g jspm@beta
 - jspm config registries.github.auth $JSPM_GITHUB_AUTH_TOKEN
+
+script:
+- npm test
+- npm run test-build

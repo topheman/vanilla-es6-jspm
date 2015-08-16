@@ -89,8 +89,10 @@ fi
 if [ $GULP_BUILD_EXIT_CODE -gt 0 ]
 then
   echo "[FAILED] gulp build failed. Exiting with code $GULP_BUILD_EXIT_CODE"
+  echo "###### END TEST gulp build"
   exit $GULP_BUILD_EXIT_CODE
 else
   echo "[PASSED] gulp build passed"
+  echo "###### END TEST gulp build"
   exit 0
 fi
