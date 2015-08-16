@@ -58,9 +58,8 @@ if [ $GULP_CLEAN_EXIT_CODE -gt 0 ] && [ $BUILD_DIST_IS_GIT -gt 0 ]
 then
   echo "[WARN] Couldn't clean the build/dist repo before git unstash"
   echo "[WARN] Run the following commands manually to get back your repo in build/dist"
-  echo "[WARN] gulp clean"
-  echo "[WARN] git reset --hard HEAD"
-  echo "[WARN] git stash pop --index"
+  echo "[INFO] gulp clean"
+  echo "[INFO] git stash pop --index"
   exit 1
 fi
 
@@ -69,18 +68,6 @@ if [ $BUILD_DIST_IS_GIT -gt 0 ]
 then
   echo "[INFO] build/dist is under git management, retrieving stash"
 
-  cmd="git reset --hard HEAD"
-  echo "[RUN] $cmd"
-  eval $cmd
-  if [ $? -gt 0 ]
-  then
-    echo "[WARN] Couldn't git reset the build/dist repo before git unstash"
-    echo "[WARN] Run the following commands manually to get back your repo in build/dist"
-    echo "[WARN] git reset --hard HEAD"
-    echo "[WARN] git stash pop --index"
-    exit 1
-  fi
-
   cmd="git stash pop --index"
   echo "[RUN] $cmd"
   eval $cmd
@@ -88,7 +75,7 @@ then
   then
     echo "[WARN] Couldn't unstash build/dist repo"
     echo "[WARN] Run the following command manually to get back your repo in build/dist"
-    echo "[WARN] git stash pop --index"
+    echo "[INFO] git stash pop --index"
     exit 1
   fi
 fi
