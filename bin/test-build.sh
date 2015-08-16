@@ -10,6 +10,13 @@
 # always stop on errors
 # set -e
 
+if [ $TRAVIS -eq "true" ]
+then
+  GULP_PATH="./node_modules/gulp/bin/gulp.js"
+else
+  GULP_PATH="../../node_modules/gulp/bin/gulp.js"
+fi
+
 BUILD_DIST_IS_GIT=0
 
 # vars retrieving the exit codes of the commands run
@@ -34,13 +41,13 @@ then
   fi
 fi
 
-cmd="../../node_modules/gulp/bin/gulp.js build"
+cmd="$GULP_PATH build"
 echo "[RUN] $cmd"
 eval $cmd
 GULP_BUILD_EXIT_CODE=$?
 echo "[DEBUG] gulp build exit code : $GULP_BUILD_EXIT_CODE";
 
-cmd="../../node_modules/gulp/bin/gulp.js clean"
+cmd="$GULP_PATH clean"
 echo "[RUN] $cmd"
 eval $cmd
 GULP_CLEAN_EXIT_CODE=$?
