@@ -124,12 +124,24 @@ gulp.task('compile', ['htmlhint', 'sass', 'bundle'], () => {
 /**
  * The 'build' task gets app ready for deployment by processing files
  * and put them into directory ready for production.
+ *
+ * Added callback to manage errors and exit with a clean exit code if task fails
+ * (needed for CI tools such as Travis)
  */
-//@todo manage environment / root files like .ico .htaccess ... / fonts ?
 gulp.task('build', (cb) => {
   runSequence(
     ['clean'],
     ['compile', 'extras', 'images'],
-    cb
+    (err) => {
+      if (err) {
+        let exitCode = 2;
+        LOG('[ERROR] gulp build task failed', err);
+        LOG('[FAIL] gulp build task failed - exiting with code ' + exitCode);
+        return process.exit(exitCode);
+      }
+      else {
+        return cb();
+      }
+    }
   );
 });
