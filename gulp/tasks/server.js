@@ -103,8 +103,6 @@ gulp.task('serve', ['serve:dev']);
  * The 'serve' task adding the overrides to the jspm configuration for mocks and stubs
  *
  * This is for dev purpose of the tests. Launch the tests with `npm test` or `npm test-unit`
- *
- * @todo this task is not complete yet : System.paths is not correctly overriden
  */
 gulp.task('serve:test', ['sass', 'watch:test'], () => {
   startBrowserSync('test', ['.tmp', 'src', 'jspm_packages', './']);

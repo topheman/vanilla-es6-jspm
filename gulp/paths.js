@@ -13,7 +13,6 @@ const paths = {
    * - 'scripts'      contains all project javascript except config-env.js and unit test files
    * - 'html'         contains main html files
    * - 'templates'    contains all project html templates
-   * - 'config'       contains Angular app config files - @todo not sure for the moment
    */
   app: {
     basePath: 'src/',
