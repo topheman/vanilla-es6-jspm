@@ -2,6 +2,7 @@ vanilla-es6-jspm
 ================
 
 [![Build Status](https://travis-ci.org/topheman/vanilla-es6-jspm.svg)](https://travis-ci.org/topheman/vanilla-es6-jspm)
+[![devDependency Status](https://david-dm.org/topheman/vanilla-es6-jspm/dev-status.svg)](https://david-dm.org/topheman/vanilla-es6-jspm#info=devDependencies)
 
 **ES6** is here and you can't avoid it. We have great tools to make it work, one of them is **jspm**.
 
