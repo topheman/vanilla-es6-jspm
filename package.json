@@ -60,7 +60,7 @@
     "gulp-cache": "^0.2.10",
     "gulp-changed": "^1.2.1",
     "gulp-concat": "^2.5.2",
-    "gulp-filter": "^2.0.2",
+    "gulp-filter": "^3.0.0",
     "gulp-footer": "^1.0.5",
     "gulp-header": "^1.2.2",
     "gulp-htmlhint": "^0.3.0",
