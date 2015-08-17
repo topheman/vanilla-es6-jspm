@@ -96,7 +96,7 @@
     "pre-push": "^0.1.1",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.1.2",
-    "systemjs-builder": "^0.12.2"
+    "systemjs-builder": "^0.13.1"
   },
   "engines": {
     "node": ">=0.12.x",
