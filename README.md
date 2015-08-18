@@ -39,14 +39,14 @@ This project is the first step: a **vanillaJS/ES6/jspm boilerplate** ([more info
 You can launch your app in different modes (dev/prod/test):
 
 * `gulp serve` : **will launch a dev server**
-* `gulp serve:prod` : will launch the `build/dist` version of the site (need to `gulp build` before) - *usefull to check your site before deploying it*.
+* `gulp serve:prod` : will launch the version of the site built in `build/dist` folder (need to `gulp build` before) - *usefull to check your site before deploying it*.
 * `gulp serve:test` : will launch a dev server with test configuration - *usefull to debug / create unit tests*:
 	* jspm configuration overridden by the `test/jspm.override.json` file
 	* the app will appear with "TEST" in background, thanks to `test/fixtures/bs.snippet.html` injected on the the fly (containing specific css)
 
 ##Build
 
-* `gulp build` : builds a production ready version of the site in `build/dist`
+* `gulp build` : builds a production ready version of the site in `build/dist` folder
 
 ##Test
 
@@ -55,7 +55,7 @@ You can see exactly which commands match the following npm tasks in the [package
 * `npm test`: runs all the tests (will be triggered on `git-pre-commit`)
 * `npm run test-unit`: runs the unit tests through `karma`
 * `npm run test-build`: tests the `gulp build` task (will be triggered on `git-pre-push`)
-	* if `build/dist` is under git management ([see deployment section](#deployment)), this task will git stash/unstash before and after testing.
+	* if `build/dist` folder is under git management ([see deployment section](#deployment)), this task will git stash/unstash before and after testing.
 
 ##Git workflow & Continuous Integration
 
@@ -65,7 +65,7 @@ To prevent you from sending broken code, some client-side git hooks are enabled:
 
 * pre-commit: will run `npm test` (checks jshint, htmlhint and karma unit tests)
 * pre-push: will run `npm run test-build` (checks if the build runs smoothly)
-	* I decided to put this check on pre-push because: it takes time and git stash/unstash `build/dist` - it could be put on pre-commit ...
+	* I decided to put this check on pre-push because: it takes time and git stash/unstash `build/dist` folder repo - it could be put on pre-commit ...
 
 You can bypass those checks by adding to your git command the flag `--no-verify` (but know that the Travis CI build will fail).
 
@@ -147,13 +147,13 @@ build
 ```
 test
 ├── fixtures
-│   └── bs.snippet.html
-├── jspm.override.json
-├── stubs
+│   └── bs.snippet.html  --> html snippet added on gulp serve:test
+├── jspm.override.json   --> file to override jspm.config.js in test mode
+├── stubs                --> replacements for existing modules, injected in test mode (configured in jspm.override.json)
 │   └── app
 │       └── services
 └── unit
-    └── spec
+    └── spec             --> unit tests run by karma with jasmine
         ├── components
         └── services
 ```
