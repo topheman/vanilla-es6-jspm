@@ -49,7 +49,6 @@
   "devDependencies": {
     "babel": "^5.8.12",
     "browser-sync": "^2.7.10",
-    "chai": "^3.2.0",
     "colors": "^1.1.2",
     "connect-modrewrite": "^0.8.1",
     "del": "^1.2.0",
