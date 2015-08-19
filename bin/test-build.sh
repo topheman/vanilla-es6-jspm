@@ -108,7 +108,10 @@ then
     exit 1
   fi
 else
-  echo "[INFO] build/dist is under git management but directory was clean at start, nothing to unstash"
+  if [ $BUILD_DIST_IS_GIT -gt 0 ]
+  then
+    echo "[INFO] build/dist is under git management but directory was clean at start, nothing to unstash"
+  fi
 fi
 
 #finally return an exit code according to the gulp build task
