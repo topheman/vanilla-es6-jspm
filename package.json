@@ -4,9 +4,9 @@
   "description": "Seed project for ES6 / jspm based apps with full production workflow",
   "main": "index.js",
   "scripts": {
-    "start": "./node_modules/gulp/bin/gulp.js serve",
-    "test": "./node_modules/gulp/bin/gulp.js jshint:test && ./node_modules/gulp/bin/gulp.js htmlhint:test && ./node_modules/karma/bin/karma start --single-run --browsers PhantomJS --captureConsole false",
-    "test-unit": "./node_modules/karma/bin/karma start",
+    "start": "./node_modules/.bin/gulp serve",
+    "test": "./node_modules/.bin/gulp jshint:test && ./node_modules/.bin/gulp htmlhint:test && ./node_modules/.bin/karma start --single-run --browsers PhantomJS --captureConsole false",
+    "test-unit": "./node_modules/.bin/karma start",
     "postinstall": "jspm install",
     "test-build": "./bin/test-build.sh"
   },
