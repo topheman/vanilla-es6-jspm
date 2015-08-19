@@ -18,6 +18,7 @@ else
 fi
 
 BUILD_DIST_IS_GIT=0
+BUILD_DIST_IS_GIT_DIRTY=0
 
 # vars retrieving the exit codes of the commands run
 GULP_BUILD_EXIT_CODE=0
@@ -29,16 +30,25 @@ echo "###### TEST gulp build"
 if [ -d $(dirname $0)/../build/dist/.git ]
 then
   BUILD_DIST_IS_GIT=1
-  echo "[INFO] build/dist is under git management, preparing stashing modifications"
+  echo "[INFO] build/dist is under git management"
   cd $(dirname $0)/../build/dist
   echo "[INFO] $(pwd)"
-  cmd="git stash save -u"
-  echo "[RUN] $cmd"
-  eval $cmd
-  if [ $? -gt 0 ]
+
+  if [[ -n $(git status --porcelain) ]]
   then
-    echo "[WARN] Couldn't stash modifications please commit your files in build/dist before proceeding"
-    exit 1
+    BUILD_DIST_IS_GIT_DIRTY=1
+    echo "[INFO] build/dist has un-committed changes, stashing them"
+
+    cmd="git stash save -u"
+    echo "[RUN] $cmd"
+    eval $cmd
+    if [ $? -gt 0 ]
+    then
+      echo "[WARN] Couldn't stash modifications please commit your files in build/dist before proceeding"
+      exit 1
+    fi
+  else
+    echo "[INFO] build/dist repo is clean, nothing to stash"
   fi
 fi
 
@@ -54,19 +64,38 @@ eval $cmd
 GULP_CLEAN_EXIT_CODE=$?
 echo "[DEBUG] gulp clean exit code : $GULP_CLEAN_EXIT_CODE";
 
-if [ $GULP_CLEAN_EXIT_CODE -gt 0 ] && [ $BUILD_DIST_IS_GIT -gt 0 ]
+if [ $GULP_CLEAN_EXIT_CODE -gt 0 ] && [ $BUILD_DIST_IS_GIT_DIRTY -gt 0 ]
 then
   echo "[WARN] Couldn't clean the build/dist repo before git unstash"
   echo "[WARN] Run the following commands manually to get back your repo in build/dist"
   echo "[INFO] gulp clean"
+  echo "[INFO] git reset --hard HEAD"
   echo "[INFO] git stash pop --index"
   exit 1
 fi
 
-# If build/dist is under git, reset --hard HEAD then retrieve the stash, fail if can't
+# After cleaning build/dist, if it is a git repo, point it back to the HEAD
 if [ $BUILD_DIST_IS_GIT -gt 0 ]
 then
-  echo "[INFO] build/dist is under git management, retrieving stash"
+  echo "[INFO] build/dist is under git management, pointing back to HEAD"
+
+  cmd="git reset --hard HEAD"
+  echo "[RUN] $cmd"
+  eval $cmd
+  if [ $? -gt 0 ]
+  then
+    echo "[WARN] Couldn't reset --hard HEAD build/dist repo"
+    echo "[WARN] Run the following command manually to get back your repo in build/dist"
+    echo "[INFO] git reset --hard HEAD"
+    echo "[INFO] git stash pop --index"
+    exit 1
+  fi
+fi
+
+# If build/dist is a git repo and was dirty, retrieve the stash
+if [ $BUILD_DIST_IS_GIT_DIRTY -gt 0 ]
+then
+  echo "[INFO] build/dist is under git management & has stashed files, retrieving stash"
 
   cmd="git stash pop --index"
   echo "[RUN] $cmd"
@@ -77,6 +106,11 @@ then
     echo "[WARN] Run the following command manually to get back your repo in build/dist"
     echo "[INFO] git stash pop --index"
     exit 1
+  fi
+else
+  if [ $BUILD_DIST_IS_GIT -gt 0 ]
+  then
+    echo "[INFO] build/dist is under git management but directory was clean at start, nothing to unstash"
   fi
 fi
 
