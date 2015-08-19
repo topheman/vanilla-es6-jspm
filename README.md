@@ -104,8 +104,6 @@ Next time, you'll only have to do the last 4 steps ...
 
 ##Folder Organization
 
-*NB: To move into the Wiki ?*
-
 ###Development
 
 ```
@@ -157,6 +155,10 @@ test
         ├── components
         └── services
 ```
+
+##Changelog
+
+See [releases section](https://github.com/topheman/vanilla-es6-jspm/releases).
 
 ##Contributing
 
