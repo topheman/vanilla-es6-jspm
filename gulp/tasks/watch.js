@@ -10,7 +10,7 @@ function setupBasicGulpWatch() {
   gulp.watch([paths.app.images, paths.app.fonts], [browserSync.reload]);
 
   // Watch css files
-  gulp.watch(paths.app.styles, ['sass']);
+  return gulp.watch(paths.app.styles, ['sass', browserSync.reload]);//if takes to long, take a look at https://github.com/Browsersync/recipes/tree/master/recipes/gulp.task.sequence
 }
 
 function getGulpWatchJs(env = 'dev') {
