@@ -1,6 +1,6 @@
 {
   "name": "vanilla-es6-jspm",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "Seed project for ES6 / jspm based apps with full production workflow",
   "main": "index.js",
   "scripts": {
