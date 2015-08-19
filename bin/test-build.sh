@@ -10,12 +10,7 @@
 # always stop on errors
 # set -e
 
-if [ "$TRAVIS" == "true" ]
-then
-  GULP_PATH="./node_modules/gulp/bin/gulp.js"
-else
-  GULP_PATH="../../node_modules/gulp/bin/gulp.js"
-fi
+GULP_PATH="$(npm bin)/gulp"
 
 BUILD_DIST_IS_GIT=0
 BUILD_DIST_IS_GIT_DIRTY=0
