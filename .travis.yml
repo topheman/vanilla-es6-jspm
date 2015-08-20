@@ -6,7 +6,6 @@ env:
   - secure: "lVqaKzskSfk4RQRYWhb/9eF9iY/18+ZDD3+85tCZVQP/SNRybvAUm9TgCJP8T1JYU4xjmKeXsglg6XHabjbTOqHDo76vKk47rtFD8MOz5/GjGaC0fPNbHgjrXcinMquv1P1tJRle31kLf+BBtrj1LAl/PgoGTTm63OhXDiO6ijVoIVgSLHXWHJVSDu2FsEgAn+rO0nQkMUHgAHs1V1ocy+kZjRf+rIMSn7K6Va/sY0dN7r/efB3yQCBDxCKarORCU+ixDtwEApplWr+8p/IXsb4P3NQ80dmIBzYOd++cAVe1GfmMYcqBgZMg7+EjY14RoL+XwPimu7fQ2GhhQbzFrvJYb73a/CSfaMbtvO2oCCLAbfiPuijt7DhuuWJbhtKHTaJ+HHiEExVk6DA9VrQz1dIBgFD8FtblRskxkTRFsIyQGxdqnpoU/gCNL2MoluBtYTMai6TrcDNxZ+U1zlCTGyWbHr8hy/WUW7nW48KS2LlHbNjBlCw6G+WKy2IotyMOahqS+Fnksk0/QeHNAjUYy8lIpG/hZvdalJW8GsMszyeOrw3Pt6pXkjf7U74oLTmimhkHB8WjjV/FtXS70VG0aI3ALRJLSVJlGj1t0NCYI5Lf6CpkpwK0f7/OTs6R5WVpxuo9f4rhJngNPkyEj8HWp2wquihuS1VAvxtvHOPZOd4="
 
 before_install:
-- npm install -g jspm@beta
 - jspm config registries.github.auth $JSPM_GITHUB_AUTH_TOKEN
 
 script:
