@@ -7,7 +7,7 @@
     "start": "./node_modules/.bin/gulp serve",
     "test": "./node_modules/.bin/gulp jshint:test && ./node_modules/.bin/gulp htmlhint:test && ./node_modules/.bin/karma start --single-run --browsers PhantomJS --captureConsole false",
     "test-unit": "./node_modules/.bin/karma start",
-    "postinstall": "jspm install",
+    "postinstall": "./node_modules/.bin/jspm install",
     "test-build": "./bin/test-build.sh"
   },
   "pre-commit": [
@@ -34,16 +34,16 @@
     "directories": {},
     "configFile": "jspm.config.js",
     "dependencies": {
-      "bootstrap": "npm:bootstrap-sass@^3.3.5",
-      "clean-css": "npm:clean-css@^3.3.4",
+      "bootstrap-sass": "npm:bootstrap-sass@3.3.5",
+      "clean-css": "npm:clean-css@^3.3.9",
       "css": "github:systemjs/plugin-css@^0.1.13",
       "fetch-polyfill": "npm:fetch-polyfill@^0.8.1",
       "text": "github:systemjs/plugin-text@^0.0.2"
     },
     "devDependencies": {
-      "babel": "npm:babel-core@^5.6.4",
-      "babel-runtime": "npm:babel-runtime@^5.6.4",
-      "core-js": "npm:core-js@^0.9.17"
+      "babel": "npm:babel-core@^5.8.22",
+      "babel-runtime": "npm:babel-runtime@^5.8.20",
+      "core-js": "npm:core-js@^1.1.0"
     }
   },
   "devDependencies": {
@@ -78,6 +78,7 @@
     "gulp-util": "^3.0.5",
     "jasmine-core": "^2.3.4",
     "jshint-stylish": "^2.0.0",
+    "jspm": "^0.16.0",
     "karma": "^0.13.3",
     "karma-chrome-launcher": "^0.2.0",
     "karma-firefox-launcher": "^0.1.6",
