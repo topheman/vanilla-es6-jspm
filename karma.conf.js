@@ -67,9 +67,10 @@ module.exports = function (config) {
       '/node_modules/phantomjs-polyfill/': '/base/node_modules/phantomjs-polyfill/'
     },
 
-    reporters: ['spec'],
+    reporters: ['spec', 'coverage'],
 
     preprocessors: {
+      'src/**/*.js': ['babel', 'coverage'],
       'test/fixtures/**/*.html': ['html2js']
     },
 
@@ -96,6 +97,8 @@ module.exports = function (config) {
       'karma-phantomjs-launcher',
       'karma-jasmine',
       'karma-spec-reporter',
+      'karma-coverage',
+      'karma-babel-preprocessor',
       'karma-html2js-preprocessor'
     ]
 
