@@ -27,8 +27,10 @@ This project is the first step: a **vanillaJS/ES6/jspm boilerplate** ([more info
 
 * node/npm
 * gulp `npm install -g gulp-cli`
-* jspm (latest : `0.16.0-beta.3`) - `npm install -g jspm@beta`
+* jspm `npm install -g jspm` (v0.16.0)
 * sass - [installation](http://sass-lang.com/install)
+
+NB: `gulp`, `jspm`, `karma` ... are all installed locally so if you don't want install them globally (because you have specific versions for example), you can call them from `./node_modules/.bin/`.
 
 ##Installation
 
