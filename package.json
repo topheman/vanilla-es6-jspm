@@ -9,9 +9,10 @@
     "test-unit": "./node_modules/.bin/karma start",
     "postinstall": "./node_modules/.bin/jspm install",
     "test-build": "./bin/test-build.sh",
-    "forever-start": "echo \"Launching server (dev mode) on port 9001 ...\" && ./node_modules/.bin/forever start ./node_modules/.bin/gulp serve --port 9001 --disable-watch --open false",
+    "forever-start": "echo \"Launching server (dev mode) on port 9000 ...\" && ./node_modules/.bin/forever start ./node_modules/.bin/gulp serve --port 9000 --disable-watch --open false",
     "forever-stop": "echo \"Stopping all forever scripts ...\" && ./node_modules/.bin/forever stopall",
-    "forever-list": "./node_modules/.bin/forever list"
+    "forever-list": "./node_modules/.bin/forever list",
+    "webdriver-manager-update": "./node_modules/.bin/webdriver-manager update"
   },
   "pre-commit": [
     "test"
@@ -81,6 +82,7 @@
     "gulp-usemin": "^0.3.11",
     "gulp-util": "^3.0.5",
     "jasmine-core": "^2.3.4",
+    "jasmine-spec-reporter": "^2.4.0",
     "jshint-stylish": "^2.0.0",
     "jspm": "^0.16.0",
     "karma": "^0.13.3",
@@ -98,6 +100,7 @@
     "phantomjs-polyfill": "0.0.1",
     "pre-commit": "^1.1.1",
     "pre-push": "^0.1.1",
+    "protractor": "^2.1.0",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.1.2",
     "systemjs-builder": "^0.13.1"
