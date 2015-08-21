@@ -15,6 +15,10 @@ import path from '../paths';
 //launch your task with `--port 9002` for example
 var serverPort = util.env.port;
 
+//launch your task with `--open` `--open false` for example
+var open = util.env.open === 'false' ? false : true;
+console.log(open);
+
 function infos(env) {
   LOG(COLORS.yellow('[INFOS] call `gulp serve:' + env + ' --port 9002` (for example) to launch on another port'));
   LOG(COLORS.yellow('[INFOS] call `gulp serve:' + env + ' --disable-watch` if you don\'t need it'));
@@ -39,8 +43,10 @@ function startBrowserSync(env, baseDir, options = {}) {
   options.browser = options.browser === undefined ? 'default' : options.browser;
   options.files = options.files === undefined ? 'default' : options.files;
   options.port = options.port === undefined ? DEFAULT_SERVER_PORT : options.port;
+  options.open = options.open === undefined ? true : options.open;
 
   var config = {
+    open: options.open,
     files: options.files,
     port: options.port,
     notify: false,
@@ -110,7 +116,7 @@ function startBrowserSync(env, baseDir, options = {}) {
  */
 gulp.task('serve:dev', ['sass', 'watch:dev'], () => {
   infos('dev');
-  startBrowserSync('dev', ['.tmp', 'src', 'jspm_packages', './'], {port: serverPort});
+  startBrowserSync('dev', ['.tmp', 'src', 'jspm_packages', './'], {port: serverPort, open: open});
 });
 gulp.task('serve', ['serve:dev']);
 
@@ -121,7 +127,7 @@ gulp.task('serve', ['serve:dev']);
  */
 gulp.task('serve:test', ['sass', 'watch:test'], () => {
   infos('test');
-  startBrowserSync('test', ['.tmp', 'src', 'jspm_packages', './'], {port: serverPort});
+  startBrowserSync('test', ['.tmp', 'src', 'jspm_packages', './'], {port: serverPort, open: open});
 });
 
 /**
@@ -129,5 +135,5 @@ gulp.task('serve:test', ['sass', 'watch:test'], () => {
  */
 gulp.task('serve:prod', () => {
   infos('prod');
-  startBrowserSync('prod', ['./build/dist'], {port: serverPort});
+  startBrowserSync('prod', ['./build/dist'], {port: serverPort, open: open});
 });
