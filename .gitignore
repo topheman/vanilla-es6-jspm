@@ -13,6 +13,9 @@ jspm_packages
 nbproject
 .idea
 
+# Coverage directory used by tools like istanbul
+coverage
+
 # Build and tmp folders for production
 build/
 .tmp/
