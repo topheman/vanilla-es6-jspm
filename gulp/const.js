@@ -5,6 +5,8 @@ import moment from 'moment';
 import pkg from '../package.json';
 import gitRev from 'git-rev-sync';
 
+export const DEFAULT_SERVER_PORT = 9000;
+
 var infos = {
   file: '',
   pkg: pkg,

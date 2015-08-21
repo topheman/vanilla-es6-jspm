@@ -7,7 +7,18 @@ import browserSync from 'browser-sync';
 
 import jspmOverride from '../../test/jspm.override.json';
 
+import {COLORS,LOG} from '../utils.js';
+
+import {DEFAULT_SERVER_PORT} from '../const.js';
 import path from '../paths';
+
+//launch your task with `--port 9002` for example
+var serverPort = util.env.port;
+
+function infos(env) {
+  LOG(COLORS.yellow('[INFOS] call `gulp serve:' + env + ' --port 9002` (for example) to launch on another port'));
+  LOG(COLORS.yellow('[INFOS] call `gulp serve:' + env + ' --disable-watch` if you don\'t need it'));
+}
 
 //=============================================
 //            PROXY CONFIGURATION
@@ -18,17 +29,20 @@ import path from '../paths';
  * Injecting `env` as a global variable + overriding jspm.config.js if in test
  * @param env dev/test/prod
  * @param baseDir
- * @param files
- * @param browser
+ * @param [options]
+ * @param [options.files='default']
+ * @param [options.browser='default']
+ * @param [options.port=DEFAULT_SERVER_PORT]
  */
-function startBrowserSync(env, baseDir, files, browser) {
+function startBrowserSync(env, baseDir, options = {}) {
   env = env.toLowerCase();
-  browser = browser === undefined ? 'default' : browser;
-  files = files === undefined ? 'default' : files;
+  options.browser = options.browser === undefined ? 'default' : options.browser;
+  options.files = options.files === undefined ? 'default' : options.files;
+  options.port = options.port === undefined ? DEFAULT_SERVER_PORT : options.port;
 
   var config = {
-    files: files,
-    port: 9000,
+    files: options.files,
+    port: options.port,
     notify: false,
     server: {
       baseDir: baseDir,
@@ -46,7 +60,7 @@ function startBrowserSync(env, baseDir, files, browser) {
         }
       ]
     },
-    browser: browser
+    browser: options.browser
   };
 
   /**
@@ -95,7 +109,8 @@ function startBrowserSync(env, baseDir, files, browser) {
  * The 'serve' task serve the dev environment.
  */
 gulp.task('serve:dev', ['sass', 'watch:dev'], () => {
-  startBrowserSync('dev', ['.tmp', 'src', 'jspm_packages', './']);
+  infos('dev');
+  startBrowserSync('dev', ['.tmp', 'src', 'jspm_packages', './'], {port: serverPort});
 });
 gulp.task('serve', ['serve:dev']);
 
@@ -105,12 +120,14 @@ gulp.task('serve', ['serve:dev']);
  * This is for dev purpose of the tests. Launch the tests with `npm test` or `npm test-unit`
  */
 gulp.task('serve:test', ['sass', 'watch:test'], () => {
-  startBrowserSync('test', ['.tmp', 'src', 'jspm_packages', './']);
+  infos('test');
+  startBrowserSync('test', ['.tmp', 'src', 'jspm_packages', './'], {port: serverPort});
 });
 
 /**
  * The 'serve' task serve the prod environment (you need to build before)
  */
 gulp.task('serve:prod', () => {
-  startBrowserSync('prod', ['./build/dist']);
+  infos('prod');
+  startBrowserSync('prod', ['./build/dist'], {port: serverPort});
 });

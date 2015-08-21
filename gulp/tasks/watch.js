@@ -1,9 +1,15 @@
 'use strict';
 
 import gulp from 'gulp';
+import util from 'gulp-util';
 import browserSync from 'browser-sync';
 
+import {COLORS,LOG} from '../utils.js';
+
 import paths from '../paths';
+
+//launch your task with `--disable-watch` for example
+var disableWatch = util.env['disable-watch'];
 
 function setupBasicGulpWatch() {
   // Watch images and fonts files
@@ -46,11 +52,19 @@ function getGulpWatchHtml(env = 'dev') {
  * According to the env it's launched to, it won't watch the same files (in test, will watch more files)
  */
 gulp.task('watch:dev', () => {
+  if(disableWatch){
+    LOG(COLORS.yellow('[INFOS] watch is disabled'));
+    return;
+  }
   setupBasicGulpWatch();
   getGulpWatchJs('dev');
   getGulpWatchHtml('dev');
 });
 gulp.task('watch:test', () => {
+  if(disableWatch){
+    LOG(COLORS.yellow('[INFOS] watch is disabled'));
+    return;
+  }
   setupBasicGulpWatch();
   getGulpWatchJs('test');
   getGulpWatchHtml('test');
