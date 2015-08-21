@@ -5,7 +5,7 @@ var colors = require('colors');
 var clientCaptureConsole = true;
 
 if (typeof(argv.captureConsole) !== 'undefined') {
-  if (argv.captureConsole != 'true' && argv.captureConsole != 'false') {
+  if (argv.captureConsole !== 'true' && argv.captureConsole !== 'false') {
     console.error('[ERROR][Invalid Argument] Flag --captureConsole only accepts true or false'.red);
     console.error('[ERROR][Invalid Argument] Exiting'.red);
     process.exit(9);// "Invalid Argument" - see exit code list : https://github.com/joyent/node/blob/master/doc/api/process.markdown#exit-code
@@ -14,7 +14,7 @@ if (typeof(argv.captureConsole) !== 'undefined') {
     clientCaptureConsole = argv.captureConsole === 'false' ? false : true;
   }
 }
-if(clientCaptureConsole == false) {
+if(clientCaptureConsole === false) {
   console.log('[INFO] console.*() statements are removed to have a clearer report.'.yellow);
   console.log('[INFO] If you want to access them, launch npm run test-unit'.yellow);
 }

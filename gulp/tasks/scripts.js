@@ -16,10 +16,10 @@ function generateJshintTask(env = 'dev') {
   var src;
   switch (env.toLowerCase()) {
     case 'test':
-      src = [].concat(paths.app.scripts, paths.gulpfile, paths.test.stubs.scripts, paths.test.unit.spec);
+      src = [].concat(paths.app.scripts, paths.gulpfile, paths.test.config.karma, paths.test.config.e2e, paths.test.stubs, paths.test.unit, paths.test.e2e);
       break;
     default:
-      src = [].concat(paths.app.scripts, paths.gulpfile);
+      src = [].concat(paths.app.scripts, paths.gulpfile, paths.test.config.karma, paths.test.config.e2e);
       break;
   }
   return gulp.src(src)

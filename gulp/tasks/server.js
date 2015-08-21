@@ -17,7 +17,6 @@ var serverPort = util.env.port;
 
 //launch your task with `--open` `--open false` for example
 var open = util.env.open === 'false' ? false : true;
-console.log(open);
 
 function infos(env) {
   LOG(COLORS.yellow('[INFOS] call `gulp serve:' + env + ' --port 9002` (for example) to launch on another port'));

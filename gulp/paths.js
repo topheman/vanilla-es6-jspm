@@ -51,15 +51,13 @@ const paths = {
     basePath: 'test/',
     config: {
       karma: 'karma.conf.js',
-      jspmOverride: 'test/jspm.override.json'
+      jspmOverride: 'test/jspm.override.json',
+      e2e: 'protractor.config.js'
     },
-    unit: {
-      spec: 'test/unit/spec/**/*.js',
-      fixtures: 'test/unit/fixtures/**/*.html'
-    },
-    stubs: {
-      scripts: 'test/stubs/**/*.js'
-    }
+    unit: 'test/unit/**/*.js',
+    fixtures: 'test/fixtures/**/*.html',
+    e2e: 'test/e2e/**/*.js',
+    stubs: 'test/stubs/**/*.js'
   }
 };
 

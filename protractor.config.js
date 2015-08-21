@@ -1,3 +1,5 @@
+'use strict';
+
 require('babel/register');//write test in es6
 var SpecReporter = require('jasmine-spec-reporter');
 
@@ -12,6 +14,6 @@ var config = {
     };
     jasmine.getEnv().addReporter(new SpecReporter());
   }
-}
+};
 
 module.exports.config = exports.config = config;

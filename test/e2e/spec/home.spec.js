@@ -1,3 +1,5 @@
+'use strict';
+
 import {beforeEachIsAngular} from '../utils.js';
 
 beforeEachIsAngular(false);

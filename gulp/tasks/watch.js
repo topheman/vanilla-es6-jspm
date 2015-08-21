@@ -23,7 +23,7 @@ function getGulpWatchJs(env = 'dev') {
   var src;
   switch (env.toLowerCase()) {
     case 'test':
-      src = [].concat(paths.app.scripts, paths.gulpfile, paths.test.stubs.scripts, paths.test.unit.spec);
+      src = [].concat(paths.app.scripts, paths.gulpfile, paths.test.config.karma, paths.test.config.e2e, paths.test.stubs, paths.test.unit, paths.test.e2e);
       break;
     default:
       src = [].concat(paths.app.scripts, paths.gulpfile);
@@ -36,7 +36,7 @@ function getGulpWatchHtml(env = 'dev') {
   var src;
   switch (env.toLowerCase()) {
     case 'test':
-      src = [].concat(paths.app.html, paths.app.templates, paths.test.unit.fixtures);
+      src = [].concat(paths.app.html, paths.app.templates, paths.test.fixtures);
       break;
     default:
       src = [].concat(paths.app.html, paths.app.templates);

@@ -13,7 +13,7 @@ function generateHtmlhintTask(env) {
   var src;
   switch (env.toLowerCase()) {
     case 'test':
-      src = [].concat(paths.app.html, paths.app.templates, paths.test.unit.fixtures);
+      src = [].concat(paths.app.html, paths.app.templates, paths.test.fixtures);
       break;
     default: //(dev)
       src = [].concat(paths.app.html, paths.app.templates);

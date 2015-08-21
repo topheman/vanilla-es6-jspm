@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * When you use protractor in a non angular way, you have to tell it not to wait
  * To do that, in the protractor.config, on the onPrepare, a global method is exposed: isAngularSite
@@ -16,6 +18,7 @@
  * @returns {*}
  */
 export function beforeEachIsAngular(...args) {
+  /* jshint undef: false, unused: true */
   // case with beforeEachIsAngular(() => {}, false);
   if(typeof args[1] === 'function' && typeof args[0] === 'boolean'){
     return beforeEach(() => {
