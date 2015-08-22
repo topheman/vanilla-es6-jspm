@@ -7,16 +7,11 @@ import browserSync from 'browser-sync';
 
 import jspmOverride from '../../test/jspm.override.json';
 
-import {COLORS,LOG} from '../utils.js';
+import {COLORS,LOG,SERVER_PORT,OPEN} from '../utils.js';
 
 import {DEFAULT_SERVER_PORT} from '../const.js';
+
 import path from '../paths';
-
-//launch your task with `--port 9002` for example
-var serverPort = util.env.port;
-
-//launch your task with `--open` `--open false` for example
-var open = util.env.open === 'false' ? false : true;
 
 function infos(env) {
   LOG(COLORS.yellow('[INFOS] call `gulp serve:' + env + ' --port 9002` (for example) to launch on another port'));
@@ -115,7 +110,7 @@ function startBrowserSync(env, baseDir, options = {}) {
  */
 gulp.task('serve:dev', ['sass', 'watch:dev'], () => {
   infos('dev');
-  startBrowserSync('dev', ['.tmp', 'src', 'jspm_packages', './'], {port: serverPort, open: open});
+  startBrowserSync('dev', ['.tmp', 'src', 'jspm_packages', './'], {port: SERVER_PORT, open: OPEN});
 });
 gulp.task('serve', ['serve:dev']);
 
@@ -126,7 +121,7 @@ gulp.task('serve', ['serve:dev']);
  */
 gulp.task('serve:test', ['sass', 'watch:test'], () => {
   infos('test');
-  startBrowserSync('test', ['.tmp', 'src', 'jspm_packages', './'], {port: serverPort, open: open});
+  startBrowserSync('test', ['.tmp', 'src', 'jspm_packages', './'], {port: SERVER_PORT, open: OPEN});
 });
 
 /**
@@ -134,5 +129,5 @@ gulp.task('serve:test', ['sass', 'watch:test'], () => {
  */
 gulp.task('serve:prod', () => {
   infos('prod');
-  startBrowserSync('prod', ['./build/dist'], {port: serverPort, open: open});
+  startBrowserSync('prod', ['./build/dist'], {port: SERVER_PORT, open: OPEN});
 });

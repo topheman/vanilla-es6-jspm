@@ -8,8 +8,7 @@ import {COLORS,LOG} from '../utils.js';
 
 import paths from '../paths';
 
-//launch your task with `--disable-watch` for example
-var disableWatch = util.env['disable-watch'];
+import {DISABLE_WATCH} from '../utils.js';
 
 function setupBasicGulpWatch() {
   // Watch images and fonts files
@@ -52,7 +51,7 @@ function getGulpWatchHtml(env = 'dev') {
  * According to the env it's launched to, it won't watch the same files (in test, will watch more files)
  */
 gulp.task('watch:dev', () => {
-  if(disableWatch){
+  if(DISABLE_WATCH){
     LOG(COLORS.yellow('[INFOS] watch is disabled'));
     return;
   }
@@ -61,7 +60,7 @@ gulp.task('watch:dev', () => {
   getGulpWatchHtml('dev');
 });
 gulp.task('watch:test', () => {
-  if(disableWatch){
+  if(DISABLE_WATCH){
     LOG(COLORS.yellow('[INFOS] watch is disabled'));
     return;
   }
