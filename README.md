@@ -41,8 +41,8 @@ NB: `gulp`, `jspm`, `karma` ... are all installed locally so if you don't want i
 You can launch your app in different modes (dev/prod/test):
 
 * `gulp serve` : **will launch a dev server**
-* `gulp serve:prod` : will launch the version of the site built in `build/dist` folder (need to `gulp build` before) - *usefull to check your site before deploying it*.
-* `gulp serve:test` : will launch a dev server with test configuration - *usefull to debug / create unit tests*:
+* `gulp serve --env prod` : will launch the version of the site built in `build/dist` folder (need to `gulp build` before) - *usefull to check your site before deploying it*.
+* `gulp serve --env test` : will launch a dev server with test configuration - *usefull to debug / create unit tests*:
 	* jspm configuration overridden by the `test/jspm.override.json` file
 	* the app will appear with "TEST" in background, thanks to `test/fixtures/bs.snippet.html` injected on the the fly (containing specific css)
 

@@ -15,3 +15,14 @@ export const OPEN = util.env.open === 'false' ? false : true;
 
 //launch your task with `--disable-watch` for example
 export const DISABLE_WATCH = util.env['disable-watch'];
+
+var environment = (util.env.env || 'dev').toLowerCase();
+if (environment === true) {
+  environment = 'dev';
+}
+else if (['dev', 'prod', 'test'].indexOf(environment) === -1) {
+  throw new Error('--env flag only accepts dev/prod/test')
+}
+LOG(COLORS.yellow('### Running in ' + environment + ' ###'));
+
+export const ENV = environment;

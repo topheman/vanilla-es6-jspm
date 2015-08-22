@@ -3,27 +3,7 @@
 import gulp from 'gulp';
 import htmlhint from 'gulp-htmlhint';
 import paths from '../paths';
-
-/**
- * Returns a htmlhint gulp task according to the env
- * @param {String} env "dev"|"test"
- * @returns {*}
- */
-function generateHtmlhintTask(env) {
-  var src;
-  switch (env.toLowerCase()) {
-    case 'test':
-      src = [].concat(paths.app.html, paths.app.templates, paths.test.fixtures);
-      break;
-    default: //(dev)
-      src = [].concat(paths.app.html, paths.app.templates);
-      break;
-  }
-  return gulp.src(src)
-    .pipe(htmlhint('.htmlhintrc'))
-    .pipe(htmlhint.reporter())
-    .pipe(htmlhint.failReporter());
-}
+import {ENV} from '../utils.js';
 
 /**
  * The 'htmlhint' task defines the rules of our hinter as well as which files we
@@ -34,10 +14,19 @@ function generateHtmlhintTask(env) {
  *
  * @return {Stream}
  */
-gulp.task('htmlhint:dev', () => {
-  return generateHtmlhintTask('dev');
+gulp.task('htmlhint', () => {
+  var src;
+  switch (ENV) {
+    case 'test':
+      src = [].concat(paths.app.html, paths.app.templates, paths.test.fixtures);
+      break;
+    case 'dev':
+    default:
+      src = [].concat(paths.app.html, paths.app.templates);
+      break;
+  }
+  return gulp.src(src)
+    .pipe(htmlhint('.htmlhintrc'))
+    .pipe(htmlhint.reporter())
+    .pipe(htmlhint.failReporter());
 });
-gulp.task('htmlhint:test', () => {
-  return generateHtmlhintTask('test');
-});
-gulp.task('htmlhint', ['htmlhint:dev']);

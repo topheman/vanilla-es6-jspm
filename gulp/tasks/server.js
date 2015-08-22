@@ -7,15 +7,15 @@ import browserSync from 'browser-sync';
 
 import jspmOverride from '../../test/jspm.override.json';
 
-import {COLORS,LOG,SERVER_PORT,OPEN} from '../utils.js';
+import {COLORS,LOG,SERVER_PORT,OPEN,ENV} from '../utils.js';
 
 import {DEFAULT_SERVER_PORT} from '../const.js';
 
 import path from '../paths';
 
 function infos(env) {
-  LOG(COLORS.yellow('[INFOS] call `gulp serve:' + env + ' --port 9002` (for example) to launch on another port'));
-  LOG(COLORS.yellow('[INFOS] call `gulp serve:' + env + ' --disable-watch` if you don\'t need it'));
+  LOG(COLORS.yellow('[INFOS] call `gulp serve --env ' + env + ' --port 9002` (for example) to launch on another port'));
+  LOG(COLORS.yellow('[INFOS] call `gulp serve --env ' + env + ' --disable-watch` if you don\'t need it'));
 }
 
 //=============================================
@@ -106,28 +106,35 @@ function startBrowserSync(env, baseDir, options = {}) {
 //=============================================
 
 /**
- * The 'serve' task serve the dev environment.
- */
-gulp.task('serve:dev', ['sass', 'watch:dev'], () => {
-  infos('dev');
-  startBrowserSync('dev', ['.tmp', 'src', 'jspm_packages', './'], {port: SERVER_PORT, open: OPEN});
-});
-gulp.task('serve', ['serve:dev']);
-
-/**
- * The 'serve' task adding the overrides to the jspm configuration for mocks and stubs
+ * The 'serve' task. run `gulp serve --env dev/prod/test`
  *
- * This is for dev purpose of the tests. Launch the tests with `npm test` or `npm test-unit`
+ * Pass the env dev/prod/test via the --env flag
+ *
+ * - dev: runs a dev server with livereload/watch
+ * - test: runs a test server with livereload/watch (over the test also)
+ * - prod: serves the `build/dist` folder
  */
-gulp.task('serve:test', ['sass', 'watch:test'], () => {
-  infos('test');
-  startBrowserSync('test', ['.tmp', 'src', 'jspm_packages', './'], {port: SERVER_PORT, open: OPEN});
-});
-
-/**
- * The 'serve' task serve the prod environment (you need to build before)
- */
-gulp.task('serve:prod', () => {
-  infos('prod');
-  startBrowserSync('prod', ['./build/dist'], {port: SERVER_PORT, open: OPEN});
+var gulpServeDependencyTasks;
+switch(ENV){
+  case 'prod':
+    gulpServeDependencyTasks = [];
+    break;
+  case 'test':
+  case 'dev':
+    gulpServeDependencyTasks = ['sass', 'watch'];
+    break;
+}
+gulp.task('serve', gulpServeDependencyTasks, () => {
+  infos(ENV);
+  switch(ENV){
+    case 'prod':
+      startBrowserSync('prod', ['./build/dist'], {port: SERVER_PORT, open: OPEN});
+      break;
+    case 'test':
+      startBrowserSync('test', ['.tmp', 'src', 'jspm_packages', './'], {port: SERVER_PORT, open: OPEN});
+      break;
+    case 'dev':
+      startBrowserSync('dev', ['.tmp', 'src', 'jspm_packages', './'], {port: SERVER_PORT, open: OPEN});
+      break;
+  }
 });

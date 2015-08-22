@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "./node_modules/.bin/gulp serve",
-    "test": "./node_modules/.bin/gulp jshint:test && ./node_modules/.bin/gulp htmlhint:test && ./node_modules/.bin/karma start --single-run --browsers PhantomJS --captureConsole false",
+    "test": "./node_modules/.bin/gulp jshint --env test && ./node_modules/.bin/gulp htmlhint --env test && ./node_modules/.bin/karma start --single-run --browsers PhantomJS --captureConsole false",
     "test-unit": "./node_modules/.bin/karma start",
     "postinstall": "./node_modules/.bin/jspm install",
     "test-build": "./bin/test-build.sh",
