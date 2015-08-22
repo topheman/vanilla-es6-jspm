@@ -16,6 +16,7 @@ import path from '../paths';
 function infos(env) {
   LOG(COLORS.yellow('[INFOS] call `gulp serve --env ' + env + ' --port 9002` (for example) to launch on another port'));
   LOG(COLORS.yellow('[INFOS] call `gulp serve --env ' + env + ' --disable-watch` if you don\'t need it'));
+  LOG(COLORS.yellow('[INFOS] call `gulp serve --env ' + env + ' --open false` if you don\'t want the browser to open'));
 }
 
 //=============================================

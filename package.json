@@ -9,9 +9,12 @@
     "test-unit": "./node_modules/.bin/karma start",
     "postinstall": "./node_modules/.bin/jspm install",
     "test-build": "./bin/test-build.sh",
-    "forever-start": "echo \"Launching server (dev mode) on port 9000 ...\" && ./node_modules/.bin/forever start ./node_modules/.bin/gulp serve --port 9000 --disable-watch --open false",
-    "forever-stop": "echo \"Stopping all forever scripts ...\" && ./node_modules/.bin/forever stopall",
+    "test-e2e": "./node_modules/.bin/protractor protractor.config.js",
+    "forever-start": "echo \"Launching server (dev mode) on port 9000 ...\" && ./node_modules/.bin/forever start ./test/forever.gulp.serve.test.json",
+    "forever-stop": "echo \"Stopping script ...\" && ./node_modules/.bin/forever stop gulp.serve.test",
+    "forever-stopall": "echo \"Stopping all script ...\" && ./node_modules/.bin/forever stopall",
     "forever-list": "./node_modules/.bin/forever list",
+    "test-e2e-standalone": "npm run forever-start && sleep 4 && npm run test-e2e && npm run forever-stop",
     "webdriver-manager-update": "./node_modules/.bin/webdriver-manager update"
   },
   "pre-commit": [
