@@ -16,12 +16,16 @@ export const OPEN = util.env.open === 'false' ? false : true;
 //launch your task with `--disable-watch` for example
 export const DISABLE_WATCH = util.env['disable-watch'];
 
-var environment = (util.env.env || 'dev').toLowerCase();
-if (environment === true) {
-  environment = 'dev';
-}
-else if (['dev', 'prod', 'test'].indexOf(environment) === -1) {
+// if no --env flag, environment variable ENV is taken,
+// if none of them is set, 'dev' is set by default
+// if you pass by --env flag, it will be reflected in process.env.ENV
+var environment = ((util.env.env === true ? 'dev' : util.env.env) || process.env.ENV || 'dev').toLowerCase();
+if (['dev', 'prod', 'test'].indexOf(environment) === -1) {
   throw new Error('--env flag only accepts dev/prod/test')
+}
+if(!process.env.ENV){
+  LOG(COLORS.yellow('[INFOS] Setting process.env.ENV=' + environment));
+  process.env.ENV = environment;
 }
 LOG(COLORS.yellow('### Running in ' + environment + ' ###'));
 
