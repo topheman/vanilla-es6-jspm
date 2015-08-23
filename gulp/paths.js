@@ -26,6 +26,11 @@ const paths = {
     html: 'src/index.html',
     templates: 'src/app/**/*.html'
   },
+  config: {
+    karma: 'karma.conf.js',
+    e2e: 'protractor.config.js',
+    jspm: 'jspm.config.js'
+  },
   /**
    * The 'tmp' folder is where our html templates are compiled to JavaScript during
    * the build process and then they are concatenating with all other js files and
@@ -50,9 +55,7 @@ const paths = {
   test: {
     basePath: 'test/',
     config: {
-      karma: 'karma.conf.js',
-      jspmOverride: 'test/jspm.override.json',
-      e2e: 'protractor.config.js'
+      jspmOverride: 'test/jspm.override.json'
     },
     unit: 'test/unit/**/*.js',
     fixtures: 'test/fixtures/**/*.html',

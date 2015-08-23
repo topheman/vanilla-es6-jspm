@@ -43,7 +43,7 @@ gulp.task('watch', () => {
     var jsFileList;
     switch(ENV){
       case 'test':
-        jsFileList = [].concat(paths.app.scripts, paths.gulpfile, paths.test.config.karma, paths.test.config.e2e, paths.test.stubs, paths.test.unit, paths.test.e2e);
+        jsFileList = [].concat(paths.app.scripts, paths.gulpfile, paths.config.karma, paths.config.e2e, paths.test.stubs, paths.test.unit, paths.test.e2e);
         break;
       case 'dev':
         jsFileList = [].concat(paths.app.scripts, paths.gulpfile);

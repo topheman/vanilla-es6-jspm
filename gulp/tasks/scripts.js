@@ -19,11 +19,11 @@ gulp.task('jshint', () => {
   var src;
   switch (ENV) {
     case 'test':
-      src = [].concat(paths.app.scripts, paths.gulpfile, paths.test.config.karma, paths.test.config.e2e, paths.test.stubs, paths.test.unit, paths.test.e2e);
+      src = [].concat(paths.app.scripts, paths.gulpfile, paths.config.karma, paths.config.e2e, paths.test.stubs, paths.test.unit, paths.test.e2e);
       break;
     case 'dev':
     default:
-      src = [].concat(paths.app.scripts, paths.gulpfile, paths.test.config.karma, paths.test.config.e2e);
+      src = [].concat(paths.app.scripts, paths.gulpfile, paths.config.karma, paths.config.e2e);
       break;
   }
   return gulp.src(src)
