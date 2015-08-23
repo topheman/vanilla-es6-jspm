@@ -1,7 +1,11 @@
 'use strict';
 
+import path from 'path';
+
+const root = path.dirname(__dirname);//needed so that imports could co-exist with requires (on some edge cases)
+
 const paths = {
-  gulpfile: 'gulpfile.js',
+  gulpfile: `${root}/gulpfile.js`,
   /**
    * This is a collection of file patterns that refer to our app code (the
    * stuff in `src/`). These file paths are used in the configuration of
@@ -15,16 +19,21 @@ const paths = {
    * - 'templates'    contains all project html templates
    */
   app: {
-    basePath: 'src/',
-    styles: 'src/styles/**/*.scss',
+    basePath: `${root}/src/`,
+    styles: `${root}/src/styles/**/*.scss`,
     fonts: [
-      'src/fonts/**/*.{eot,svg,ttf,woff}',
-      'jspm_packages/**/*.{eot,svg,ttf,woff}'
+      `${root}/src/fonts/**/*.{eot,svg,ttf,woff}`,
+      `${root}/jspm_packages/**/*.{eot,svg,ttf,woff}`,
     ],
-    images: 'src/images/**/*.{png,gif,jpg,jpeg}',
-    scripts: ['src/app/**/*.js'],
-    html: 'src/index.html',
-    templates: 'src/app/**/*.html'
+    images: `${root}/src/images/**/*.{png,gif,jpg,jpeg}`,
+    scripts: [`${root}/src/app/**/*.js`],
+    html: `${root}/src/index.html`,
+    templates: `${root}/src/app/**/*.html`
+  },
+  config: {
+    karma: `${root}/karma.conf.js`,
+    e2e: `${root}/protractor.config.js`,
+    jspm: `${root}/jspm.config.js`
   },
   /**
    * The 'tmp' folder is where our html templates are compiled to JavaScript during
@@ -32,32 +41,34 @@ const paths = {
    * copy to 'dist' folder.
    */
   tmp: {
-    basePath: '.tmp/',
-    styles: '.tmp/styles/',
-    scripts: '.tmp/scripts/'
+    basePath: `${root}/.tmp/`,
+    styles: `${root}/.tmp/styles/`,
+    scripts: `${root}/.tmp/scripts/`,
+    config: {
+      basePath: `${root}/.tmp/config/`,
+      jspm: `${root}/.tmp/config/jspm.config.js`
+    }
   },
   build: {
-    basePath: 'build/',
+    basePath: `${root}/build/`,
     dist: {
-      basePath: 'build/dist/',
-      fonts: 'build/dist/fonts/',
-      images: 'build/dist/images/',
-      styles: 'build/dist/styles/',
-      scripts: 'build/dist/scripts/'
+      basePath: `${root}/build/dist/`,
+      fonts: `${root}/build/dist/fonts/`,
+      images: `${root}/build/dist/images/`,
+      styles: `${root}/build/dist/styles/`,
+      scripts: `${root}/build/dist/scripts/`
     },
-    docs: 'build/docs/'
+    docs: `${root}/build/docs/`
   },
   test: {
-    basePath: 'test/',
+    basePath: `${root}/test/`,
     config: {
-      karma: 'karma.conf.js',
-      jspmOverride: 'test/jspm.override.json',
-      e2e: 'protractor.config.js'
+      jspmOverride: `${root}/test/jspm.override.json`
     },
-    unit: 'test/unit/**/*.js',
-    fixtures: 'test/fixtures/**/*.html',
-    e2e: 'test/e2e/**/*.js',
-    stubs: 'test/stubs/**/*.js'
+    unit: `${root}/test/unit/**/*.js`,
+    fixtures: `${root}/test/fixtures/**/*.html`,
+    e2e: `${root}/test/e2e/**/*.js`,
+    stubs: `${root}/test/stubs/**/*.js`
   }
 };
 

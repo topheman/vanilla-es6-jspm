@@ -15,8 +15,8 @@ import usemin from 'gulp-usemin';
 import inject from 'gulp-inject';
 import runSequence from 'run-sequence';
 
-import {LOG, COLORS} from '../utils';
 import {BANNER, BANNER_HTML} from '../const';
+import {LOG, COLORS} from '../utils';
 import paths from '../paths';
 
 //=============================================

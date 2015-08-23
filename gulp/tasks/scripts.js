@@ -4,8 +4,10 @@ import util from 'gulp-util';
 import gulp from 'gulp';
 import jshint from 'gulp-jshint';
 import cache from 'gulp-cache';
+import footer from 'gulp-footer';
+import gulpif from 'gulp-if';
 
-import {ENV} from '../utils.js';
+import {LOG,COLORS,ENV} from '../utils.js';
 import paths from '../paths';
 
 /**
@@ -19,11 +21,11 @@ gulp.task('jshint', () => {
   var src;
   switch (ENV) {
     case 'test':
-      src = [].concat(paths.app.scripts, paths.gulpfile, paths.test.config.karma, paths.test.config.e2e, paths.test.stubs, paths.test.unit, paths.test.e2e);
+      src = [].concat(paths.app.scripts, paths.gulpfile, paths.config.karma, paths.config.e2e, paths.test.stubs, paths.test.unit, paths.test.e2e);
       break;
     case 'dev':
     default:
-      src = [].concat(paths.app.scripts, paths.gulpfile, paths.test.config.karma, paths.test.config.e2e);
+      src = [].concat(paths.app.scripts, paths.gulpfile, paths.config.karma, paths.config.e2e);
       break;
   }
   return gulp.src(src)
@@ -32,17 +34,30 @@ gulp.task('jshint', () => {
     .pipe(jshint.reporter('fail'));
 });
 
+gulp.task('jspmconfig', () => {
+  var injection;
+  if(ENV === 'test'){
+    var jspmOverride = require(paths.test.config.jspmOverride);
+    LOG(COLORS.yellow('[INFOS] Using jspm.override.json:'))
+    var injection = "System.config("+JSON.stringify(jspmOverride)+")";
+    LOG(COLORS.yellow(injection));
+  }
+  return gulp.src(paths.config.jspm)
+    .pipe(gulpif(ENV === 'test', footer(injection)))
+    .pipe(gulp.dest(paths.tmp.config.basePath));
+});
+
 /**
  * Create JS production bundle.
  */
-gulp.task('bundle', ['jshint'], (cb) => {
+gulp.task('bundle', ['jshint', 'jspmconfig'], (cb) => {
   const Builder = require('systemjs-builder');
   const builder = new Builder();
   const inputPath = 'src/app/bootstrap';
   const outputFile = paths.tmp.scripts + 'app.bootstrap.build.js';
   const outputOptions = {sourceMaps: true, config: {sourceRoot: paths.tmp.scripts}};
 
-  builder.loadConfig('./jspm.config.js')
+  builder.loadConfig(paths.tmp.config.jspm)
     .then(() => {
       builder.buildSFX(inputPath, outputFile, outputOptions)
         .then(() => {
