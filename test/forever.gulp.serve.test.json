@@ -3,5 +3,12 @@
   "append": true,
   "watch": false,
   "script": "./node_modules/.bin/gulp",
-  "args": ["--port", 9000, "--disable-watch", "--open", false]
+  "args": [
+    "serve",
+    "--env",
+    "test",
+    "--disable-watch",
+    "--open",
+    false
+  ]
 }
