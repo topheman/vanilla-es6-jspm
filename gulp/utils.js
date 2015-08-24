@@ -5,10 +5,10 @@ import util from 'gulp-util';
 export const LOG = util.log;
 export const COLORS = util.colors;
 
-import {DEFAULT_SERVER_PORT} from './const.js';
+import pkg from '../package.json';
 
 //launch your task with `--port 9002` for example
-export const SERVER_PORT = util.env.port || DEFAULT_SERVER_PORT;
+export const PORT = util.env.port || (pkg.config ? (pkg.config.port ? pkg.config.port : null) : null) || 9000;
 
 //launch your task with `--open` `--open false` for example
 export const OPEN = util.env.open === 'false' ? false : true;
@@ -23,7 +23,7 @@ var environment = ((util.env.env === true ? 'dev' : util.env.env) || process.env
 if (['dev', 'prod', 'test'].indexOf(environment) === -1) {
   throw new Error('--env flag only accepts dev/prod/test')
 }
-if(!process.env.ENV){
+if (!process.env.ENV) {
   LOG(COLORS.yellow('[INFOS] Setting process.env.ENV=' + environment));
   process.env.ENV = environment;
 }

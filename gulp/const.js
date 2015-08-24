@@ -7,8 +7,6 @@ import gitRev from 'git-rev-sync';
 
 import {ENV} from './utils.js';
 
-export const DEFAULT_SERVER_PORT = 9000;
-
 var infos = {
   file: '',
   pkg: pkg,

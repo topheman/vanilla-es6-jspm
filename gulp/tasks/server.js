@@ -7,9 +7,7 @@ import browserSync from 'browser-sync';
 
 import jspmOverride from '../../test/jspm.override.json';
 
-import {COLORS,LOG,SERVER_PORT,OPEN,ENV} from '../utils.js';
-
-import {DEFAULT_SERVER_PORT} from '../const.js';
+import {COLORS,LOG,PORT,OPEN,ENV} from '../utils.js';
 
 import path from '../paths';
 
@@ -31,13 +29,13 @@ function infos(env) {
  * @param [options]
  * @param [options.files='default']
  * @param [options.browser='default']
- * @param [options.port=DEFAULT_SERVER_PORT]
+ * @param [options.port=PORT]
  */
 function startBrowserSync(env, baseDir, options = {}) {
   env = env.toLowerCase();
   options.browser = options.browser === undefined ? 'default' : options.browser;
   options.files = options.files === undefined ? 'default' : options.files;
-  options.port = options.port === undefined ? DEFAULT_SERVER_PORT : options.port;
+  options.port = options.port === undefined ? PORT : options.port;
   options.open = options.open === undefined ? true : options.open;
 
   var config = {
@@ -129,13 +127,13 @@ gulp.task('serve', gulpServeDependencyTasks, () => {
   infos(ENV);
   switch(ENV){
     case 'prod':
-      startBrowserSync('prod', ['./build/dist'], {port: SERVER_PORT, open: OPEN});
+      startBrowserSync('prod', ['./build/dist'], {port: PORT, open: OPEN});
       break;
     case 'test':
-      startBrowserSync('test', ['.tmp', 'src', 'jspm_packages', './'], {port: SERVER_PORT, open: OPEN});
+      startBrowserSync('test', ['.tmp', 'src', 'jspm_packages', './'], {port: PORT, open: OPEN});
       break;
     case 'dev':
-      startBrowserSync('dev', ['.tmp', 'src', 'jspm_packages', './'], {port: SERVER_PORT, open: OPEN});
+      startBrowserSync('dev', ['.tmp', 'src', 'jspm_packages', './'], {port: PORT, open: OPEN});
       break;
   }
 });
