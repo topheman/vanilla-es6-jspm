@@ -31,6 +31,9 @@
     "expect": false,
     "inject": false,
     "it": false,
+    "by": false,
+    "element": false,
+    "goToUrl": false,
     "jasmine": false,
     "spyOn": false,
     "protractor": false

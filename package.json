@@ -109,6 +109,9 @@
     "run-sequence": "^1.1.2",
     "systemjs-builder": "^0.13.1"
   },
+  "config": {
+    "port": 9000
+  },
   "engines": {
     "node": ">=0.12.x",
     "npm": ">=2.0.0"
