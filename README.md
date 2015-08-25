@@ -38,17 +38,26 @@ NB: `gulp`, `jspm`, `karma` ... are all installed locally so if you don't want i
 
 ##Launch
 
-You can launch your app in different modes (dev/prod/test):
+You can launch your app in different modes (dev/dist/test):
 
 * `gulp serve` : **will launch a dev server**
-* `gulp serve --env prod` : will launch the version of the site built in `build/dist` folder (need to `gulp build` before) - *usefull to check your site before deploying it*.
+* `gulp serve --env dist` : will launch the version of the site built in `build/dist` folder (need to `gulp build` before) - *usefull to check your site before deploying it*.
 * `gulp serve --env test` : will launch a dev server with test configuration - *usefull to debug / create unit tests*:
 	* jspm configuration overridden by the `test/jspm.override.json` file
 	* the app will appear with "TEST" in background, thanks to `test/fixtures/bs.snippet.html` injected on the the fly (containing specific css)
 
+You can pass the following flags to the `gulp serve` command:
+
+* `--env`: accepts `dev`, `dist`, `test` (`dev` by default)
+* `--port`: overrides the port of the server you'll launch
+* `--disable-watch`: disables watching/reloading
+* `--open false`: won't open the site in the browser
+
 ##Build
 
 * `gulp build` : builds a production ready version of the site in `build/dist` folder
+* `gulp build --env test` : same as `gulp build`, but bundles a test version of your website (using `test/jspm.override.json`)
+	* can be usefull if you want to do end-to-end testing on a built version of your website
 
 ##Test
 
@@ -65,11 +74,11 @@ You can see exactly which commands match the following npm tasks in the [package
 
 ###e2e
 
-*In progress.*
+*This part works but is still in progress (not yet connected to Travis CI - [follow trello card](https://trello.com/c/MQNwxEa7/39-protractor-e2e-tests))*
 
-The e2e tests are in `test/e2e/spec`.
+The e2e tests are in `test/e2e/spec`. It's using [protractor](http://www.protractortest.org/) - an end-to-end test framework for AngularJS applications, based on [Selenium Webdriver](http://www.seleniumhq.org/). It can also be used on non-angular websites ([more on wiki](https://github.com/topheman/vanilla-es6-jspm/wiki/FAQ#protractor)).
 
-You can run the e2e tests two ways (either ways, they need a server in order to run):
+You can run the e2e tests two ways (either way, they need a server in order to run):
 
 * standalone (no need to have a server launched / **make sure you don't**) - launch : `npm run test-e2e-standalone`: this will:
 	* start a test server
@@ -164,8 +173,12 @@ build
 
 ```
 test
+├── e2e
+│   ├── spec             --> e2e tests run by protractor with jasmine
+│   └── utils.js
 ├── fixtures
 │   └── bs.snippet.html  --> html snippet added on gulp serve:test
+├── forever.gulp.serve.test.json
 ├── jspm.override.json   --> file to override jspm.config.js in test mode
 ├── stubs                --> replacements for existing modules, injected in test mode (configured in jspm.override.json)
 │   └── app
