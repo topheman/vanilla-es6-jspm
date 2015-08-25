@@ -5,10 +5,17 @@
   "main": "index.js",
   "scripts": {
     "start": "./node_modules/.bin/gulp serve",
-    "test": "./node_modules/.bin/gulp jshint:test && ./node_modules/.bin/gulp htmlhint:test && ./node_modules/.bin/karma start --single-run --browsers PhantomJS --captureConsole false",
+    "test": "./node_modules/.bin/gulp jshint --env test && ./node_modules/.bin/gulp htmlhint --env test && ./node_modules/.bin/karma start --single-run --browsers PhantomJS --captureConsole false",
     "test-unit": "./node_modules/.bin/karma start",
     "postinstall": "./node_modules/.bin/jspm install",
-    "test-build": "./bin/test-build.sh"
+    "test-build": "./bin/test-build.sh",
+    "test-e2e": "./node_modules/.bin/protractor protractor.config.js",
+    "forever-start": "echo \"Launching server (dev mode) on port 9000 ...\" && ./node_modules/.bin/forever start ./test/forever.gulp.serve.test.json",
+    "forever-stop": "echo \"Stopping script ...\" && ./node_modules/.bin/forever stop gulp.serve.test",
+    "forever-stopall": "echo \"Stopping all script ...\" && ./node_modules/.bin/forever stopall",
+    "forever-list": "./node_modules/.bin/forever list",
+    "test-e2e-standalone": "npm run forever-start && sleep 4 && npm run test-e2e && npm run forever-stop",
+    "webdriver-manager-update": "./node_modules/.bin/webdriver-manager update"
   },
   "pre-commit": [
     "test"
@@ -52,6 +59,7 @@
     "colors": "^1.1.2",
     "connect-modrewrite": "^0.8.1",
     "del": "^1.2.0",
+    "forever": "^0.15.1",
     "git-rev-sync": "^1.3.0",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^2.3.1",
@@ -63,6 +71,7 @@
     "gulp-footer": "^1.0.5",
     "gulp-header": "^1.2.2",
     "gulp-htmlhint": "^0.3.0",
+    "gulp-if": "^1.2.5",
     "gulp-imagemin": "^2.3.0",
     "gulp-inject": "^1.5.0",
     "gulp-jshint": "^1.11.0",
@@ -77,6 +86,7 @@
     "gulp-usemin": "^0.3.11",
     "gulp-util": "^3.0.5",
     "jasmine-core": "^2.3.4",
+    "jasmine-spec-reporter": "^2.4.0",
     "jshint-stylish": "^2.0.0",
     "jspm": "^0.16.0",
     "karma": "^0.13.3",
@@ -94,9 +104,13 @@
     "phantomjs-polyfill": "0.0.1",
     "pre-commit": "^1.1.1",
     "pre-push": "^0.1.1",
+    "protractor": "^2.1.0",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.1.2",
     "systemjs-builder": "^0.13.1"
+  },
+  "config": {
+    "port": 9000
   },
   "engines": {
     "node": ">=0.12.x",

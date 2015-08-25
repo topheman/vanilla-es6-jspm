@@ -41,8 +41,8 @@ NB: `gulp`, `jspm`, `karma` ... are all installed locally so if you don't want i
 You can launch your app in different modes (dev/prod/test):
 
 * `gulp serve` : **will launch a dev server**
-* `gulp serve:prod` : will launch the version of the site built in `build/dist` folder (need to `gulp build` before) - *usefull to check your site before deploying it*.
-* `gulp serve:test` : will launch a dev server with test configuration - *usefull to debug / create unit tests*:
+* `gulp serve --env prod` : will launch the version of the site built in `build/dist` folder (need to `gulp build` before) - *usefull to check your site before deploying it*.
+* `gulp serve --env test` : will launch a dev server with test configuration - *usefull to debug / create unit tests*:
 	* jspm configuration overridden by the `test/jspm.override.json` file
 	* the app will appear with "TEST" in background, thanks to `test/fixtures/bs.snippet.html` injected on the the fly (containing specific css)
 
@@ -52,12 +52,30 @@ You can launch your app in different modes (dev/prod/test):
 
 ##Test
 
+###Unit
+
+The unit tests are in `test/unit/spec`.
+
 You can see exactly which commands match the following npm tasks in the [package.json](https://github.com/topheman/vanilla-es6-jspm/blob/master/package.json#L6).
 
 * `npm test`: runs all the tests (will be triggered on `git-pre-commit`)
 * `npm run test-unit`: runs the unit tests through `karma`
 * `npm run test-build`: tests the `gulp build` task (will be triggered on `git-pre-push`)
 	* if `build/dist` folder is under git management ([see deployment section](#deployment)), this task will git stash/unstash before and after testing.
+
+###e2e
+
+*In progress.*
+
+The e2e tests are in `test/e2e/spec`.
+
+You can run the e2e tests two ways (either ways, they need a server in order to run):
+
+* standalone (no need to have a server launched / **make sure you don't**) - launch : `npm run test-e2e-standalone`: this will:
+	* start a test server
+	* run the e2e tests
+	* stop the test server
+* if you want to run them against your current server (this should be a server launched in test mode with `gulp serve --env test`), open a new terminal tab and run `npm run test-e2e`
 
 ##Git workflow & Continuous Integration
 

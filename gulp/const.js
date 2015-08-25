@@ -5,6 +5,8 @@ import moment from 'moment';
 import pkg from '../package.json';
 import gitRev from 'git-rev-sync';
 
+import {ENV} from './utils.js';
+
 var infos = {
   file: '',
   pkg: pkg,
@@ -38,7 +40,17 @@ var tpl = [
   '@author <%= (pkg.author && pkg.author.name) ? pkg.author.name : pkg.author %>',
   '@copyright <%= year %>(c) <%= (pkg.author && pkg.author.name) ? pkg.author.name : pkg.author %>',
   '@license <%= pkg.license %>'
-].join('\n * ');
+];
+
+if(ENV === 'test'){
+  tpl = [].concat(tpl,
+    '',
+    'THIS IS A TEST VERSION',
+    'This version is not meant for production but for testing purpose only'
+  );
+}
+
+tpl = tpl.join('\n * ');
 
 /**
  * The banner is the comment that is placed at the top of our compiled

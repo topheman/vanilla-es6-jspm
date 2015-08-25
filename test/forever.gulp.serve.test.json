@@ -1,0 +1,14 @@
+{
+  "uid": "gulp.serve.test",
+  "append": true,
+  "watch": false,
+  "script": "./node_modules/.bin/gulp",
+  "args": [
+    "serve",
+    "--env",
+    "test",
+    "--disable-watch",
+    "--open",
+    false
+  ]
+}
