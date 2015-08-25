@@ -28,7 +28,7 @@ gulp.task('watch', () => {
   gulp.watch(paths.app.styles, ['sass', browserSync.reload]);//if takes to long, take a look at https://github.com/Browsersync/recipes/tree/master/recipes/gulp.task.sequence
 
   // Create the html list of file to watch according to env
-  if (ENV !== 'prod') {
+  if (ENV !== 'dist') {
     var htmlFileList;
     switch(ENV){
       case 'test':

@@ -24,7 +24,7 @@ function infos(env) {
 /**
  * Launches a browserSync server
  * Injecting `env` as a global variable + overriding jspm.config.js if in test
- * @param env dev/test/prod
+ * @param env dev/test/dist
  * @param baseDir
  * @param [options]
  * @param [options.files='default']
@@ -70,7 +70,7 @@ function startBrowserSync(env, baseDir, options = {}) {
    *
    * Only used on dev and test
    */
-  if (env.toLowerCase() !== 'prod') {
+  if (env.toLowerCase() !== 'dist') {
     var injectBrowserSync = [];
     var bsHtmlSnippet = '';
     injectBrowserSync.push('<script id="inject-browser-sync">');
@@ -105,17 +105,17 @@ function startBrowserSync(env, baseDir, options = {}) {
 //=============================================
 
 /**
- * The 'serve' task. run `gulp serve --env dev/prod/test`
+ * The 'serve' task. run `gulp serve --env dev/dist/test`
  *
- * Pass the env dev/prod/test via the --env flag
+ * Pass the env dev/dist/test via the --env flag
  *
  * - dev: runs a dev server with livereload/watch
  * - test: runs a test server with livereload/watch (over the test also)
- * - prod: serves the `build/dist` folder
+ * - dist: serves the `build/dist` folder
  */
 var gulpServeDependencyTasks;
 switch(ENV){
-  case 'prod':
+  case 'dist':
     gulpServeDependencyTasks = [];
     break;
   case 'test':
@@ -126,8 +126,8 @@ switch(ENV){
 gulp.task('serve', gulpServeDependencyTasks, () => {
   infos(ENV);
   switch(ENV){
-    case 'prod':
-      startBrowserSync('prod', ['./build/dist'], {port: PORT, open: OPEN});
+    case 'dist':
+      startBrowserSync('dist', ['./build/dist'], {port: PORT, open: OPEN});
       break;
     case 'test':
       startBrowserSync('test', ['.tmp', 'src', 'jspm_packages', './'], {port: PORT, open: OPEN});

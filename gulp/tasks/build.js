@@ -52,7 +52,7 @@ function bytediffFormatter(data) {
 
 /**
  * The 'clean' task delete 'build' and '.tmp' directories.
- * But keeps build/dist/.git (if you git init this folder to push to production via git)
+ * But keeps build/dist/.git (if you git init this folder to deploy via git)
  */
 gulp.task('clean', (cb) => {
   const files = [
@@ -123,7 +123,7 @@ gulp.task('compile', ['htmlhint', 'sass', 'bundle'], () => {
 
 /**
  * The 'build' task gets app ready for deployment by processing files
- * and put them into directory ready for production.
+ * and put them into `build/dist` directory ready for deployment.
  *
  * Added callback to manage errors and exit with a clean exit code if task fails
  * (needed for CI tools such as Travis)

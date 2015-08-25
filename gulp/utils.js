@@ -20,8 +20,8 @@ export const DISABLE_WATCH = util.env['disable-watch'];
 // if none of them is set, 'dev' is set by default
 // if you pass by --env flag, it will be reflected in process.env.ENV
 var environment = ((util.env.env === true ? 'dev' : util.env.env) || process.env.ENV || 'dev').toLowerCase();
-if (['dev', 'prod', 'test'].indexOf(environment) === -1) {
-  throw new Error('--env flag only accepts dev/prod/test')
+if (['dev', 'dist', 'test'].indexOf(environment) === -1) {
+  throw new Error('--env flag only accepts dev/dist/test')
 }
 if (!process.env.ENV) {
   LOG(COLORS.yellow('[INFOS] Setting process.env.ENV=' + environment));

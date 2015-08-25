@@ -49,6 +49,8 @@ gulp.task('jspmconfig', () => {
 
 /**
  * Create JS production bundle.
+ *
+ * If the flag `--env test` was passed, make a production bundle based on the test configuration
  */
 gulp.task('bundle', ['jshint', 'jspmconfig'], (cb) => {
   const Builder = require('systemjs-builder');
