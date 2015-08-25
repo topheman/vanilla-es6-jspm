@@ -4,14 +4,14 @@ var _ = require('lodash');
 var colors = require('colors');
 var clientCaptureConsole = true;
 
-if (typeof(argv.captureConsole) !== 'undefined') {
-  if (argv.captureConsole !== 'true' && argv.captureConsole !== 'false') {
-    console.error('[ERROR][Invalid Argument] Flag --captureConsole only accepts true or false'.red);
+if (typeof(argv['capture-console']) !== 'undefined') {
+  if (argv['capture-console'] !== 'true' && argv['capture-console'] !== 'false') {
+    console.error('[ERROR][Invalid Argument] Flag --capture-console only accepts true or false'.red);
     console.error('[ERROR][Invalid Argument] Exiting'.red);
     process.exit(9);// "Invalid Argument" - see exit code list : https://github.com/joyent/node/blob/master/doc/api/process.markdown#exit-code
   }
   else{
-    clientCaptureConsole = argv.captureConsole === 'false' ? false : true;
+    clientCaptureConsole = argv['capture-console'] === 'false' ? false : true;
   }
 }
 if(clientCaptureConsole === false) {
