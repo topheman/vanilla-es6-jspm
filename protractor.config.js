@@ -2,6 +2,7 @@
 
 require('babel/register');//write test in es6
 var SpecReporter = require('jasmine-spec-reporter');
+var pkg = require('./package.json');
 
 /**
  * The default port on which the test will be run is the one specified in package.json under config.port
@@ -12,7 +13,7 @@ var SpecReporter = require('jasmine-spec-reporter');
  *
  */
 var argv = require('minimist')(process.argv.slice(2));
-var PORT = argv.port || process.env.npm_package_config_port || 9000;
+var PORT = argv.port || (pkg.config ? (pkg.config.port ? pkg.config.port : null) : null) || 9000;
 var BASE_URL = argv['base-url'] || 'http://localhost';
 console.log('[INFOS] Testing on ' + BASE_URL + ':' + PORT);
 
