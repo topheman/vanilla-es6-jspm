@@ -110,9 +110,15 @@ If either one of them fails, the build will be flagged as failed.
 
 ###SauceLabs
 
-SauceLabs is a cross-browser automation tool built on top of Selenium WebDriver (Protractor uses Selenium WebDriver). It lets you run e2e tests accross multiple device and is well integrated to Travis CI.
+*You can skip this if e2e testing isn't part of your Continuous Integration workflow.*
+
+SauceLabs is a cross-browser automation tool built on top of Selenium WebDriver (Protractor uses Selenium WebDriver). It lets you run e2e tests accross multiple devices and is well integrated to Travis CI.
 
 If you want to set it up for your own project, [read this post](http://dev.topheman.com/setup-travis-ci-saucelabs-for-protractor).
+
+To avoid traffic on the Sauce Connect tunnel that could lead to timeouts, SauceLabs tests are run against a server serving the `build/dist` folder, containing a bundled version of the site in `test` mode (to benefit from the stubs and mocks) which was created thanks to `gulp build --env test`.
+
+More infos on this commit: [#7898239](https://github.com/topheman/vanilla-es6-jspm/commit/7898239ea252b9163e3e02b77aef2d6e13c0fa5a)
 
 ##Deployment
 
