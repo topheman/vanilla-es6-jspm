@@ -19,9 +19,9 @@ This project is the first step: a **vanillaJS/ES6/jspm boilerplate** ([more info
 * Manage development and production workflow with [jspm](http://jspm.io/), [SystemJS Builder](https://github.com/systemjs/builder) and [Gulp](http://gulpjs.com/).
 * Backend mocking / stubs / overriding of the module loader
 * **Karma unit tests** (using mocks and stubs)
-* **e2e testing** with protractor *(in progress)*
+* **e2e testing** with protractor
 * Produce optimized, production ready code for deployment
-* **Continuous Integration** ready (tests via [Travis CI](https://travis-ci.org/topheman/vanilla-es6-jspm))
+* **Continuous Integration** ready (tests via [Travis CI](https://travis-ci.org/topheman/vanilla-es6-jspm) with [SauceLabs](https://saucelabs.com/) integration for e2e tests)
 
 ##Requirements
 
@@ -74,8 +74,6 @@ You can see exactly which commands match the following npm tasks in the [package
 
 ###e2e
 
-*This part works but is still in progress (not yet connected to Travis CI - [follow trello card](https://trello.com/c/MQNwxEa7/39-protractor-e2e-tests))*
-
 The e2e tests are in `test/e2e/spec`. It's using [protractor](http://www.protractortest.org/) - an end-to-end test framework for AngularJS applications, based on [Selenium Webdriver](http://www.seleniumhq.org/). It can also be used on non-angular websites ([more on wiki](https://github.com/topheman/vanilla-es6-jspm/wiki/FAQ#protractor)).
 
 You can run the e2e tests two ways (either way, they need a server in order to run):
@@ -109,6 +107,12 @@ If either one of them fails, the build will be flagged as failed.
 
 * [travis.yml](https://github.com/topheman/vanilla-es6-jspm/blob/master/.travis.yml)
 * [Travis CI setup](https://github.com/topheman/vanilla-es6-jspm/wiki/FAQ#travis-ci-setup)
+
+###SauceLabs
+
+SauceLabs is a cross-browser automation tool built on top of Selenium WebDriver (Protractor uses Selenium WebDriver). It lets you run e2e tests accross multiple device and is well integrated to Travis CI.
+
+If you want to set it up for your own project, [read this post](http://dev.topheman.com/setup-travis-ci-saucelabs-for-protractor).
 
 ##Deployment
 
