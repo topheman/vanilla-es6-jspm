@@ -1,0 +1,14 @@
+{
+  "uid": "gulp.serve.dist",
+  "append": true,
+  "watch": false,
+  "script": "./node_modules/.bin/gulp",
+  "args": [
+    "serve",
+    "--env",
+    "dist",
+    "--disable-watch",
+    "--open",
+    false
+  ]
+}
