@@ -2,6 +2,8 @@
 
 import Geolocation from 'components/Geolocation/Geolocation.js';
 
+import {onDOMElementChange} from '../utils.js';
+
 describe('components/Component/Geolocation.js', () => {
 
   const WRAPPER_ID = 'simple-wrapper';
@@ -58,18 +60,19 @@ describe('components/Component/Geolocation.js', () => {
 
     it('should hide spinner when results ready', (done) => {
       document.querySelector('button.geolocation-button').click();
-      setTimeout(() => {
-        expect(document.querySelector('.spinner').style.display).toEqual('none');
+      var spinner = document.querySelector('.spinner');
+      onDOMElementChange(spinner, () => {
+        expect(spinner.style.display).toEqual('none');
         done();
-      },5);
+      });
     });
 
     it('should show results when ready', (done) => {
       document.querySelector('button.geolocation-button').click();
-      setTimeout(() => {
+      onDOMElementChange(document.querySelector('.geolocation-infos'), () => {
         expect(document.querySelector('ul.geolocation-infos li').innerHTML).toEqual('City: Hello World !!!');
         done();
-      },5);
+      });
     });
 
   });
