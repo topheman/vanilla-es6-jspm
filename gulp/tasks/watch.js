@@ -30,7 +30,7 @@ gulp.task('watch', () => {
   // Create the html list of file to watch according to env
   if (ENV !== 'dist') {
     var htmlFileList;
-    switch(ENV){
+    switch (ENV) {
       case 'test':
         htmlFileList = [].concat(paths.app.html, paths.app.templates, paths.test.fixtures);
         break;
@@ -41,7 +41,7 @@ gulp.task('watch', () => {
 
     // Create the js list of file to watch according to env
     var jsFileList;
-    switch(ENV){
+    switch (ENV) {
       case 'test':
         jsFileList = [].concat(paths.app.scripts, paths.gulpfile, paths.config.karma, paths.config.e2e, paths.test.stubs, paths.test.unit, paths.test.e2e);
         break;

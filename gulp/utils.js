@@ -30,3 +30,21 @@ if (!process.env.ENV) {
 LOG(COLORS.yellow('### Running in ' + environment + ' ###'));
 
 export const ENV = environment;
+
+/**
+ * @warn this is still in progress
+ *
+ * @todo add config.runUnitTestsOnChange: true in package.json
+ * @todo add npm run test-unit to the watch tasks
+ *
+ * For grunt serve task - Unit tests will be run on file changes if:
+ * In package.json, config.runUnitTestsOnChange = true (turning it to false won't run the tests on change)
+ * You can override this behavior by passing the flag :
+ * * `--run-unit-tests-on-change` (to run the unit tests)
+ * * `--run-unit-tests-on-change false` (not to run the unit tests)
+ */
+var runUnitTestsOnChange = (pkg.config ? (pkg.config.runUnitTestsOnChange !== undefined ? pkg.config.runUnitTestsOnChange : true) : true);
+if (util.env['run-unit-tests-on-change'] !== undefined) {
+  runUnitTestsOnChange = util.env['run-unit-tests-on-change'] === 'false' ? false : util.env['run-unit-tests-on-change'];
+}
+export const RUN_UNIT_TESTS_ON_RELOAD = runUnitTestsOnChange;

@@ -2,16 +2,16 @@
 
 /**
  * When you use protractor in a non angular way, you have to tell it not to wait
- * To do that, in the protractor.config, on the onPrepare, a global method is exposed: isAngularSite
- * It switches on/off the browser.ignoreSynchronization flag
+ * by specifying browser.ignoreSynchronization = false in the onPrepare of the protractor config.
+ *
+ * If you have a website completly angular or completly non-angular, just use the config.isAngular in package.json
+ *
+ * If you want to be able to switch the behavior of protractor, use the following helper:
+ * - in the protractor config, a global method is exposed: isAngularSite
+ * - this method switches on/off the browser.ignoreSynchronization flag
  * You have to do that for each beforeEach.
  *
  * This utility is here to simplify the boilerplate.
- *
- * If you are on angular, you can use the regular beforeEach
- *
- * If you are not, you can use this one, simply giving the false flag in first argument
- * You still can pass your own beforeEach function
  *
  * Example: beforeEachIsAngular(false) or beforeEachIsAngular(false, () => { console.log('toto'); })
  * @param args

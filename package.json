@@ -94,6 +94,7 @@
     "karma": "^0.13.3",
     "karma-chrome-launcher": "^0.2.0",
     "karma-firefox-launcher": "^0.1.6",
+    "karma-html2js-preprocessor": "^0.1.0",
     "karma-jasmine": "^0.3.6",
     "karma-jspm": "^2.0.1-beta.1",
     "karma-phantomjs-launcher": "^0.2.0",
