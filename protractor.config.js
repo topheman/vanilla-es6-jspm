@@ -5,6 +5,12 @@ var SpecReporter = require('jasmine-spec-reporter');
 var pkg = require('./package.json');
 
 /**
+ * This constant is retrieved from the package.json in the `config.isAngular`
+ * That way, you can specify globally if the site is Anuglar or not
+ */
+var IS_ANGULAR = (pkg.config ? (pkg.config.isAngular ? pkg.config.isAngular : false) : false);
+
+/**
  * The default port on which the test will be run is the one specified in package.json under config.port
  *
  * To overload this port, just pass the flag --port
@@ -23,8 +29,10 @@ var config = {
     'test/e2e/spec/**/*.spec.js'
   ],
   onPrepare: function () {
+    browser.ignoreSynchronization = !IS_ANGULAR;
     /**
      * Set on/off angular synchronisation of protractor
+     * Use the beforeEachIsAngular helper in `test/e2e/utils.js`
      * @param flag
      */
     global.isAngularSite = function (flag) {

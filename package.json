@@ -112,7 +112,8 @@
     "systemjs-builder": "^0.13.1"
   },
   "config": {
-    "port": 9000
+    "port": 9000,
+    "isAngular": false
   },
   "engines": {
     "node": ">=0.12.x",

@@ -1,9 +1,7 @@
 'use strict';
 
-import {beforeEachIsAngular} from '../utils.js';
-
 // before each 'it' of the following describe:
-beforeEachIsAngular(false, () => {
+beforeEach(() => {
   //go to page (if not yet)
   goToUrl('/');
   //wait for the component to be loaded
