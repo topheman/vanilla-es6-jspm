@@ -1,6 +1,9 @@
 'use strict';
 
 /**
+ * @unsused since the MutationObserver shim messes with jasmine async, this utility is not used for the moment
+ * You can see an example at this commit: https://github.com/topheman/vanilla-es6-jspm/commit/32f9923353ed818f03b166102b912a2530ee40b6
+ *
  * This helper will listen to DOM changes and fire the callback
  * It is based on DOM3 MutationObserver
  *

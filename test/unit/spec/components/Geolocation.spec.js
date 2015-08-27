@@ -2,8 +2,6 @@
 
 import Geolocation from 'components/Geolocation/Geolocation.js';
 
-import {onDOMElementChange} from '../utils.js';
-
 describe('components/Component/Geolocation.js', () => {
 
   const WRAPPER_ID = 'simple-wrapper';
@@ -60,19 +58,18 @@ describe('components/Component/Geolocation.js', () => {
 
     it('should hide spinner when results ready', (done) => {
       document.querySelector('button.geolocation-button').click();
-      var spinner = document.querySelector('.spinner');
-      onDOMElementChange(spinner, () => {
-        expect(spinner.style.display).toEqual('none');
+      setTimeout(() => {
+        expect(document.querySelector('.spinner').style.display).toEqual('none');
         done();
-      });
+      },50);//sad but PhantomJS friendly ...
     });
 
     it('should show results when ready', (done) => {
       document.querySelector('button.geolocation-button').click();
-      onDOMElementChange(document.querySelector('.geolocation-infos'), () => {
+      setTimeout(() => {
         expect(document.querySelector('ul.geolocation-infos li').innerHTML).toEqual('City: Hello World !!!');
         done();
-      });
+      },50);//sad but PhantomJS friendly ...
     });
 
   });
