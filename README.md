@@ -23,6 +23,20 @@ This project is the first step: a **vanillaJS/ES6/jspm boilerplate** ([more info
 * Produce optimized, production ready code for deployment
 * **Continuous Integration** ready (tests via [Travis CI](https://travis-ci.org/topheman/vanilla-es6-jspm) with [SauceLabs](https://saucelabs.com/) integration for e2e tests)
 
+##TL;DR
+
+Want to get started right now and bother about all the great features later ?
+
+```shell
+$ npm install -g jspm
+$ git clone https://github.com/topheman/vanilla-es6-jspm.git
+$ cd vanilla-es6-jspm
+$ npm install
+$ gulp serve
+```
+
+You're ready to develop in ES6 the project in the `src` folder!
+
 ##Requirements
 
 * node/npm
