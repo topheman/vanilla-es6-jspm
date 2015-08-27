@@ -10,11 +10,11 @@ if (typeof(argv['capture-console']) !== 'undefined') {
     console.error('[ERROR][Invalid Argument] Exiting'.red);
     process.exit(9);// "Invalid Argument" - see exit code list : https://github.com/joyent/node/blob/master/doc/api/process.markdown#exit-code
   }
-  else{
+  else {
     clientCaptureConsole = argv['capture-console'] === 'false' ? false : true;
   }
 }
-if(clientCaptureConsole === false) {
+if (clientCaptureConsole === false) {
   console.log('[INFO] console.*() statements are removed to have a clearer report.'.yellow);
   console.log('[INFO] If you want to access them, launch npm run test-unit'.yellow);
 }
@@ -33,7 +33,8 @@ var karmaJspmConfig = {
   config: 'jspm.config.js',
   loadFiles: [
     'node_modules/phantomjs-polyfill/bind-polyfill.js',//necessary for PhantomJS (doesn't have Function.bind)
-    'test/unit/spec/**/*.js'
+    'test/unit/spec/**/*.js',
+    'test/fixtures/**/*.html'
   ],
   serveFiles: [
     'src/app/**/*.js',
@@ -68,6 +69,10 @@ module.exports = function (config) {
 
     reporters: ['spec'],
 
+    preprocessors: {
+      'test/fixtures/**/*.html': ['html2js']
+    },
+
     port: 9876,
     colors: true,
     autoWatch: false,
@@ -90,7 +95,8 @@ module.exports = function (config) {
       'karma-safari-launcher',
       'karma-phantomjs-launcher',
       'karma-jasmine',
-      'karma-spec-reporter'
+      'karma-spec-reporter',
+      'karma-html2js-preprocessor'
     ]
 
   });
