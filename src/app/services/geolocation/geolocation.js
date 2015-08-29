@@ -1,4 +1,4 @@
-export default function (ipAddress = "") {
+export function geolocation(ipAddress = "") {
   "use strict";
   let url = `https://freegeoip.net/json/${ipAddress}`;
   return new Promise((resolve, reject) => {

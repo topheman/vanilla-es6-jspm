@@ -2,7 +2,7 @@ console.log('[STUB]', 'LOADED', 'geolocation');
 
 import mock from './geolocation.json!text';
 
-export default function () {
+export function geolocation() {
   "use strict";
   return new Promise(function (resolve, reject) {
     var result = JSON.parse(mock);

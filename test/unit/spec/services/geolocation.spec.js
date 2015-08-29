@@ -1,7 +1,7 @@
 'use strict';
 
 //in test mode, this is the stub which will be retrieved
-import geolocation from 'services/geolocation/geolocation.js';
+import {geolocation} from 'services/geolocation/geolocation.js';
 
 describe('services/geolocation/geolocation.js (stub version)', function () {
 
