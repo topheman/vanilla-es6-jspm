@@ -79,7 +79,7 @@ h6 {
   text-decoration: none;
 }
 h1 {
-  font-size: 46px;
+  font-size: 36px;
   margin: 0.75em 0 0.5em;
 }
 h2 {
@@ -217,7 +217,7 @@ th {
   padding: 7px 0 60px;
   position: relative;
   width: 99%;
-  padding-top: 50px;
+  padding-top: 0px;
 }
 /* -- Table of Contents ----------------------------------------------------- */
 /* The #toc id refers to the single global table of contents, while the .toc
@@ -370,7 +370,7 @@ ul li p {
   padding: 0 15px 1px 20px;
   margin-bottom: 15px;
   box-shadow: 0 1px 20px #333;
-  position: fixed;
+  /*position: fixed;*/
   width: 100%;
   box-sizing: border-box;
   z-index: 10;
@@ -738,7 +738,7 @@ kbd .cmd {
 }
 /* -- API options ----------------------------------------------------------- */
 #api-options {
-  margin-top: 2.2em;
+  /*margin-top: 2.2em;*/
   position: absolute;
   right: 1.5em;
 }
