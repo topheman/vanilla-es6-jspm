@@ -56,7 +56,8 @@ const paths = {
       fonts: `${root}/build/dist/fonts/`,
       images: `${root}/build/dist/images/`,
       styles: `${root}/build/dist/styles/`,
-      scripts: `${root}/build/dist/scripts/`
+      scripts: `${root}/build/dist/scripts/`,
+      docs: `${root}/build/dist/docs/`
     },
     docs: `${root}/build/docs/`
   },

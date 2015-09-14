@@ -31,6 +31,8 @@ LOG(COLORS.yellow('### Running in ' + environment + ' ###'));
 
 export const ENV = environment;
 
+export const WITH_DOCS = util.env['with-docs'];
+
 /**
  * @warn this is still in progress
  *
