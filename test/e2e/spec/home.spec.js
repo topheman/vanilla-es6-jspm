@@ -1,16 +1,16 @@
 'use strict';
 
-// before each 'it' of the following describe:
-beforeEach(() => {
-  //go to page (if not yet)
-  goToUrl('/');
-  //wait for the component to be loaded
-  browser.driver.wait(() => {
-    //will stop wait when the element is displayed - (~like a DOM Ready for e2e tests) - timeout is only here to error in case it takes too long
-    return browser.driver.findElement(by.id('geolocation')).isDisplayed();
-  }, 4000);
-});
 describe('Home page', () => {
+  // before each 'it' of the following describe:
+  beforeEach(() => {
+    //go to page (if not yet)
+    goToUrl('/');
+    //wait for the component to be loaded
+    browser.driver.wait(() => {
+      //will stop wait when the element is displayed - (~like a DOM Ready for e2e tests) - timeout is only here to error in case it takes too long
+      return browser.driver.findElement(by.id('geolocation')).isDisplayed();
+    }, 4000);
+  });
   it('should have a title', () => {
     expect(browser.getTitle()).toEqual('vanilla-es6-jspm');
   });
