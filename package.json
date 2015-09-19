@@ -41,7 +41,6 @@
   "author": "Christophe Rosset",
   "license": "MIT",
   "jspm": {
-    "directories": {},
     "configFile": "jspm.config.js",
     "dependencies": {
       "bootstrap-sass": "npm:bootstrap-sass@3.3.5",
@@ -51,9 +50,9 @@
       "text": "github:systemjs/plugin-text@^0.0.2"
     },
     "devDependencies": {
-      "babel": "npm:babel-core@^5.8.22",
-      "babel-runtime": "npm:babel-runtime@^5.8.20",
-      "core-js": "npm:core-js@^1.1.0"
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
     }
   },
   "devDependencies": {
@@ -91,7 +90,7 @@
     "jasmine-core": "^2.3.4",
     "jasmine-spec-reporter": "^2.4.0",
     "jshint-stylish": "^2.0.0",
-    "jspm": "^0.16.0",
+    "jspm": "^0.16.6",
     "karma": "^0.13.3",
     "karma-chrome-launcher": "^0.2.0",
     "karma-firefox-launcher": "^0.1.6",
@@ -114,7 +113,7 @@
     "systemjs-builder": "^0.13.1",
     "yuidocjs": "^0.9.0"
   },
-  "yuidoc":{
+  "yuidoc": {
     "options": {
       "linkNatives": "true",
       "attributesEmit": "false",
@@ -123,7 +122,7 @@
         "./src/app"
       ],
       "outdir": "./build/docs",
-      "themedir" : "./extras/yuidoc-theme-topheman"
+      "themedir": "./extras/yuidoc-theme-topheman"
     }
   },
   "config": {
