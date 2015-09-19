@@ -47,7 +47,7 @@ function startBrowserSync(env, baseDir, options = {}) {
       baseDir: baseDir,
       middleware: [
         //proxyMiddleware,
-        modRewrite(['!\\.\\w+$ /index.html [L]']), // require for HTML5 mode
+        //modRewrite(['!\\.\\w+$ /index.html [L]']), // require for HTML5 mode
         function (req, res, next) {
           //don't cache the entry point (since there are some inline <script> tags injected that can be different according to the env you launch it)
           if (req.url.indexOf('/index.html') > -1) {

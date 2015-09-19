@@ -17,7 +17,8 @@
     "forever-stopall": "echo \"Stopping all script ...\" && ./node_modules/.bin/forever stopall",
     "forever-list": "./node_modules/.bin/forever list",
     "test-e2e-standalone": "npm run forever-start-test && sleep 4 && npm run test-e2e && npm run forever-stop-test",
-    "webdriver-manager-update": "./node_modules/.bin/webdriver-manager update"
+    "webdriver-manager-update": "./node_modules/.bin/webdriver-manager update",
+    "yuidoc": "./node_modules/.bin/yuidoc"
   },
   "pre-commit": [
     "test"
@@ -110,7 +111,20 @@
     "protractor": "^2.1.0",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.1.2",
-    "systemjs-builder": "^0.13.1"
+    "systemjs-builder": "^0.13.1",
+    "yuidocjs": "^0.9.0"
+  },
+  "yuidoc":{
+    "options": {
+      "linkNatives": "true",
+      "attributesEmit": "false",
+      "selleck": "false",
+      "paths": [
+        "./src/app"
+      ],
+      "outdir": "./build/docs",
+      "themedir" : "./extras/yuidoc-theme-topheman"
+    }
   },
   "config": {
     "port": 9000,

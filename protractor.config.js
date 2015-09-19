@@ -21,13 +21,21 @@ var IS_ANGULAR = (pkg.config ? (pkg.config.isAngular ? pkg.config.isAngular : fa
 var argv = require('minimist')(process.argv.slice(2));
 var PORT = argv.port || (pkg.config ? (pkg.config.port ? pkg.config.port : null) : null) || 9000;
 var BASE_URL = argv['base-url'] || 'http://localhost';
+var WITH_DOCS = argv['with-docs'] || process.env.WITH_DOCS;
 console.log('[INFOS] Testing on ' + BASE_URL + ':' + PORT);
+
+var specs = [
+  'test/e2e/spec/**/*.spec.js'
+];
+
+if(WITH_DOCS){
+  console.log('[INFOS] Running in --with-docs mode (will run the test that will check for /docs to make sure they were correctly generated)');
+  specs.push('test/e2e/spec/docs.specs.conditional.js');
+}
 
 var config = {
   framework: 'jasmine2',
-  specs: [
-    'test/e2e/spec/**/*.spec.js'
-  ],
+  specs: specs,
   onPrepare: function () {
     browser.ignoreSynchronization = !IS_ANGULAR;
     /**

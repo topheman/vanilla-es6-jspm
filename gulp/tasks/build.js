@@ -16,7 +16,7 @@ import inject from 'gulp-inject';
 import runSequence from 'run-sequence';
 
 import {BANNER, BANNER_HTML} from '../const';
-import {LOG, COLORS} from '../utils';
+import {LOG, COLORS, WITH_DOCS} from '../utils';
 import paths from '../paths';
 
 //=============================================
@@ -51,7 +51,7 @@ function bytediffFormatter(data) {
 //=============================================
 
 /**
- * The 'clean' task delete 'build' and '.tmp' directories.
+ * The 'clean' task delete 'build/dist' and '.tmp' directories.
  * But keeps build/dist/.git (if you git init this folder to deploy via git)
  */
 gulp.task('clean', (cb) => {
@@ -73,6 +73,35 @@ gulp.task('clean', (cb) => {
 gulp.task('extras', () => {
   return gulp.src([paths.app.basePath + '*.{ico,png,txt}', paths.app.basePath + '404.html'])
     .pipe(gulp.dest(paths.build.dist.basePath));
+});
+
+/**
+ * This task generates doc to `build/docs` and copies it to `build/dist/docs`
+ * It only does it if run with correct flag: `gulp build --with-docs`
+ *
+ * If no flag, does nothing.
+ */
+gulp.task('extras-docs', (cb) => {
+  if(WITH_DOCS){
+    runSequence(
+      ['generate-docs'],
+      ['copy-generated-docs'],
+      (err) => {
+        if (err) {
+          let exitCode = 3;
+          LOG('[ERROR] gulp build task failed (docs generation step)', err);
+          LOG('[FAIL] gulp build task failed (docs generation step) - exiting with code ' + exitCode);
+          return process.exit(exitCode);
+        }
+        else {
+          return cb();
+        }
+      }
+    );
+  }
+  else{
+    return cb();
+  }
 });
 
 /**
@@ -132,6 +161,7 @@ gulp.task('build', (cb) => {
   runSequence(
     ['clean'],
     ['compile', 'extras', 'images'],
+    ['extras-docs'],
     (err) => {
       if (err) {
         let exitCode = 2;

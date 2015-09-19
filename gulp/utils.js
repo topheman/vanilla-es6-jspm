@@ -31,6 +31,12 @@ LOG(COLORS.yellow('### Running in ' + environment + ' ###'));
 
 export const ENV = environment;
 
+export const WITH_DOCS = util.env['with-docs'] || process.env.WITH_DOCS;
+
+if(WITH_DOCS){
+  LOG(COLORS.yellow('### Running in --with-docs mode ###'));
+}
+
 /**
  * @warn this is still in progress
  *
