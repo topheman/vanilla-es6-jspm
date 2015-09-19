@@ -1,0 +1,336 @@
+{
+    "project": {
+        "name": "vanilla-es6-jspm",
+        "description": "Seed project for ES6 / jspm based apps with full production workflow",
+        "version": "0.9.0"
+    },
+    "files": {
+        "src/app/components/Component/Component.js": {
+            "name": "src/app/components/Component/Component.js",
+            "modules": {},
+            "classes": {
+                "components.Component.Component": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "components.Component": 1
+            }
+        },
+        "src/app/components/Geolocation/Geolocation.js": {
+            "name": "src/app/components/Geolocation/Geolocation.js",
+            "modules": {},
+            "classes": {
+                "components.Geolocation.Geolocation": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "components.Geolocation": 1
+            }
+        },
+        "src/app/components/Spinner/Spinner.js": {
+            "name": "src/app/components/Spinner/Spinner.js",
+            "modules": {},
+            "classes": {
+                "components.Spinner.Spinner": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "components.Spinner": 1
+            }
+        },
+        "src/app/services/geolocation/geolocation.js": {
+            "name": "src/app/services/geolocation/geolocation.js",
+            "modules": {},
+            "classes": {
+                "services.geolocation.geolocation": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "services.geolocation": 1
+            }
+        },
+        "src/app/bootstrap.js": {
+            "name": "src/app/bootstrap.js",
+            "modules": {
+                "src/app": 1
+            },
+            "classes": {
+                "bootstrap": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/app/main.js": {
+            "name": "src/app/main.js",
+            "modules": {},
+            "classes": {
+                "main": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "src/app": {
+            "name": "src/app",
+            "submodules": {},
+            "elements": {},
+            "classes": {
+                "components.Component.Component": 1,
+                "components.Geolocation.Geolocation": 1,
+                "components.Spinner.Spinner": 1,
+                "services.geolocation.geolocation": 1,
+                "bootstrap": 1,
+                "main": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "components.Component": 1,
+                "components.Geolocation": 1,
+                "components.Spinner": 1,
+                "services.geolocation": 1
+            },
+            "tag": "main",
+            "file": "src/app/main.js",
+            "line": 7,
+            "description": "This is the entry point of the whole application.\n\nExample:\n\n```\nSystem.import('app/bootstrap.js').catch(console.error.bind(console));\n```",
+            "itemtype": "main"
+        }
+    },
+    "classes": {
+        "components.Component.Component": {
+            "name": "components.Component.Component",
+            "shortname": "components.Component.Component",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "src/app",
+            "namespace": "components.Component",
+            "file": "src/app/components/Component/Component.js",
+            "line": 5,
+            "description": "This class is meant to be extended.\nIt provides the very basic methods to manage WebComponent-like (very simple version) objects.\n\nYou may override the init method according to your needs",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "domNode",
+                    "description": "Can be an domNode or a domNode id",
+                    "type": "HTMLElement|String"
+                },
+                {
+                    "name": "template",
+                    "description": "",
+                    "type": "String"
+                }
+            ]
+        },
+        "components.Geolocation.Geolocation": {
+            "name": "components.Geolocation.Geolocation",
+            "shortname": "components.Geolocation.Geolocation",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "src/app",
+            "namespace": "components.Geolocation",
+            "file": "src/app/components/Geolocation/Geolocation.js",
+            "line": 12,
+            "description": "Creates a full Geolocation component with its whole logic encapsulated:\n\n* button to launch a geolocation request\n* spinner while requesting (based on {{#crossLink \"Spinner\"}}Spinner{{/crossLink}})\n* display of the result\n\nExample:\n\n```\nvar myGeolocation = (new Geolocation('geolocation')).init();\n```",
+            "extends": "components.Component.Component",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "domNode",
+                    "description": "Can be an domNode or a domNode id",
+                    "type": "HTMLElement|String"
+                }
+            ]
+        },
+        "components.Spinner.Spinner": {
+            "name": "components.Spinner.Spinner",
+            "shortname": "components.Spinner.Spinner",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "src/app",
+            "namespace": "components.Spinner",
+            "file": "src/app/components/Spinner/Spinner.js",
+            "line": 11,
+            "description": "Creates a spinner on any domNode.\n\nSince it inherits from {{#crossLink \"components.Component.Component\"}}Component{{/crossLink}},\nyou have access to {{#crossLink \"components.Component.Component/show\"}}show{{/crossLink}} and {{#crossLink \"components.Component.Component/hide\"}}hide{{/crossLink}} methods.\n\nExample:\n\n```\nvar mySpinner = (new Spinner(document.getElementById('spinner'))).init().hide();\n```",
+            "extends": "components.Component.Component",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "domNode",
+                    "description": "Can be an domNode or a domNode id",
+                    "type": "HTMLElement|String"
+                }
+            ]
+        },
+        "services.geolocation.geolocation": {
+            "name": "services.geolocation.geolocation",
+            "shortname": "services.geolocation.geolocation",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "src/app",
+            "namespace": "services.geolocation",
+            "file": "src/app/services/geolocation/geolocation.js",
+            "line": 5
+        },
+        "bootstrap": {
+            "name": "bootstrap",
+            "shortname": "bootstrap",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "src/app",
+            "namespace": "",
+            "file": "src/app/bootstrap.js",
+            "line": 12,
+            "description": "This is the entry point of the whole application.\n\nExample:\n\n```\nSystem.import('app/bootstrap.js').catch(console.error.bind(console));\n```",
+            "mainName": "src/app",
+            "tag": "main",
+            "itemtype": "main",
+            "_main": true
+        },
+        "main": {
+            "name": "main",
+            "shortname": "main",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "src/app",
+            "namespace": "",
+            "file": "src/app/main.js",
+            "line": 7,
+            "description": "This class is called by the app entry point.\nIt holds the logic initiation."
+        }
+    },
+    "elements": {},
+    "classitems": [
+        {
+            "file": "src/app/components/Component/Component.js",
+            "line": 33,
+            "description": "Once you instanciated your object, call this method to init it.\n\nThis method is meant to be overridden.",
+            "itemtype": "method",
+            "name": "init",
+            "chainable": 1,
+            "return": {
+                "description": "",
+                "type": "components.Component.Component"
+            },
+            "class": "components.Component.Component",
+            "module": "src/app",
+            "namespace": "components.Component"
+        },
+        {
+            "file": "src/app/components/Component/Component.js",
+            "line": 45,
+            "description": "Displays block your component.",
+            "itemtype": "method",
+            "name": "show",
+            "chainable": 1,
+            "return": {
+                "description": "",
+                "type": "components.Component.Component"
+            },
+            "class": "components.Component.Component",
+            "module": "src/app",
+            "namespace": "components.Component"
+        },
+        {
+            "file": "src/app/components/Component/Component.js",
+            "line": 56,
+            "description": "Displays none your component.",
+            "itemtype": "method",
+            "name": "hide",
+            "chainable": 1,
+            "return": {
+                "description": "",
+                "type": "components.Component.Component"
+            },
+            "class": "components.Component.Component",
+            "module": "src/app",
+            "namespace": "components.Component"
+        },
+        {
+            "file": "src/app/components/Geolocation/Geolocation.js",
+            "line": 34,
+            "description": "Inits the Geolocation component, adding all its specific logic.",
+            "itemtype": "method",
+            "name": "init",
+            "chainable": 1,
+            "return": {
+                "description": "",
+                "type": "components.Geolocation.Geolocation"
+            },
+            "class": "components.Geolocation.Geolocation",
+            "module": "src/app",
+            "namespace": "components.Geolocation"
+        },
+        {
+            "file": "src/app/services/geolocation/geolocation.js",
+            "line": 10,
+            "description": "Very simple geolocation method based on https://freegeoip.net free geoip service\n(may not be the most accurate nor the most fast or available, but it's only to have some xhr in the code example).\n\nExample:\n\n```\ngeolocation()\n  .then((result) => {\n    console.log(result);//there you are\n  })\n  .catch(e => {\n    console.error(e);\n  });\n```",
+            "itemtype": "method",
+            "name": "geolocation",
+            "params": [
+                {
+                    "name": "ipAddress",
+                    "description": "You can pass a specific IP address to geoloc if you want.",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Promise"
+            },
+            "class": "services.geolocation.geolocation",
+            "module": "src/app",
+            "namespace": "services.geolocation"
+        },
+        {
+            "file": "src/app/bootstrap.js",
+            "line": 24,
+            "description": "Launches the whole app.",
+            "itemtype": "method",
+            "name": "init",
+            "static": 1,
+            "class": "bootstrap",
+            "module": "src/app"
+        },
+        {
+            "file": "src/app/main.js",
+            "line": 13,
+            "description": "Inits the whole logic of the app",
+            "itemtype": "method",
+            "name": "init",
+            "static": 1,
+            "class": "main",
+            "module": "src/app"
+        },
+        {
+            "file": "src/app/main.js",
+            "line": 22,
+            "description": "Inits the {{#crossLink \"components.Geolocation.Geolocation\"}}Geolocation{{/crossLink}} component",
+            "itemtype": "method",
+            "name": "initGeolocation",
+            "static": 1,
+            "class": "main",
+            "module": "src/app"
+        }
+    ],
+    "warnings": []
+}
