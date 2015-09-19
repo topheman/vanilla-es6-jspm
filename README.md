@@ -28,6 +28,7 @@ This project is the first step: a **vanillaJS/ES6/jspm boilerplate** ([more info
 * **e2e testing** with protractor
 * Produce optimized, production ready code for deployment
 * **Continuous Integration** ready (tests via [Travis CI](https://travis-ci.org/topheman/vanilla-es6-jspm) with [SauceLabs](https://saucelabs.com/) integration for e2e tests)
+* Automated documentation generation
 
 ##TL;DR
 
@@ -38,6 +39,7 @@ $ npm install -g jspm
 $ git clone https://github.com/topheman/vanilla-es6-jspm.git
 $ cd vanilla-es6-jspm
 $ npm install
+$ npm run webdriver-manager-update
 $ gulp serve
 ```
 
@@ -47,14 +49,14 @@ You're ready to develop in ES6 the project in the `src` folder!
 
 * node/npm
 * gulp `npm install -g gulp-cli`
-* jspm `npm install -g jspm` (v0.16.0)
-* sass - [installation](http://sass-lang.com/install)
+* jspm `npm install -g jspm` (v0.16.6)
 
-NB: `gulp`, `jspm`, `karma` ... are all installed locally so if you don't want install them globally (because you have specific versions for example), you can call them from `./node_modules/.bin/`.
+[Why all dependencies in local (see wiki) ?](https://github.com/topheman/vanilla-es6-jspm/wiki/FAQ#dependencies)
 
 ##Installation
 
 * `npm install` (it will automatically trigger the `jspm install` at `postinstall`)
+* `npm run webdriver-manager-update` *optional* (will install necessary binaries for Selenium - no need to if you already have them or wont do e2e testing)
 
 ##Launch
 
