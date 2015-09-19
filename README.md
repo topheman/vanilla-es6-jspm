@@ -10,6 +10,12 @@ jspm is great but all-in-one yeoman generators or seed projects (with build/sass
 
 This project is the first step: a **vanillaJS/ES6/jspm boilerplate** ([more infos on the Wiki](https://github.com/topheman/vanilla-es6-jspm/wiki)).
 
+* [Requirements](#requirements) / [Installation](#installation) / [Launch](#launch)
+* [Build](#build) / [Test](#test)
+* [Git workflow & Continuous Integration](#git-workflow--continuous-integration)
+* [Generate Docs](#generate-docs)
+* [Deployment](#deployment) / [Folder organization](#folder-organization)
+
 ##Features
 
 * Simple ES6 app using basic **ES6 features**
@@ -73,6 +79,10 @@ You can pass the following flags to the `gulp serve` command:
 * `gulp build --env test` : same as `gulp build`, but bundles a test version of your website (using `test/jspm.override.json`)
 	* can be usefull if you want to do end-to-end testing on a built version of your website
 
+You can also pass the following flags to `gulp build`:
+
+* `--with-docs`: will generate the documentation from source code in `build/dist/docs` ([see generate docs section](#generate-docs))
+
 ##Test
 
 ###Unit
@@ -134,6 +144,19 @@ To avoid traffic on the Sauce Connect tunnel that could lead to timeouts, SauceL
 
 More infos on this commit: [#7898239](https://github.com/topheman/vanilla-es6-jspm/commit/7898239ea252b9163e3e02b77aef2d6e13c0fa5a)
 
+##Generate Docs
+
+Documentation generation is currently based on [YUIDoc](http://yui.github.io/yuidoc/). A set of tasks is at your disposal:
+
+* `npm run yuidoc`: Will generate documentation in `build/docs`
+* `gulp build --with-docs`: Same as above, but will also copy the generated documentation to `build/dist/docs` (can be usefull if you have an opensource project and want to share docs)
+
+The configuration of YUIDoc is specified in the `package.json`, in the `yuidoc` entry - you can override this config (the theme for example).
+
+[Here is an example of the output](https://topheman.github.io/vanilla-es6-jspm/docs/).
+
+*NB:* Feel free to use your own automated documentation generator library (if you have a better solution than YUIDoc generate docs for ES6 based code, please share it).
+
 ##Deployment
 
 ###On github pages
@@ -180,17 +203,19 @@ src
 
 ```
 build
-└── dist                    --> distribution source code that goes to production
-    ├── 404.html
-    ├── favicon-128x128.png
-    ├── favicon-32x32.png
-    ├── favicon.ico
-    ├── images              --> images files
-    ├── index.html          --> app main file
-    ├── scripts             --> js files
-    │   └── app.bootstrap.build-597baeaa0a.js  --> concat, minify, reved app js files and cached templates
-    └── styles              --> css files
-        └── main.min-b8451af87d.css  --> concat & minify app css files
+├── dist                    --> distribution source code that goes to production
+│   ├── 404.html
+│   ├── docs                --> generate doc with "gulp build --with-docs"
+│   ├── favicon-128x128.png
+│   ├── favicon-32x32.png
+│   ├── favicon.ico
+│   ├── images              --> images files
+│   ├── index.html          --> app main file
+│   ├── scripts             --> js files
+│   │   └── app.bootstrap.build-597baeaa0a.js  --> concat, minify, reved app js files and cached templates
+│   └── styles              --> css files
+│       └── main.min-b8451af87d.css  --> concat & minify app css files
+└── docs                    --> generate doc with "npm run yuidoc"
 ```
 
 ###Test
@@ -202,6 +227,7 @@ test
 │   └── utils.js
 ├── fixtures
 │   └── bs.snippet.html  --> html snippet added on gulp serve:test
+├── forever.gulp.serve.dist.json
 ├── forever.gulp.serve.test.json
 ├── jspm.override.json   --> file to override jspm.config.js in test mode
 ├── stubs                --> replacements for existing modules, injected in test mode (configured in jspm.override.json)
