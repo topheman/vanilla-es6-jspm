@@ -61,7 +61,7 @@ gulp.task('bundle', ['jshint', 'jspmconfig'], (cb) => {
 
   builder.loadConfig(paths.tmp.config.jspm)
     .then(() => {
-      builder.buildSFX(inputPath, outputFile, outputOptions)
+      builder.buildStatic(inputPath, outputFile, outputOptions)
         .then(() => {
           return cb();
         })

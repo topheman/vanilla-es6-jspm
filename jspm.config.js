@@ -21,7 +21,7 @@ System.config({
     "bootstrap-sass": "npm:bootstrap-sass@3.3.5",
     "clean-css": "npm:clean-css@3.3.9",
     "core-js": "npm:core-js@1.1.4",
-    "css": "github:systemjs/plugin-css@0.1.13",
+    "css": "github:systemjs/plugin-css@0.1.17",
     "fetch-polyfill": "npm:fetch-polyfill@0.8.1",
     "text": "github:systemjs/plugin-text@0.0.2",
     "github:jspm/nodelibs-assert@0.1.0": {
