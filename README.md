@@ -155,7 +155,10 @@ The configuration of YUIDoc is specified in the `package.json`, in the `yuidoc` 
 
 [Here is an example of the output](http://topheman.github.io/vanilla-es6-jspm/docs/).
 
-*NB:* Feel free to use your own automated documentation generator library (if you have a better solution than YUIDoc generate docs for ES6 based code, please share it).
+Notes:
+
+* I'm still looking for a replacement for yuidoc, feel free to use your own doc generator - if you have one more suited for ES6, please let me know.
+* I opened an [issue here](https://github.com/topheman/vanilla-es6-jspm/issues/1), for the moment, the doc doesn't display well when served over https.
 
 ##Deployment
 
