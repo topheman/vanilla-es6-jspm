@@ -153,7 +153,7 @@ Documentation generation is currently based on [YUIDoc](http://yui.github.io/yui
 
 The configuration of YUIDoc is specified in the `package.json`, in the `yuidoc` entry - you can override this config (the theme for example).
 
-[Here is an example of the output](https://topheman.github.io/vanilla-es6-jspm/docs/).
+[Here is an example of the output](http://topheman.github.io/vanilla-es6-jspm/docs/).
 
 *NB:* Feel free to use your own automated documentation generator library (if you have a better solution than YUIDoc generate docs for ES6 based code, please share it).
 
