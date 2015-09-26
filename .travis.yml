@@ -17,7 +17,7 @@ before_script:
 - gulp build
 - gulp clean
 - gulp build --env test
-- npm run forever-start-dist
+- '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && npm run forever-start-dist || true'
 script:
 - npm test
-- npm run test-e2e
+- '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && npm run test-e2e || true'
