@@ -39,7 +39,6 @@ $ npm install -g jspm
 $ git clone https://github.com/topheman/vanilla-es6-jspm.git
 $ cd vanilla-es6-jspm
 $ npm install
-$ npm run webdriver-manager-update
 $ gulp serve
 ```
 
@@ -55,8 +54,11 @@ You're ready to develop in ES6 the project in the `src` folder!
 
 ##Installation
 
-* `npm install` (it will automatically trigger the `jspm install` at `postinstall`)
-* `npm run webdriver-manager-update` *optional* (will install necessary binaries for Selenium - no need to if you already have them or wont do e2e testing)
+All you need is to run `npm install`
+
+* `npm install`: install all npm dependencies + will **automatically** triggers the following at postinstall (so **you don't need to run those**):
+	* `jspm install`: installs front dependencies via jspm
+	* `npm run webdriver-manager-update` installs necessary binaries for Selenium (for e2e testing)
 
 ##Launch
 

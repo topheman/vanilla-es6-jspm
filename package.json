@@ -7,7 +7,7 @@
     "start": "./node_modules/.bin/gulp serve",
     "test": "./node_modules/.bin/gulp jshint --env test && ./node_modules/.bin/gulp htmlhint --env test && ./node_modules/.bin/karma start --single-run --browsers PhantomJS --capture-console false",
     "test-unit": "./node_modules/.bin/karma start",
-    "postinstall": "./node_modules/.bin/jspm install",
+    "postinstall": "./node_modules/.bin/jspm install && npm run webdriver-manager-update",
     "test-build": "./bin/test-build.sh",
     "test-e2e": "./node_modules/.bin/protractor protractor.config.js",
     "forever-start-test": "echo \"Launching server (test mode) ...\" && ./node_modules/.bin/forever start ./test/forever.gulp.serve.test.json",
