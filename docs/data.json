@@ -2,7 +2,7 @@
     "project": {
         "name": "vanilla-es6-jspm",
         "description": "Seed project for ES6 / jspm based apps with full production workflow",
-        "version": "0.10.1"
+        "version": "0.10.2"
     },
     "files": {
         "src/app/components/Component/Component.js": {
