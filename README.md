@@ -2,6 +2,7 @@ vanilla-es6-jspm
 ================
 
 [![Build Status](https://travis-ci.org/topheman/vanilla-es6-jspm.svg?branch=master)](https://travis-ci.org/topheman/vanilla-es6-jspm)
+[![Sauce Test Status](https://saucelabs.com/buildstatus/vanilla-es6-jspm)](https://saucelabs.com/u/vanilla-es6-jspm)
 [![devDependency Status](https://david-dm.org/topheman/vanilla-es6-jspm/dev-status.svg)](https://david-dm.org/topheman/vanilla-es6-jspm#info=devDependencies)
 
 **ES6** is here and you can't avoid it. We have great tools to make it work, one of them is **jspm**.
@@ -131,7 +132,7 @@ On each push, [Travis CI](https://travis-ci.org/topheman/vanilla-es6-jspm) will 
 * `gulp build`: runs the build routine (to make sure it works fine)
 * `gulp build --env test`: builds a test version of the app (to be served for e2e tests)
 * `npm test`: runs unit tests
-* `npm run test-e2e`: runs end to end tests via SauceLabs
+* `npm run test-e2e`: runs end to end tests via [SauceLabs](https://saucelabs.com/u/vanilla-es6-jspm)
 
 If either one of them fails, the build will be flagged as failed.
 
@@ -150,6 +151,8 @@ If you want to set it up for your own project, [read this post](http://dev.tophe
 To avoid traffic on the Sauce Connect tunnel that could lead to timeouts, SauceLabs tests are run against a server serving the `build/dist` folder, containing a bundled version of the site in `test` mode (to benefit from the stubs and mocks) which was created thanks to `gulp build --env test`.
 
 More infos on this commit: [#7898239](https://github.com/topheman/vanilla-es6-jspm/commit/7898239ea252b9163e3e02b77aef2d6e13c0fa5a)
+
+[See the SauceLabs Report](https://saucelabs.com/u/vanilla-es6-jspm) (much like Travis but for e2e tests)
 
 ##Generate Docs
 
