@@ -48,7 +48,7 @@ You're ready to develop in ES6 the project in the `src` folder!
 
 * node/npm
 * gulp `npm install -g gulp-cli`
-* jspm `npm install -g jspm` (v0.16.6)
+* jspm `npm install -g jspm`
 
 [Why all dependencies in local (see wiki) ?](https://github.com/topheman/vanilla-es6-jspm/wiki/FAQ#dependencies)
 
@@ -126,15 +126,18 @@ You can bypass those checks by adding to your git command the flag `--no-verify`
 
 ###Travis CI
 
-On each push/pull request, [Travis CI](https://travis-ci.org/topheman/vanilla-es6-jspm) will run the following:
+On each push, [Travis CI](https://travis-ci.org/topheman/vanilla-es6-jspm) will run the following tests/builds (see complete steps in [.travis.yml](https://github.com/topheman/vanilla-es6-jspm/blob/master/.travis.yml)):
 
-* `npm test`
-* `npm run test-build`
+* `gulp build`: runs the build routine (to make sure it works fine)
+* `gulp build --env test`: builds a test version of the app (to be served for e2e tests)
+* `npm test`: runs unit tests
+* `npm run test-e2e`: runs end to end tests via SauceLabs
 
 If either one of them fails, the build will be flagged as failed.
 
-* [travis.yml](https://github.com/topheman/vanilla-es6-jspm/blob/master/.travis.yml)
 * [Travis CI setup](https://github.com/topheman/vanilla-es6-jspm/wiki/FAQ#travis-ci-setup)
+* The `WITH_DOCS=true` env var is exported at the beginning so that the doc generation should also be tested on the `gulp build` task (without changing the commands)
+* As you'll see e2e tests don't run on pull requests. [See explanation on the FAQ](https://github.com/topheman/vanilla-es6-jspm/wiki/FAQ#continuous-integration).
 
 ###SauceLabs
 
