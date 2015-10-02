@@ -73,7 +73,7 @@
     "gulp-footer": "^1.0.5",
     "gulp-header": "^1.2.2",
     "gulp-htmlhint": "^0.3.0",
-    "gulp-if": "^1.2.5",
+    "gulp-if": "^2.0.0",
     "gulp-imagemin": "^2.3.0",
     "gulp-inject": "^3.0.0",
     "gulp-jshint": "^1.11.0",
