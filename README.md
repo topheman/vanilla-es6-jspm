@@ -28,7 +28,7 @@ This project is the first step: a **vanillaJS/ES6/jspm boilerplate** ([more info
 * **Karma unit tests** (using mocks and stubs)
 * **e2e testing** with protractor
 * Produce optimized, production ready code for deployment
-* **Continuous Integration** ready (tests via [Travis CI](https://travis-ci.org/topheman/vanilla-es6-jspm) with [SauceLabs](https://saucelabs.com/) integration for e2e tests)
+* **Continuous Integration** ready (tests via [Travis CI](https://travis-ci.org/topheman/vanilla-es6-jspm) with [SauceLabs](https://saucelabs.com/u/vanilla-es6-jspm) integration for e2e tests)
 * Automated documentation generation
 
 ##TL;DR
@@ -47,7 +47,7 @@ You're ready to develop in ES6 the project in the `src` folder!
 
 ##Requirements
 
-* node/npm
+* node/npm (tested on both node v0.12.x & v4)
 * gulp `npm install -g gulp-cli`
 * jspm `npm install -g jspm`
 
