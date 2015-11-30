@@ -108,7 +108,7 @@
     "phantomjs-polyfill": "0.0.1",
     "pre-commit": "^1.1.1",
     "pre-push": "^0.1.1",
-    "protractor": "^2.1.0",
+    "protractor": "^3.0.0",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.1.2",
     "systemjs-builder": "^0.14.11",
