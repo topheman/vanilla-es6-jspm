@@ -3,7 +3,7 @@
  * 
  * Seed project for ES6 / jspm based apps with full production workflow
  * 
- * @version v0.10.2 - 30/11/2015
+ * @version v0.10.3 - 01/12/2015
  * @revision #ae85810 - https://github.com/topheman/vanilla-es6-jspm/tree/ae858108bbe77dbc2386745fb9f32dec50236381
  * @author Christophe Rosset
  * @copyright 2015(c) Christophe Rosset
