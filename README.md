@@ -47,7 +47,7 @@ You're ready to develop in ES6 the project in the `src` folder!
 
 ##Requirements
 
-* node/npm (tested on both node v0.12.x & v4)
+* node/npm (tested on both node v0.12, v4 & v5 - [see tests](https://travis-ci.org/topheman/vanilla-es6-jspm))
 * gulp `npm install -g gulp-cli`
 * jspm `npm install -g jspm`
 
