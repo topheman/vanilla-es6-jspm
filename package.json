@@ -18,7 +18,8 @@
     "forever-list": "./node_modules/.bin/forever list",
     "test-e2e-standalone": "npm run forever-start-test && sleep 4 && npm run test-e2e && npm run forever-stop-test",
     "webdriver-manager-update": "./node_modules/.bin/webdriver-manager update",
-    "yuidoc": "./node_modules/.bin/yuidoc"
+    "yuidoc": "./node_modules/.bin/yuidoc",
+    "build-prod": "gulp build --with-docs"
   },
   "pre-commit": [
     "test"
