@@ -20,6 +20,7 @@
   "jquery": false,
   "globals": {
     "System": false,
+    "isAngularSite": false,
     "ApplicationConfiguration": false,
     "angular": false,
     "after": false,
