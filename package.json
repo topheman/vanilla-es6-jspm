@@ -92,7 +92,7 @@
     "jasmine-spec-reporter": "^2.4.0",
     "jshint": "^2.8.0",
     "jshint-stylish": "^2.0.0",
-    "jspm": "^0.16.6",
+    "jspm": "^0.16.27",
     "karma": "^0.13.3",
     "karma-chrome-launcher": "^0.2.0",
     "karma-firefox-launcher": "^0.1.6",
@@ -113,7 +113,7 @@
     "protractor": "^3.1.1",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.1.2",
-    "systemjs-builder": "^0.14.11",
+    "systemjs-builder": "^0.15.7",
     "yuidocjs": "^0.10.0"
   },
   "yuidoc": {
