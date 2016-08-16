@@ -132,7 +132,7 @@
     "isAngular": false
   },
   "engines": {
-    "node": ">=0.12.x",
+    "node": ">=4.2.x",
     "npm": ">=2.0.0"
   }
 }
