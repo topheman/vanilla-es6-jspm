@@ -59,6 +59,7 @@
   "devDependencies": {
     "babel": "^5.8.12",
     "browser-sync": "^2.11.1",
+    "chromedriver": "^2.27.3",
     "colors": "^1.1.2",
     "connect-modrewrite": "^0.8.5",
     "del": "^2.0.1",
