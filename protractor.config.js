@@ -36,6 +36,7 @@ if(WITH_DOCS){
 var config = {
   framework: 'jasmine2',
   specs: specs,
+  chromeDriver: './node_modules/chromedriver/lib/chromedriver/chromedriver',
   onPrepare: function () {
     browser.ignoreSynchronization = !IS_ANGULAR;
     /**
