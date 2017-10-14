@@ -17,7 +17,7 @@ This project is the first step: a **vanillaJS/ES6/jspm boilerplate** ([more info
 * [Generate Docs](#generate-docs)
 * [Deployment](#deployment) / [Folder organization](#folder-organization)
 
-##Features
+## Features
 
 * Simple ES6 app using basic **ES6 features**
 	* so that you won't have to struggle to understand the code base
@@ -31,7 +31,7 @@ This project is the first step: a **vanillaJS/ES6/jspm boilerplate** ([more info
 * **Continuous Integration** ready (tests via [Travis CI](https://travis-ci.org/topheman/vanilla-es6-jspm) with [SauceLabs](https://saucelabs.com/u/vanilla-es6-jspm) integration for e2e tests)
 * Automated documentation generation
 
-##TL;DR
+## TL;DR
 
 Want to get started right now and bother about all the great features later ?
 
@@ -45,7 +45,7 @@ $ gulp serve
 
 You're ready to develop in ES6 the project in the `src` folder!
 
-##Requirements
+## Requirements
 
 * node/npm (tested on both node v4, v5 & v6 - [see tests](https://travis-ci.org/topheman/vanilla-es6-jspm))
 * gulp `npm install -g gulp-cli`
@@ -53,7 +53,7 @@ You're ready to develop in ES6 the project in the `src` folder!
 
 [Why all dependencies in local (see wiki) ?](https://github.com/topheman/vanilla-es6-jspm/wiki/FAQ#dependencies)
 
-##Installation
+## Installation
 
 All you need is to run `npm install`
 
@@ -61,7 +61,7 @@ All you need is to run `npm install`
 	* `jspm install`: installs front dependencies via jspm
 	* `npm run webdriver-manager-update` installs necessary binaries for Selenium (for e2e testing)
 
-##Launch
+## Launch
 
 You can launch your app in different modes (dev/dist/test):
 
@@ -78,7 +78,7 @@ You can pass the following flags to the `gulp serve` command:
 * `--disable-watch`: disables watching/reloading
 * `--open false`: won't open the site in the browser
 
-##Build
+## Build
 
 * `gulp build` : builds a production ready version of the site in `build/dist` folder
 * `gulp build --env test` : same as `gulp build`, but bundles a test version of your website (using `test/jspm.override.json`)
@@ -88,9 +88,9 @@ You can also pass the following flags to `gulp build`:
 
 * `--with-docs`: will generate the documentation from source code in `build/dist/docs` ([see generate docs section](#generate-docs))
 
-##Test
+## Test
 
-###Unit
+### Unit
 
 The unit tests are in `test/unit/spec`.
 
@@ -101,7 +101,7 @@ You can see exactly which commands match the following npm tasks in the [package
 * `npm run test-build`: tests the `gulp build` task (will be triggered on `git-pre-push`)
 	* if `build/dist` folder is under git management ([see deployment section](#deployment)), this task will git stash/unstash before and after testing.
 
-###e2e
+### e2e
 
 The e2e tests are in `test/e2e/spec`. It's using [protractor](http://www.protractortest.org/) - an end-to-end test framework for AngularJS applications, based on [Selenium Webdriver](http://www.seleniumhq.org/). It can also be used on non-angular websites ([more on wiki](https://github.com/topheman/vanilla-es6-jspm/wiki/FAQ#protractor)).
 
@@ -113,9 +113,9 @@ You can run the e2e tests two ways (either way, they need a server in order to r
 	* stop the test server
 * if you want to run them against your current server (this should be a server launched in test mode with `gulp serve --env test`), open a new terminal tab and run `npm run test-e2e`
 
-##Git workflow & Continuous Integration
+## Git workflow & Continuous Integration
 
-###Git hooks
+### Git hooks
 
 To prevent you from sending broken code, some client-side git hooks are enabled:
 
@@ -125,7 +125,7 @@ To prevent you from sending broken code, some client-side git hooks are enabled:
 
 You can bypass those checks by adding to your git command the flag `--no-verify` (but know that the Travis CI build will fail).
 
-###Travis CI
+### Travis CI
 
 On each push, [Travis CI](https://travis-ci.org/topheman/vanilla-es6-jspm) will run the following tests/builds (see complete steps in [.travis.yml](https://github.com/topheman/vanilla-es6-jspm/blob/master/.travis.yml)):
 
@@ -140,7 +140,7 @@ If either one of them fails, the build will be flagged as failed.
 * The `WITH_DOCS=true` env var is exported at the beginning so that the doc generation should also be tested on the `gulp build` task (without changing the commands)
 * As you'll see e2e tests don't run on pull requests. [See explanation on the FAQ](https://github.com/topheman/vanilla-es6-jspm/wiki/FAQ#continuous-integration).
 
-###SauceLabs
+### SauceLabs
 
 *You can skip this if e2e testing isn't part of your Continuous Integration workflow.*
 
@@ -154,7 +154,7 @@ More infos on this commit: [#7898239](https://github.com/topheman/vanilla-es6-js
 
 [See the SauceLabs Report](https://saucelabs.com/u/vanilla-es6-jspm) (much like Travis but for e2e tests)
 
-##Generate Docs
+## Generate Docs
 
 Documentation generation is currently based on [YUIDoc](http://yui.github.io/yuidoc/). A set of tasks is at your disposal:
 
@@ -170,9 +170,9 @@ Notes:
 * I'm still looking for a replacement for yuidoc, feel free to use your own doc generator - if you have one more suited for ES6, please let me know.
 * I opened an [issue here](https://github.com/topheman/vanilla-es6-jspm/issues/1), for the moment, the doc doesn't display well when served over https.
 
-##Deployment
+## Deployment
 
-###On github pages
+### On github pages
 
 You can host your project on github pages like this ([source](https://help.github.com/articles/creating-project-pages-manually/)), pushing to the github pages the `dist` folder where the project is built.
 
@@ -191,9 +191,9 @@ $ git push -u origin gh-pages
 
 Next time, you'll only have to do the last 4 steps ...
 
-##Folder Organization
+## Folder Organization
 
-###Development
+### Development
 
 ```
 src
@@ -212,7 +212,7 @@ src
 └── styles                  --> styles folder (.scss)
 ```
 
-###Production
+### Production
 
 ```
 build
@@ -231,7 +231,7 @@ build
 └── docs                    --> generate doc with "npm run yuidoc"
 ```
 
-###Test
+### Test
 
 ```
 test
@@ -252,18 +252,18 @@ test
         └── services
 ```
 
-##Changelog
+## Changelog
 
 See [releases section](https://github.com/topheman/vanilla-es6-jspm/releases).
 
-##Contributing
+## Contributing
 
 *This section is in progress*, you can still take a look at the [public trello board](https://trello.com/c/tCihMVXM/46-introduction).
 
-##FAQ
+## FAQ
 
 [See Wiki](https://github.com/topheman/vanilla-es6-jspm/wiki/FAQ)
 
-##Resources
+## Resources
 
 [See Wiki](https://github.com/topheman/vanilla-es6-jspm/wiki/Resources)
